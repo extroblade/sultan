@@ -1,0 +1,132 @@
+
+//-----------------fonts------------------
+
+
+@import url('https://fonts.cdnfonts.com/css/roboto')
+@import url('https://fonts.cdnfonts.com/css/inter')
+
+
+//-----------------vars------------------
+
+
+$accent: #D4B098
+$yellow: #FFC85E //30 %
+$white: #FFFFFF
+$background: #E5E5E5
+$gray: #3F4E65
+$black: #111111
+$red: #D81F1F
+$lightblue: #6DAEEA
+$purple: #D06EFE
+$turquoise: #1FD8CD
+$transparent: rgba(0,0,0,0)
+
+
+//-----------------commons------------------
+
+
+*
+  font-family: 'Inter', sans-serif
+  font-style: normal
+  font-size: 12px
+  font-weight: 400
+  padding: 0
+  margin: 0
+  box-sizing: border-box
+  width: auto
+  text-decoration: none
+  list-style-type: none
+  max-width: 100%
+
+
+strong
+  font-weight: bold
+
+.header
+  background-color: $white
+
+.btn
+  font-weight: 700
+  font-size: 14px
+  white-space: nowrap
+  img
+    background-color: $yellow
+  color: $white
+  background-color: $yellow
+  border: 0
+  border-radius: 50px
+  cursor: pointer
+  display: flex
+  flex-direction: row
+  justify-content: space-evenly
+  align-items: center
+  &__text
+    display: flex
+    justify-content: space-between
+    padding: 20px 40px
+    img
+      margin-left: 20px
+
+  &__img
+    img
+      height: 14px
+      width: 14px
+    height: 39px
+    width: 39px
+    display: flex
+    align-items: center
+
+  &__cart
+    cursor: pointer
+    display: flex
+    border: 0
+    background-color: $white
+    .btn__indicator
+      color: $white
+      position: relative
+      margin-top: -8px
+      margin-left: -15px
+      padding: 12px
+      width: 10px
+      height: 10px
+
+
+.head
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: center
+  padding: 0 10vw
+
+.contact
+  display: flex
+  flex-direction: row
+
+.navigation
+  display: flex
+  flex-direction: row
+  &__item
+    margin: 10px
+    padding: 10px
+
+.nav
+  padding: 24px 10vw
+  border-top: 1px solid rgba($gray, 0.2)
+  border-bottom: 1px solid rgba($gray, 0.2)
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: space-between
+  &__img
+    position: relative
+    height: 60px
+    width: 70px
+    img
+      position: absolute
+      top: -22px
+
+
+
+.col
+  display: flex
+  flex-direction: column
