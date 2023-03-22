@@ -17,4 +17,5 @@ export type SearchItemsParams = {
 export interface ItemsSliceState {
   items: ItemsType[];
   status: Status;
+  limit: number
 }

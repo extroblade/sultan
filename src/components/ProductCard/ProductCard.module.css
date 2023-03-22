@@ -1,0 +1,39 @@
+@import url("https://fonts.cdnfonts.com/css/roboto");
+@import url("https://fonts.cdnfonts.com/css/inter");
+* {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  width: auto;
+  text-decoration: none;
+  list-style-type: none;
+  max-width: 100%;
+}
+
+.item {
+  width: 326px;
+  height: 490px;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 50px;
+  box-shadow: 0 4px 4px #b0b0b0, 0 -1px 5px #eeeeee;
+}
+.item a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.item .img {
+  width: 100px;
+  height: 100px;
+}
+
+/*# sourceMappingURL=ProductCard.module.css.map */

@@ -1,55 +1,58 @@
 import React, {useEffect, useState} from 'react';
 import styles from './Header.module.css'
-import ItemsType from "../../types/items-type";
-
-import email from '../../static/email.svg'
-import address from '../../static/address.svg'
-import mainLogo from '../../static/main-logo.svg'
-import catalog from '../../static/catalog.svg'
 import consultant from '../../static/consultant.png'
-import download from '../../static/download.svg'
-import cart from '../../static/cart.svg'
-import lens from '../../static/lens.svg'
+import logo from '../../static/main-logo.svg';
+
+import { ReactComponent as LensIcon } from '../../static/lens.svg';
+import { ReactComponent as CatalogIcon } from '../../static/catalog.svg';
+import { ReactComponent as AddressIcon } from '../../static/address.svg';
+import { ReactComponent as EmailIcon } from '../../static/email.svg';
+import { ReactComponent as DownloadIcon } from '../../static/download.svg';
+import { ReactComponent as CartIcon } from '../../static/cart.svg';
+import { ReactComponent as HamburgerIcon } from '../../static/hamburger-white.svg';
+
 import {CART_ROUTE, CATALOG_ROUTE, SHOP_ROUTE} from '../../utils/consts';
 import {Link} from "react-router-dom";
-import {ItemState} from "../../store/types/item";
-import {useTypedSelector} from "../../hooks/useTypedSelector";
-import {useDispatch} from "react-redux";
-import {fetchItems} from "../../store/actions/item";
+import {useDispatch, useSelector} from "react-redux";
+import {selectCart} from "../../store/cart/selectors";
+import {CartItem} from "../../store/cart/types";
 
 
 const Header = () => {
-  const { items }: ItemState = useTypedSelector(state => state.items)
+  const { totalPrice, cartItems } = useSelector(selectCart);
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(fetchItems())
-  }, [dispatch])
-
+  const countAmount = (it: CartItem[]): number => {
+    return it.reduce((i, next) => i+next.count,0)
+  }
   const [amount, setAmount] = useState(0)
   const [price, setPrice] = useState(0)
 
-  const countAmount = (arr: ItemsType[]): number => arr.reduce((a) => a+1, 0)
-  const countPrice = (arr: ItemsType[]): number => arr.reduce((a,b) => a+b.price, 0)
+  useEffect(() => {
+    setAmount(() => countAmount(cartItems));
+    setPrice(() => Math.ceil(totalPrice*10)/10)
+  }, [dispatch, cartItems, totalPrice])
 
-  useEffect(() => { //change to cart items
-    setAmount(() => countAmount(items))
-    setPrice(() => Math.round(countPrice(items)))
-  }, [items])
 
   return (
     <header className={styles.header}>
       <div className={styles.head}>
         <div className={styles.contact}>
-          <img src={address} alt="address"/>
-          <div className={styles.contact__address}>
-            <strong>г.Кокчетав, ул.Ж. Ташенова 129Б</strong>
-            <p>(Рынок Восточный)</p>
+
+          <div className={styles.contact__container}>
+            <AddressIcon/>
+            <p>
+              <strong>г.Кокчетав, ул.Ж. Ташенова 129Б</strong><br/>
+              (Рынок Восточный)
+            </p>
           </div>
-          <img src={email} alt="email"/>
-          <div className={styles.contact__email}>
-            <strong>opt.sultan@mail.ru</strong>
-            <p>На связи в любое время</p>
+
+          <div className={styles.contact__container}>
+            <EmailIcon/>
+            <p>
+              <strong>opt.sultan@mail.ru</strong><br/>
+              На связи в любое время
+            </p>
+
           </div>
         </div>
         <ul className={styles.navigation}>
@@ -72,19 +75,25 @@ const Header = () => {
       </div>
 
       <nav className={styles.nav}>
-        <Link to={SHOP_ROUTE} className="logo">
-          <img src={mainLogo} alt="main-logo"/>
+        <button className={styles.menu__open}>
+          <HamburgerIcon/>
+        </button>
+
+        <Link to={SHOP_ROUTE}>
+          <img src={logo} alt="Logo"/>
         </Link>
 
-        <Link to={CATALOG_ROUTE} className={`${styles.btn} ${styles.btn__text}`}>
-          <p>Каталог</p>
-          <img src={catalog} alt="catalog"/>
-        </Link>
+        <div className={styles.col}>
+          <Link to={CATALOG_ROUTE} className={`${styles.btn} ${styles.btn__text}`}>
+            <p>Каталог</p>
+            <CatalogIcon/>
+          </Link>
+        </div>
 
         <div className={styles.col}>
           <input type="text" placeholder={"Поиск..."}/>
           <button className={`${styles.btn} ${styles.btn__img}`}>
-            <img src={lens} alt=""/>
+            <LensIcon/>
           </button>
         </div>
 
@@ -94,26 +103,45 @@ const Header = () => {
           <p>Заказать звонок</p>
         </div>
 
-        <div className={styles.nav__img}>
+        <div className={`${styles.col} ${styles.nav__img}`}>
           <img src={consultant} alt="consultant"/>
         </div>
 
-        <button className={`${styles.btn} ${styles.btn__text}`}>
-          <p>Прайс-лист</p>
-          <img src={download} alt="download"/>
-        </button>
-
-        <Link to={CART_ROUTE} className={styles.btn__cart}>
-          <img src={cart} alt=""/>
-          <p className={`${styles.btn} ${styles.btn__indicator}`}>{amount}</p>
-        </Link>
-
         <div className={styles.col}>
-          <Link to={CART_ROUTE}>Корзина</Link>
-          <strong>{price} тенге</strong>
+          <button className={`${styles.btn} ${styles.btn__text}`}>
+            <p>Прайс-лист</p>
+            <DownloadIcon/>
+          </button>
+        </div>
+
+        <div className={styles.cart}>
+          <Link to={CART_ROUTE} className={styles.btn__cart}>
+            <CartIcon/>
+            <p className={`${styles.btn} ${styles.btn__indicator}`}>{amount}</p>
+          </Link>
+
+          <div className={styles.col}>
+            <Link to={CART_ROUTE}>Корзина</Link>
+            <strong>{price} тенге</strong>
+          </div>
         </div>
 
       </nav>
+      <div className={styles.mobile}>
+        <div className={styles.mobile__btn}>
+          <Link to={CATALOG_ROUTE} className={styles.mobile__btn}>
+            <CatalogIcon className={styles.mobile__img}/>
+            <p>Каталог</p>
+          </Link>
+        </div>
+
+        <div className={styles.mobile__btn}>
+          <Link to={"#"} className={styles.mobile__btn}>
+            <LensIcon className={styles.mobile__img}/>
+            <p>Поиск</p>
+          </Link>
+        </div>
+      </div>
     </header>
   );
 };

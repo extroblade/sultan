@@ -1,9 +1,8 @@
 import ItemsType from "../../types/items-type";
 
 export interface ItemState {
-  items: ItemsType[] | [],
-  loading: boolean,
-  error: null | string
+  items: ItemsType[],
+  status: string
 }
 
 export enum ItemActionTypes {
