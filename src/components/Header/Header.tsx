@@ -21,15 +21,15 @@ import {CartItem} from "../../store/cart/types";
 const Header = () => {
   const { totalPrice, cartItems } = useSelector(selectCart);
   const dispatch = useDispatch()
-  const countAmount = (it: CartItem[]): number => {
-    return it.reduce((i, next) => i+next.count,0)
-  }
+  const countAmount = (it: CartItem[]): number => it.reduce((i, next) => i+next.count,0)
+
   const [amount, setAmount] = useState(0)
   const [price, setPrice] = useState(0)
 
+
   useEffect(() => {
     setAmount(() => countAmount(cartItems));
-    setPrice(() => Math.ceil(totalPrice*10)/10)
+    setPrice(():any => totalPrice < 10000000 ? (Math.ceil(totalPrice*10)/10) : BigInt(totalPrice))
   }, [dispatch, cartItems, totalPrice])
 
 
@@ -37,7 +37,6 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.head}>
         <div className={styles.contact}>
-
           <div className={styles.contact__container}>
             <AddressIcon/>
             <p>
@@ -45,7 +44,7 @@ const Header = () => {
               (Рынок Восточный)
             </p>
           </div>
-
+          <div className={styles.vl}></div>
           <div className={styles.contact__container}>
             <EmailIcon/>
             <p>
@@ -59,15 +58,15 @@ const Header = () => {
           <li className={styles.navigation__item}>
             <Link to={"#"}>О компании</Link>
           </li>
-
+          <div className={styles.vl}></div>
           <li className={styles.navigation__item}>
             <Link to={"#"}>Доставка и оплата</Link>
           </li>
-
+          <div className={styles.vl}></div>
           <li className={styles.navigation__item}>
             <Link to={"#"}>Возврат</Link>
           </li>
-
+          <div className={styles.vl}></div>
           <li className={styles.navigation__item}>
             <Link to={"#"}>Контакты</Link>
           </li>
@@ -79,7 +78,7 @@ const Header = () => {
           <HamburgerIcon/>
         </button>
 
-        <Link to={SHOP_ROUTE}>
+        <Link to={SHOP_ROUTE} className={styles.main_logo}>
           <img src={logo} alt="Logo"/>
         </Link>
 
@@ -90,9 +89,9 @@ const Header = () => {
           </Link>
         </div>
 
-        <div className={styles.col}>
-          <input type="text" placeholder={"Поиск..."}/>
-          <button className={`${styles.btn} ${styles.btn__img}`}>
+        <div className={`${styles.col} ${styles.input}`}>
+          <input type={"search"} placeholder={"Поиск..."}/>
+          <button type={"submit"} className={`${styles.btn} ${styles.btn__img}`}>
             <LensIcon/>
           </button>
         </div>
@@ -122,21 +121,21 @@ const Header = () => {
 
           <div className={styles.col}>
             <Link to={CART_ROUTE}>Корзина</Link>
-            <strong>{price} тенге</strong>
+            <strong> {price < 1000000 ? price : `${String(price).substring(0, 6)}...`} &#8376; </strong>
           </div>
         </div>
 
       </nav>
       <div className={styles.mobile}>
         <div className={styles.mobile__btn}>
-          <Link to={CATALOG_ROUTE} className={styles.mobile__btn}>
+          <Link to={CATALOG_ROUTE} className={`${styles.mobile__link}`}>
             <CatalogIcon className={styles.mobile__img}/>
             <p>Каталог</p>
           </Link>
         </div>
-
+        <div className={`${styles.mobile} ${styles.vl}`}></div>
         <div className={styles.mobile__btn}>
-          <Link to={"#"} className={styles.mobile__btn}>
+          <Link to={"#"} className={`${styles.mobile__link}`}>
             <LensIcon className={styles.mobile__img}/>
             <p>Поиск</p>
           </Link>

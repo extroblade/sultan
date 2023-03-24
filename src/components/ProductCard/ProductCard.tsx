@@ -1,16 +1,13 @@
-import React, { FC } from 'react';
+import React, {FC} from 'react';
 import ItemsType from "../../types/items-type";
 import {Link} from "react-router-dom";
 import {PRODUCT_ROUTE} from "../../utils/consts";
-
 
 import { ReactComponent as GrIcon } from "../../static/gr.svg";
 import { ReactComponent as LitIcon } from '../../static/lit.svg';
 import { ReactComponent as CartIcon } from "../../static/cart.svg";
 
 import styles from './ProductCard.module.css'
-import {useSelector} from "react-redux";
-import {selectCartItemById} from "../../store/cart/selectors";
 import { CartItem } from '../../store/cart/types';
 import {addItem} from "../../store/cart/cartSlice";
 import { useDispatch } from 'react-redux';
@@ -21,11 +18,9 @@ interface IType {
 
 const ProductCard: FC<IType> = ({i}) => {
   const dispatch = useDispatch();
-  const cartItem = useSelector(selectCartItemById(i.code));
 
-  const addedCount = cartItem ? cartItem.count : 0;
-  const AddToCart = () => {
-    const item: CartItem = {
+  const addItemToCart = (i:any) => {
+    const newCartItem: CartItem = {
       url: i.url,
       name: i.name,
       type: i.type,
@@ -35,9 +30,9 @@ const ProductCard: FC<IType> = ({i}) => {
       brand: i.brand,
       desc: i.desc,
       price: i.price,
-      count: 0,
+      count: 1,
     };
-    dispatch(addItem(item));
+    dispatch(addItem(newCartItem));
   };
 
 
@@ -59,9 +54,9 @@ const ProductCard: FC<IType> = ({i}) => {
       <p>
         {i.price} &#8376;
       </p>
-      <p>тип ухода (пока хз)</p>
+      <p>тип ухода (пока none)</p>
 
-      <button onClick={() => AddToCart()}>
+      <button onClick={() => addItemToCart(i)}>
         В корзину
         <CartIcon/>
       </button>

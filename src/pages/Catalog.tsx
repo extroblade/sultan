@@ -1,27 +1,25 @@
-import React, {FC, useCallback, useEffect} from 'react';
-import {CATALOG_ROUTE, PRODUCT_ROUTE, SHOP_ROUTE} from "../utils/consts";
+import React, {FC} from 'react';
+import {CATALOG_ROUTE, SHOP_ROUTE} from "../utils/consts";
 import Pagination from "../components/Pagination/Pagination";
 import type {} from 'redux-thunk/extend-redux';
-import {Link, useNavigate} from "react-router-dom";
-import Products from '../components/Products';
+import {Link} from "react-router-dom";
 import Filters from '../components/Filters';
 import Params from '../components/Params';
 import {useSelector} from "react-redux";
 import {selectFilter} from "../store/filters/selectors";
-import { setCategoryId, setCurrentPage } from '../store/filters/filterSlice';
+import { setCurrentPage } from '../store/filters/filterSlice';
 import {useAppDispatch} from "../store";
-import { selectItemData } from '../store/items/selectors';
+import ProductCard from "../components/ProductCard/ProductCard";
+import {selectItemData} from "../store/items/selectors";
+import ItemsType from "../types/items-type";
 
 
 const Catalog: FC = () => {
-  const navigate = useNavigate();
   const dispatch = useAppDispatch()
-  const { items, status } = useSelector(selectItemData);
-  const { categoryId, sort, currentPage, searchValue } = useSelector(selectFilter);
+  const { currentPage } = useSelector(selectFilter);
+  const { limit, items} = useSelector(selectItemData);
 
-  const onChangeCategory = useCallback((idx: number) => {
-    dispatch(setCategoryId(idx));
-  }, []);
+  const itemsList: ItemsType[] = items.slice(limit*(currentPage-1), limit*(currentPage))
 
   const onChangePage = (page: number) => {
     dispatch(setCurrentPage(page));
@@ -38,7 +36,11 @@ const Catalog: FC = () => {
       <Filters/>
       <div style={{"display":"flex", "flexDirection":"row"}}>
         <Params/>
-        <Products/>
+        <div className={"items"}>
+          {itemsList.map((i) =>
+            <ProductCard i={i} key={i.code}/>
+          )}
+        </div>
       </div>
       <div style={{"display":"flex", "flexDirection":"row"}}>
         <Pagination currentPage={currentPage} onChangePage={onChangePage}/>
@@ -51,3 +53,6 @@ const Catalog: FC = () => {
 };
 
 export default Catalog;
+
+
+//[{"url":"https://avatars.mds.yandex.net/get-mpic/4721581/img_id7739073593422149788.jpeg/orig","name":"средство для мытья посуды Crystal","type":"volume","size":1,"code":"4604049097546","seller":"Нэфис","brand":"AOS","desc":"asd.","price":1}]

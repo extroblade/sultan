@@ -2,20 +2,13 @@ import ItemsType from "../../types/items-type";
 
 export enum Status {
   LOADING = 'loading',
-  SUCCESS = 'completed',
   ERROR = 'error',
+  SUCCESS = 'success'
 }
-
-export type SearchItemsParams = {
-  sortBy: string;
-  order: string;
-  category: string;
-  search: string;
-  currentPage: string;
-};
 
 export interface ItemsSliceState {
   items: ItemsType[];
   status: Status;
+  brands: string[];
   limit: number
 }

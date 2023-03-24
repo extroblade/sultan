@@ -18,7 +18,7 @@ const cartSlice = createSlice({
       const findItem = state.cartItems.find((obj) => obj.code === action.payload.code);
 
       if (findItem) {
-        findItem.count++;
+        findItem.count += action.payload.count;
       } else {
         state.cartItems.push({
           ...action.payload
@@ -26,6 +26,7 @@ const cartSlice = createSlice({
       }
 
       state.totalPrice = calcTotalPrice(state.cartItems);
+
       saveCartToLS(state.cartItems);
     },
     minusItem(state, action: PayloadAction<string>) {

@@ -22,8 +22,13 @@ const Footer = () => {
         </p>
         <div className={styles.sub}>
           <p>Подпишись на скидки и акции</p>
-          <input type="text" placeholder={"Введите ваш E-mail"}/>
-          <RightWingIcon/>
+          <div className={styles.input}>
+            <input type={"text"} placeholder={"Введите ваш E-mail"}/>
+            <button type={"submit"} className={`${styles.btn} ${styles.btn__img}`}>
+              <RightWingIcon/>
+            </button>
+          </div>
+
         </div>
       </div>
 
@@ -67,7 +72,7 @@ const Footer = () => {
 
       <div className={styles.col}>
         <h3>Скачать прайс-лист:</h3>
-        <button>
+        <button  className={`${styles.btn} ${styles.btn__text}`}>
           Прайс-лист
           <DownloadIcon/>
         </button>
@@ -84,7 +89,7 @@ const Footer = () => {
         <h3>Контакты:</h3>
         <p>+7 (777) 490-00-91</p>
         <p>время работы: 9:00-20:00</p>
-        <button>Заказать звонок</button>
+        <button className={`${styles.btn} ${styles.btn__text}`}>Заказать звонок</button>
         <p>opt.sultan@mail.ru</p>
         <p>На связи в любое время</p>
         <div className={styles.row}>

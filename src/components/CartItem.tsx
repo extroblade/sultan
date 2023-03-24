@@ -1,7 +1,9 @@
 import React, {FC} from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { addItem, minusItem, removeItem } from '../store/cart/cartSlice';
 import { CartItem as CartItemType } from '../store/cart/types';
+import {PRODUCT_ROUTE} from "../utils/consts";
 
 interface CIType {
   i: CartItemType
@@ -22,7 +24,7 @@ const CartItem: FC<CIType> = ({i}) => {
       brand: i.brand,
       desc: i.desc,
       price: i.price,
-      count: i.count,
+      count: 1,
     };
     dispatch(addItem(item));
   };
@@ -41,7 +43,9 @@ const CartItem: FC<CIType> = ({i}) => {
     <div className="cart_item" key={i.code}>
       <img src={i.url} alt="item"/>
       <p>{i.brand}</p>
-      <p>{i.name}</p>
+      <Link to={PRODUCT_ROUTE+'/'+i.code}>
+        {i.name}
+      </Link>
       <p>{i.desc}</p>
       <button onClick={() => plus()}>+</button>
       <p>{i.count}</p>
