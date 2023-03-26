@@ -28,7 +28,7 @@ const Catalog: FC = () => {
     <div style={{"padding": "0 10vw"}}>
       <div className="breadcrumbs">
         <Link to={SHOP_ROUTE} className={"crumb"}> Главная </Link>
-        &#62;
+        <span className="{styles.vl}">v</span>
         <Link to={CATALOG_ROUTE} className={"crumb"}> Каталог </Link>
       </div>
       <h2>Косметика и гигиена</h2>

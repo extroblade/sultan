@@ -1,8 +1,8 @@
 import ItemsType from "../../types/items-type";
 
-interface Filters {
+export interface Filters {
   key: keyof ItemsType,
-  value: string
+  value: string | []
 }
 
 export interface ItemsSliceState {

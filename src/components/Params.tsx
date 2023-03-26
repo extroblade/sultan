@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {selectItemData} from "../store/items/selectors";
-import {setFilters, sort, sortBrands, sortPrice, sortSellers} from '../store/items/itemsSlice';
+import {setFilters, sort} from '../store/items/itemsSlice';
 import {getItemsFromAdmin} from "../utils/getItemsFromAdmin";
+import {Filters} from "../store/items/itemsTypes";
+
 
 const Params = () => {
-  const { brands, sellers} = useSelector(selectItemData);
+  const { brands, sellers, filters} = useSelector(selectItemData);
 
   const dispatch = useDispatch()
   const [minValue, setMinValue] = useState(0)
@@ -14,6 +16,17 @@ const Params = () => {
   const [sortedBrands, setSortedBrands] = useState([...brands])
   const [sortedSellers, setSortedSellers] = useState([...sellers])
   const [filtersList, setFiltersList] = useState([])
+
+  useEffect(() => { //fix ts
+    // @ts-ignore
+    if(filtersList.find(item => item.key==="price")){
+      // @ts-ignore
+      setFiltersList([{key: "price", value: [minValue, maxValue]}, ...filtersList.splice(1, filtersList.length)])
+    } else {
+      // @ts-ignore
+      setFiltersList([...filtersList, {key: "price", value: [minValue, maxValue]}])
+    }
+  },[minValue, maxValue])
 
   function sortBrandsSearch(event: { target: { value: string } }) {
     setSortedBrands(
@@ -32,59 +45,32 @@ const Params = () => {
       })]
     )
   }
-  const [brandsList, setBrandsList] = useState([])
-  const [sellersList, setSellersList] = useState([])
 
-  useEffect(() => {
-    if ([...new Set(sellersList)].length) {
-      dispatch(sortSellers([...new Set(sellersList)]));
-    } else dispatch(sortSellers(["all"]));
+  useEffect(()=>{
     dispatch(sort())
-
-  }, [sellersList])
-
-  useEffect(() => {
-    dispatch(sortPrice([minValue, maxValue]))
-  }, [minValue, maxValue])
-
-
-  useEffect(() => {
-    if ([...new Set(brandsList)].length) {
-      dispatch(sortBrands([...new Set(brandsList)]));
-    } else dispatch(sortBrands(["all"]));
-  }, [brandsList])
-
-  const brander = (event:any) => {
-    if(event.target.checked){
-      // @ts-ignore
-      setBrandsList([...brandsList, event.target.name])
-    } else {
-      setBrandsList([...brandsList.filter(i => i !== event.target.name)])
-    }
-  }
-
-  const seller = (event:any) => {
-    if(event.target.checked){
-      // @ts-ignore
-      setSellersList([...sellersList, event.target.name])
-    } else {
-      setSellersList([...sellersList.filter(i => i !== event.target.name)])
-    }
-  }
+  },[filters])
 
   const getFilters = (event:any) => {
+
     if(event.target.checked){
       // @ts-ignore
-      setFiltersList(() => {
-        return [event.target.id]=[event.target.name]
-      })
+      setFiltersList(() => [...filtersList, {key: event.target.id, value: event.target.name}])
+    } else {
+      if(filtersList.length){
+        setFiltersList((f) => f.filter((i:Filters) => {
+          return i ? (i.key !== event.target.id) && (i.value !== event.target.name) : false
+        }))
+      }
     }
-    dispatch(setFilters(filtersList))
   }
-  // useEffect(() => {
-  //   dispatch(setFilters(filtersList))
-  //   dispatch(sort())
-  // }, [filtersList])
+
+  const show = () => {
+    dispatch(setFilters([...new Set([...filtersList])] ))
+  }
+
+  const reset = () => {
+
+  }
 
   return (
     <div style={{width: "240px"}}>
@@ -112,27 +98,28 @@ const Params = () => {
         <input type="text" placeholder={"search"} onChange={sortSellersSearch}/>
         {sortedSellers.map(i =>
           <div key={i}>
-            <input type="checkbox" name={i} id={"seller"} onChange={seller}/>{i}
+            <input type="checkbox" name={i} id={"seller"} onChange={getFilters}/>{i}
             <span> ({[...getItemsFromAdmin()].filter(it => it.seller == i || "all"==i).reduce((a:number) => a+1,0)})</span>
-
           </div>
         )}
+
       </div>
 
       <div className={"brand_sort"} style={{"display":"flex", "flexDirection":"column"}}>
         <p>Бренд</p>
         <input type="text" placeholder={"search"} onChange={sortBrandsSearch}/>
+
         {sortedBrands.map((i:any) =>
           <div key={i}>
-            <input type="checkbox" name={i} id={"brand"} onChange={brander}/>{i}
+            <input type="checkbox" name={i} id={"brand"} onChange={getFilters}/>{i}
             <span> ({[...getItemsFromAdmin()].filter(it => it.brand == i || "all"==i).reduce((a:number) => a+1,0)})</span>
           </div>
         )}
 
       </div>
       <div>
-        <button onClick={() => console.log('updateFilters()')}>Показать</button>
-        <button onClick={() => console.log('reset()')}>Удалить</button>
+        <button onClick={() => show()}>Показать</button>
+        <button onClick={() => reset()}>Удалить</button>
       </div>
 
     </div>

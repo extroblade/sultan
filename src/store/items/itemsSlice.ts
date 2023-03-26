@@ -7,8 +7,8 @@ const initialState: ItemsSliceState = {
   items: getItemsFromAdmin(),
   limit: 15,
   filters: [],
-  brands: [...[...new Set([...getItemsFromAdmin()].map(i => i.brand))].sort((a,b) => a.localeCompare(b)), "all"],
-  sellers: [...[...new Set([...getItemsFromAdmin()].map(i => i.seller))].sort((a,b) => a.localeCompare(b)), "all"],
+  brands: [...[...new Set([...getItemsFromAdmin()].map(i => i.brand))].sort((a,b) => a.localeCompare(b))],
+  sellers: [...[...new Set([...getItemsFromAdmin()].map(i => i.seller))].sort((a,b) => a.localeCompare(b))],
 };
 
 
@@ -40,43 +40,52 @@ const itemsSlice = createSlice({
     sortTitleDESC(state) {
       state.items = state.items.sort((a,b) =>  b.name.localeCompare(a.name))
     },
+
     sort(state){
-      state.items = state.items.filter(i => {
-        return state.filters.map(f => {
-          // @ts-ignore
-          return i[Object.keys(state.filters).find(item => item===f)] === f
+      let minVal=0, maxVal=1000000;
+      if (state.filters.length > 1) {
+        let helpArray: ItemsType[] = [],
+          brandsArray: ItemsType[] = [],
+          sellersArray: ItemsType[] = [];
+
+        [...getItemsFromAdmin()].map(i => {
+          state.filters.map(f => {
+            if(i[f.key] === f.value && f.key === "brand") {
+              brandsArray.push(i)
+            }
+            if(i[f.key] === f.value && f.key === "seller") {
+              sellersArray.push(i)
+            }
+            if(f.key === "price"){
+              minVal = +f.value[0];
+              maxVal = +f.value[1];
+            }
+          })
         })
-      })
-      console.log(state.items)
+        if(sellersArray.length && brandsArray.length){
+          sellersArray.map(s => {
+            brandsArray.map(b => {
+              if(s.code === b.code){
+                helpArray.push(b)
+              }
+            })
+          })
+        } else if (sellersArray.length){
+          helpArray = [...sellersArray]
+        } else if (brandsArray.length){
+          helpArray = [...brandsArray]
+        }
+        state.items = [...helpArray].filter(i => i.price>=minVal && i.price<=maxVal)
+
+      } else if (state.filters.length) {
+        state.items = [...getItemsFromAdmin()].filter(i => i.price>=minVal && i.price<=maxVal)
+      } else {
+        state.items = [...getItemsFromAdmin()]
+      }
     },
     setFilters(state, action){
-      // @ts-ignore
-      state.filters.push(action)
+      state.filters = [...action.payload]
     },
-
-    sortBrands(state, action: PayloadAction<any>) {
-      if(action.payload.length){
-        state.items = state.items.filter(i => {
-          const find = action.payload.find((item:any) => (item === i.brand) || ("all" === item))
-          return (find === i.brand) || (find === "all") || (!action.payload.length)
-        })
-      }
-    },
-    sortSellers(state, action: PayloadAction<any>) {
-      if(action.payload.length){
-        state.items = state.items.filter(i => {
-          const find = action.payload.find((item:any) => (item === i.seller) || ("all" === item))
-          return (find === i.seller) || (find === "all") || (!action.payload.length)
-        })
-      }
-    },
-    sortPrice(state, action: PayloadAction<any>){
-      if(action.payload.length){
-        state.items = [...getItemsFromAdmin()].filter(i => {
-          return (i.price >= action.payload[0]) && (i.price <= action.payload[1])
-        })
-      }
-    }
   },
 });
 export const {
@@ -88,9 +97,6 @@ export const {
   sortPriceDESC,
   sortTitleASC,
   sortTitleDESC,
-  sortBrands,
-  sortPrice,
-  sortSellers
 } = itemsSlice.actions;
 
 export default itemsSlice.reducer;
