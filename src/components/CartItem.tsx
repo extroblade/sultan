@@ -1,31 +1,26 @@
 import React, {FC} from 'react';
-import { useDispatch } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addItem, minusItem, removeItem } from '../store/cart/cartSlice';
 import { CartItem as CartItemType } from '../store/cart/types';
 import {PRODUCT_ROUTE} from "../utils/consts";
+import {selectItemData} from "../store/items/selectors";
 
 interface CIType {
   i: CartItemType
 }
 
 const CartItem: FC<CIType> = ({i}) => {
+  const { items } = useSelector(selectItemData);
+
+
+  const findItem = items.find((obj) => obj.code === i.code);
+
 
   const dispatch = useDispatch();
 
   const plus = () => {
-    const item: CartItemType = {
-      url: i.url,
-      name: i.name,
-      type: i.type,
-      size: i.size,
-      code: i.code,
-      seller: i.seller,
-      brand: i.brand,
-      desc: i.desc,
-      price: i.price,
-      count: 1,
-    };
+    const item: CartItemType = {...i, count: 1};
     dispatch(addItem(item));
   };
 
@@ -39,13 +34,19 @@ const CartItem: FC<CIType> = ({i}) => {
     if(i.count > 1) dispatch(minusItem(i.code));
     if(i.count === 1) remove()
   };
+
   return (
     <div className="cart_item" key={i.code}>
       <img src={i.url} alt="item"/>
       <p>{i.brand}</p>
-      <Link to={PRODUCT_ROUTE+'/'+i.code}>
-        {i.name}
-      </Link>
+      {findItem ?
+        <Link to={PRODUCT_ROUTE+'/'+i.code}>
+          {i.name}
+        </Link>
+        :
+        <p>{i.name} Unavailable now</p>
+      }
+
       <p>{i.desc}</p>
       <button onClick={() => plus()}>+</button>
       <p>{i.count}</p>

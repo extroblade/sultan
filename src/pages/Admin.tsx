@@ -1,9 +1,94 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import { addToLocalStorage, removeFromLocalStorage } from '../store/items/itemsSlice';
+import ItemsType from "../types/items-type";
+import {selectItemData} from "../store/items/selectors";
+import ProductCard from '../components/ProductCard/ProductCard';
 
 const Admin = () => {
+  const dispatch = useDispatch()
+  const {items} = useSelector(selectItemData)
+
+  const newItem: ItemsType = {brand: "", code: String(Date.now()), desc: "", name: "", price: 0, seller: "", size: 0, type: "", url: ""}
+
+  const [d, setD] = useState(localStorage.getItem('items'))
+
+  useEffect(()=>{
+    setD(() => localStorage.getItem('items'))
+    newItem.code = String(Date.now())
+  },[items, newItem])
+
   return (
     <div>
-      admin
+      <div className="add">
+        <button onClick={() => localStorage.clear()}>clear</button>
+        <form onSubmit={(event) => {
+          event.preventDefault()
+          dispatch(addToLocalStorage(newItem))
+        }}>
+          <input
+            type="text"
+            placeholder={"picture"}
+            onChange={e => newItem.url = (e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder={"name"}
+            onChange={e => newItem.name = (e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder={"type"}
+            onChange={e => newItem.type = (e.target.value)}
+          />
+          <input
+            type="number"
+            placeholder={"size"}
+            onChange={e => newItem.size = +(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder={"seller"}
+            onChange={e => newItem.seller = (e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder={"brand"}
+            onChange={e => newItem.brand = (e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder={"desc"}
+            onChange={e => newItem.desc = (e.target.value)}
+          />
+          <input
+            type="number"
+            placeholder={"price"}
+            min={0}
+            max={1_000_000}
+            onChange={e => {
+              console.log(newItem)
+              newItem.price = +(e.target.value)
+            }}
+          />
+
+          <button type={"submit"}>Add</button>
+        </form>
+      </div>
+      <div>
+        {d && JSON.parse(d).length ? JSON.parse(d).map((i: ItemsType) =>
+          <div key={i.code}>
+            <button onClick={() => dispatch(removeFromLocalStorage(i.code))}>delete</button>
+            <ProductCard i={i}/>
+          </div>
+        ):
+          <div>
+            No items at localstorage
+          </div>
+        }
+      </div>
+
+
     </div>
   );
 };

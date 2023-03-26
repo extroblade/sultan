@@ -29,7 +29,7 @@ const Header = () => {
 
   useEffect(() => {
     setAmount(() => countAmount(cartItems));
-    setPrice(():any => totalPrice < 10000000 ? (Math.ceil(totalPrice*10)/10) : BigInt(totalPrice))
+    setPrice(():any => (Math.ceil(totalPrice*10)/10))
   }, [dispatch, cartItems, totalPrice])
 
 
@@ -83,8 +83,8 @@ const Header = () => {
         </Link>
 
         <div className={styles.col}>
-          <Link to={CATALOG_ROUTE} className={`${styles.btn} ${styles.btn__text}`}>
-            <p>Каталог</p>
+          <Link to={CATALOG_ROUTE} className={styles.btn__text}>
+            <span>Каталог</span>
             <CatalogIcon/>
           </Link>
         </div>
@@ -107,8 +107,8 @@ const Header = () => {
         </div>
 
         <div className={styles.col}>
-          <button className={`${styles.btn} ${styles.btn__text}`}>
-            <p>Прайс-лист</p>
+          <button className={styles.btn__text}>
+            <span>Прайс-лист</span>
             <DownloadIcon/>
           </button>
         </div>
@@ -121,7 +121,7 @@ const Header = () => {
 
           <div className={styles.col}>
             <Link to={CART_ROUTE}>Корзина</Link>
-            <strong> {price < 1000000 ? price : `${String(price).substring(0, 6)}...`} &#8376; </strong>
+            <strong> {price < 1000000 ? +price : `${String(price).substring(0, 6)}...`} &#8376; </strong>
           </div>
         </div>
 

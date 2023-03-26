@@ -29,6 +29,9 @@ const Cart: FC = () => {
   return (
     <div>
       cart
+      <button onClick={() => clear()}>
+        clear cart
+      </button>
       {cartItems.map(i =>
         <div key={i.code}>
           <CartItem i={i}/>
@@ -36,9 +39,6 @@ const Cart: FC = () => {
 
       )}
       <p>total price is {Math.ceil(totalPrice*10)/10}</p>
-      <button onClick={() => clear()}>
-        clear cart
-      </button>
     </div>
   );
 };

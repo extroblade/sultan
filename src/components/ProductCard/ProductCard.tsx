@@ -8,7 +8,6 @@ import { ReactComponent as LitIcon } from '../../static/lit.svg';
 import { ReactComponent as CartIcon } from "../../static/cart.svg";
 
 import styles from './ProductCard.module.css'
-import { CartItem } from '../../store/cart/types';
 import {addItem} from "../../store/cart/cartSlice";
 import { useDispatch } from 'react-redux';
 
@@ -16,50 +15,40 @@ interface IType {
   i: ItemsType
 }
 
-const ProductCard: FC<IType> = ({i}) => {
+const ProductCard: FC<IType> = ({i }) => {
   const dispatch = useDispatch();
-
-  const addItemToCart = (i:any) => {
-    const newCartItem: CartItem = {
-      url: i.url,
-      name: i.name,
-      type: i.type,
-      size: i.size,
-      code: i.code,
-      seller: i.seller,
-      brand: i.brand,
-      desc: i.desc,
-      price: i.price,
-      count: 1,
-    };
-    dispatch(addItem(newCartItem));
-  };
-
 
   return (
     <div className={styles.item} key={i.code}>
-      <Link to={PRODUCT_ROUTE+'/'+i.code}>
-        <img src={i.url} alt="product" className={styles.img}/>
-        <p>
-          {i.type==="weight" ? <GrIcon/> : <LitIcon/>}
-          {i.size}
-          {i.type==="weight" ? " г" : " мл"}
-        </p>
-        <p> {i.brand.toUpperCase()} {i.name} </p>
-      </Link>
+      <div className={styles.img__container}>
+        <Link to={PRODUCT_ROUTE+'/'+i.code}>
+          <img src={i.url} alt="product" className={styles.img}/>
+        </Link>
+      </div>
 
-      <p> Штрихкод: {i.code} </p>
-      <p> Производитель: {i.seller} </p>
-      <p> Бренд: {i.brand.toUpperCase()} </p>
-      <p>
-        {i.price} &#8376;
-      </p>
-      <p>тип ухода (пока none)</p>
+      <div className={styles.text__container}>
+        <Link to={PRODUCT_ROUTE+'/'+i.code}>
+          <p className={styles.size}>
+            {i.type==="weight" ? <GrIcon/> : <LitIcon/>}
+            {`  ${i.size}`}
+            {i.type==="weight" ? " г" : " мл"}
+          </p>
+        </Link>
 
-      <button onClick={() => addItemToCart(i)}>
-        В корзину
-        <CartIcon/>
-      </button>
+        <p className={styles.name}> <strong>{i.brand.toUpperCase()}</strong> {i.name} </p>
+        <p> Штрихкод: <span>{i.code}</span> </p>
+        <p> Производитель: <span>{i.seller}</span> </p>
+        <p> Бренд: <span>{i.brand.toUpperCase()}</span> </p>
+        <p> тип ухода <span>(пока none)</span> </p>
+      </div>
+      <div className={styles.bottom}>
+        <strong> {Math.ceil(i.price)} &#8376; </strong>
+
+        <button onClick={() => dispatch(addItem({...i, count: 1,}))} className={`${styles.btn} ${styles.btn__text}`}>
+          <span>В корзину</span>
+          <CartIcon/>
+        </button>
+      </div>
     </div>
   );
 };

@@ -1,14 +1,14 @@
 import ItemsType from "../../types/items-type";
 
-export enum Status {
-  LOADING = 'loading',
-  ERROR = 'error',
-  SUCCESS = 'success'
+interface Filters {
+  key: keyof ItemsType,
+  value: string
 }
 
 export interface ItemsSliceState {
   items: ItemsType[];
-  status: Status;
+  limit: number;
+  filters: Filters[];
   brands: string[];
-  limit: number
+  sellers: string[];
 }

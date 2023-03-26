@@ -43,58 +43,88 @@
     margin-top: -44px
     margin-left: 217px
     min-width: 10px
-
-
     img
       min-width: 100%
 
 
 
-.btn
+.btn__text
+  cursor: pointer
   font-weight: 700
-  font-size: 14px
-  white-space: nowrap
-  img
-    background-color: $yellow
-  color: $white
-  background-color: $yellow
-  border: 0
-  border-radius: 50px
+  font-family: Helvetica,"sans-serif"
+  transition: all .2s
+  padding: 20px 30px
+  span
+    color: $white
+  border-radius: 100px
+  background: $yellow
+  border: 1px solid transparent
+  display: flex
+  align-items: center
+  font-size: 15px
+  &:hover
+    background: adjust-hue($yellow, 3deg)
+    svg
+      transform: translateX(5px)
+  svg
+    width: 34px
+    margin-left: 10px
+    transition: transform .3s ease-in-out
+  &:active
+    transform: scale(0.95)
+
+
+
+//.btn
+//  font-weight: 700
+//  font-size: 14px
+//  white-space: nowrap
+//  img
+//    background-color: $yellow
+//  color: $white
+//  background-color: $yellow
+//  border: 0
+//  border-radius: 50px
+//  cursor: pointer
+//  display: flex
+//  flex-direction: row
+//  justify-content: space-evenly
+//  align-items: center
+//  &__text
+//    display: flex
+//    justify-content: space-between
+//    padding: 20px 40px
+//    p
+//      color: $white
+//      margin-right: 7px
+//    img
+//      margin-left: 20px
+//      min-width: 100%
+//
+//  &__img
+//    img
+//      height: 14px
+//      width: 14px
+//    height: 39px
+//    width: 39px
+//    display: flex
+//    align-items: center
+//
+.btn__cart
   cursor: pointer
   display: flex
-  flex-direction: row
-  justify-content: space-evenly
-  align-items: center
-  &__text
+  border: 0
+  background-color: $white
+  .btn__indicator
+    border-radius: 50px
     display: flex
-    justify-content: space-between
-    padding: 20px 40px
-    p
-      color: $white
-      margin-right: 7px
-    img
-      margin-left: 20px
-      min-width: 100%
-
-  &__img
-    img
-      height: 14px
-      width: 14px
-    height: 39px
-    width: 39px
-    display: flex
-    align-items: center
-
-  &__cart
-    cursor: pointer
-    display: flex
-    border: 0
-    background-color: $white
-    .btn__indicator
-      color: $white
-      position: relative
-      margin-top: -8px
-      margin-left: -15px
-      padding: 12px
-      width: 10px
-      height: 10px
+    flex-direction: row
+    justify-content: center
+    background-color: $yellow
+    color: $white
+    position: relative
+    margin-top: -8px
+    margin-left: -15px
+    padding: 12px
+    width: 10px
+    height: 10px

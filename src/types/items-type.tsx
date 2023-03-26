@@ -1,7 +1,7 @@
 export default interface ItemsType {
   url: string, //!!!
   name: string,
-  type: string, //"weight" | "volume",
+  type: string, //"weight" | "volume" | "еще какое-то",
   size: number,
   code: string, //!!!
   seller: string,
