@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {CATALOG_ROUTE, SHOP_ROUTE} from "../utils/consts";
 import Pagination from "../components/Pagination/Pagination";
 import {Link} from "react-router-dom";
-import Filters from '../components/Filters';
+import Filters from '../components/Filters/Filters';
 import Params from '../components/Params/Params';
 import {useSelector} from "react-redux";
 import {selectFilter} from "../store/filters/selectors";
@@ -21,7 +21,6 @@ const Catalog: FC = () => {
 
   const itemsList: ItemsType[] = items.slice(limit*(currentPage-1), limit*(currentPage))
 
-
   const onChangePage = (page: number) => {
     dispatch(setCurrentPage(page));
   };
@@ -33,8 +32,7 @@ const Catalog: FC = () => {
         <span className="{styles.vl}">v</span>
         <Link to={CATALOG_ROUTE} className={"crumb"}> Каталог </Link>
       </div>
-      <h2>Косметика и гигиена</h2>
-      Сортировка: список (название цена) Вид --- [][][]
+
       <Filters/>
 
       <div style={{"display":"flex", "flexDirection":"row", justifyContent: "space-between"}}>
@@ -43,7 +41,7 @@ const Catalog: FC = () => {
           <div className={"items"} style={{
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
-            gridTemplateRows: "repeat(2, 1fr)",
+            gridTemplateRows: "repeat(1, 1fr)",
             gridColumnGap: "21px",
             rowGap: "20px"
           }}>

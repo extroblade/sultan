@@ -3,33 +3,44 @@ import {useDispatch, useSelector} from "react-redux";
 import {selectItemData} from "../../store/items/selectors";
 import {setCategories, setFilters, sort, sortCat} from '../../store/items/itemsSlice';
 import {getItemsFromAdmin} from "../../utils/getItemsFromAdmin";
-import {Filters} from "../../store/items/itemsTypes";
 import styles from './Params.module.css'
 import {ReactComponent as LensIcon} from "../../static/lens.svg";
 import {ReactComponent as TrashIcon} from "../../static/delete.svg";
 
+export interface iFilters {
+  key: string;
+  value: number[] | string;
+}
+
 const Params = () => {
-  const { brands, sellers, filters, categories} = useSelector(selectItemData);
+  const { brands, sellers, filters, categories } = useSelector(selectItemData);
 
   const dispatch = useDispatch()
   const [minValue, setMinValue] = useState(0)
   const [maxValue, setMaxValue] = useState([...getItemsFromAdmin()].sort((a,b) => b.price-a.price)[0].price)
 
-  const [sortedBrands, setSortedBrands] = useState([...brands])
   const [cat, setCat] = useState("")
-  const [sortedSellers, setSortedSellers] = useState([...sellers])
-  const [filtersList, setFiltersList] = useState([])
 
-  useEffect(() => { //fix ts
-    // @ts-ignore
-    if(filtersList.find(item => item.key==="price")){
-      // @ts-ignore
-      setFiltersList([{key: "price", value: [minValue, maxValue]}, ...filtersList.splice(1, filtersList.length)])
-    } else {
-      // @ts-ignore
-      setFiltersList([...filtersList, {key: "price", value: [minValue, maxValue]}])
-    }
-  },[minValue, maxValue])
+  const [filtersList, setFiltersList] = useState<iFilters[]>([])
+  const [pressedBrands, setPressedBrands] = useState(false)
+  const [sortedBrands, setSortedBrands] = useState([...brands.slice(0, 4)])
+  const [pressedSellers, setPressedSellers] = useState(false)
+  const [sortedSellers, setSortedSellers] = useState([...sellers.slice(0, 4)])
+
+
+  function sortSellersSearch(event: { target: { value: string } }) {
+    setSortedSellers(
+      [...[...sellers].filter((i:string) => {
+        const regex = new RegExp(event.target.value, 'gi')
+        return i.match(regex)
+      })]
+    )
+  }
+
+  const changePressedSellers = () => {
+    setPressedSellers(() => !pressedSellers)
+    pressedSellers ? setSortedSellers([...sellers.slice(0,4)]) : setSortedSellers([...sellers])
+  }
 
 
   function sortBrandsSearch(event: { target: { value: string } }) {
@@ -41,33 +52,40 @@ const Params = () => {
     )
   }
 
-  function sortSellersSearch(event: { target: { value: string } }) {
-    setSortedSellers(
-      [...[...sellers].filter((i:string) => {
-        const regex = new RegExp(event.target.value, 'gi')
-        return i.match(regex)
-      })]
-    )
+  const changePressedBrands = () => {
+    setPressedBrands(() => !pressedBrands)
+    pressedBrands ? setSortedBrands([...brands.slice(0,4)]) : setSortedBrands([...brands])
   }
+
+  useEffect(() => {
+    if(filtersList.find(item => item.key==="price")){
+      setFiltersList([
+        {key: "price", value: [minValue, maxValue]},
+        ...filtersList.splice(1, filtersList.length)
+      ])
+    } else {
+      setFiltersList([...filtersList, {key: "price", value: [minValue, maxValue]}])
+    }
+  },[minValue, maxValue])
+
 
   useEffect(()=>{
     dispatch(sort())
   },[filters])
 
   useEffect(()=>{
-    console.log(cat)
     dispatch(setCategories(cat))
     dispatch(sortCat())
-
+    window.scrollTo(0, 0)
   },[cat])
 
   const getFilters = (event:any) => {
     if(event.target.checked){
-      // @ts-ignore
       setFiltersList(() => [...filtersList, {key: event.target.id, value: event.target.name}])
     } else {
       if(filtersList.length){
-        setFiltersList((f) => f.filter((i:Filters) => {
+        // @ts-ignore
+        setFiltersList((f) => f.filter((i) => {
           return i ? (i.key !== event.target.id) && (i.value !== event.target.name) : false
         }))
       }
@@ -76,6 +94,7 @@ const Params = () => {
 
   const show = () => {
     dispatch(setFilters([...new Set([...filtersList])] ))
+    window.scrollTo(0, 0)
   }
 
   const reset = () => {
@@ -88,10 +107,14 @@ const Params = () => {
         inputs[index].checked = !inputs[index].checked
       }
     }
+    setMinValue(0)
+    setMaxValue([...getItemsFromAdmin()].sort((a,b) => b.price-a.price)[0].price)
 
     dispatch(setFilters([] ))
-    setCat(() =>"")
+    setCat(() => "")
     dispatch(setCategories(""))
+
+    window.scrollTo(0, 0)
   }
 
   return (
@@ -126,16 +149,23 @@ const Params = () => {
         <h4>Производитель</h4>
         <div className={`${styles.input}`}>
           <input type="text" placeholder={"Поиск..."} onChange={sortSellersSearch}/>
-          <button type={"submit"} className={`${styles.btn} ${styles.btn__img}`}>
+          <button type={"submit"} className={``}>
             <LensIcon/>
           </button>
         </div>
         {sortedSellers.map(i =>
           <div key={i} className={styles.sort__item}>
             <input type="checkbox" name={i} id={"seller"} className={styles.checkbox} onChange={getFilters}/>{i}
-            <span> ({[...getItemsFromAdmin()].filter(it => it.seller === i || "all" === i).reduce((a:number) => a+1,0)})</span>
+            <span>
+              ({[...getItemsFromAdmin()].filter(it => it.seller === i || "all" === i).reduce((a:number) => a+1,0)})
+            </span>
           </div>
         )}
+        <button className={styles.link__opener} onClick={() => changePressedSellers()}>
+          {pressedSellers ?
+            <span>Скрыть &#9650;</span>:
+            <span>Показать все &#9660;</span>}
+        </button>
       </div>
 
       <div className={styles.sort}>
@@ -149,10 +179,18 @@ const Params = () => {
         {sortedBrands.map(i =>
           <div key={i} className={styles.sort__item}>
             <input type="checkbox" name={i} id={"brand"} className={styles.checkbox} onChange={getFilters}/>{i}
-            <span> ({[...getItemsFromAdmin()].filter(it => it.brand === i || "all" === i).reduce((a:number) => a+1,0)})</span>
+            <span>
+              ({[...getItemsFromAdmin()].filter(it => it.brand === i || "all" === i).reduce((a:number) => a+1,0)})
+            </span>
           </div>
         )}
+        <button className={styles.link__opener} onClick={() => changePressedBrands()}>
+          {pressedBrands ?
+            <span>Скрыть &#9650;</span>:
+            <span>Показать все &#9660;</span>}
+        </button>
       </div>
+
 
       <div className={styles.btns}>
         <button className={styles.btn__text} onClick={() => show()}>
@@ -163,7 +201,7 @@ const Params = () => {
         </button>
       </div>
 
-      <div className={styles.categories} style={{marginTop: "20px"}}>
+      <div className={styles.categories}>
         {categories.map((c: any) =>
           <div className={styles.categories__btns} key={c.name}>
             <div className={styles.hl}></div>
