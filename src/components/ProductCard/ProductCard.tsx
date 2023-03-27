@@ -9,7 +9,8 @@ import { ReactComponent as CartIcon } from "../../static/cart.svg";
 
 import styles from './ProductCard.module.css'
 import {addItem} from "../../store/cart/cartSlice";
-import { useDispatch } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {selectItemData} from "../../store/items/selectors";
 
 interface IType {
   i: ItemsType
@@ -17,6 +18,8 @@ interface IType {
 
 const ProductCard: FC<IType> = ({i }) => {
   const dispatch = useDispatch();
+  const { categories } = useSelector(selectItemData);
+
 
   return (
     <div className={styles.item} key={i.code}>
@@ -39,7 +42,22 @@ const ProductCard: FC<IType> = ({i }) => {
         <p> Штрихкод: <span>{i.code}</span> </p>
         <p> Производитель: <span>{i.seller}</span> </p>
         <p> Бренд: <span>{i.brand.toUpperCase()}</span> </p>
-        <p> тип ухода <span>(пока none)</span> </p>
+        <div> <p>тип ухода: </p>
+            {
+              categories.find((c: any) => {
+                return c.itemsCodes.find((item:any) => item===i.code)===i.code
+              }) ?
+              // @ts-ignore
+              categories.filter((c: any) => {
+                return c.itemsCodes.find((item:any) => item===i.code)===i.code
+              }).map(f =>
+                <span key={f.name}>
+                  <p>{f.name}</p>
+                </span>
+              ) :
+                <span>Не указан </span>
+            }
+        </div>
       </div>
       <div className={styles.bottom}>
         <strong> {Math.ceil(i.price)} &#8376; </strong>

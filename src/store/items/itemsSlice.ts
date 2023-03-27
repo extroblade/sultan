@@ -1,12 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {ItemsSliceState} from './itemsTypes';
+import {Categories, ItemsSliceState} from './itemsTypes';
 import {getItemsFromAdmin} from "../../utils/getItemsFromAdmin";
 import ItemsType from "../../types/items-type";
+
+import cats from "../../utils/cats.json"
 
 const initialState: ItemsSliceState = {
   items: getItemsFromAdmin(),
   limit: 15,
   filters: [],
+  categories: cats,
+  currentCat: "",
   brands: [...[...new Set([...getItemsFromAdmin()].map(i => i.brand))].sort((a,b) => a.localeCompare(b))],
   sellers: [...[...new Set([...getItemsFromAdmin()].map(i => i.seller))].sort((a,b) => a.localeCompare(b))],
 };
@@ -40,7 +44,17 @@ const itemsSlice = createSlice({
     sortTitleDESC(state) {
       state.items = state.items.sort((a,b) =>  b.name.localeCompare(a.name))
     },
+    sortCat(state){
+      if(state.currentCat){
+        state.items = [...getItemsFromAdmin()].filter((i: any) => {
 
+          // @ts-ignore
+          return i.code === state.categories.find((item: Categories) => {
+            return item.name === state.currentCat
+          }).itemsCodes.find(item => item===i.code)
+        })
+      }
+    },
     sort(state){
       let minVal=0, maxVal=1000000;
       if (state.filters.length > 1) {
@@ -77,8 +91,10 @@ const itemsSlice = createSlice({
         }
         state.items = [...helpArray].filter(i => i.price>=minVal && i.price<=maxVal)
 
-      } else if (state.filters.length) {
-        state.items = [...getItemsFromAdmin()].filter(i => i.price>=minVal && i.price<=maxVal)
+      } else if (state.filters.length === 1 && state.filters[0].key === "price") {
+        minVal = +state.filters[0].value[0];
+        maxVal = +state.filters[0].value[1];
+        state.items = [...getItemsFromAdmin()].filter(i => i.price>=minVal && i.price <= maxVal)
       } else {
         state.items = [...getItemsFromAdmin()]
       }
@@ -86,11 +102,16 @@ const itemsSlice = createSlice({
     setFilters(state, action){
       state.filters = [...action.payload]
     },
+    setCategories(state, action){
+      state.currentCat = action.payload
+    },
   },
 });
 export const {
   sort,
+  sortCat,
   setFilters,
+  setCategories,
   addToLocalStorage,
   removeFromLocalStorage,
   sortPriceASC,

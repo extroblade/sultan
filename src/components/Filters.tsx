@@ -3,6 +3,8 @@ import {sortPriceASC, sortPriceDESC, sortTitleASC, sortTitleDESC} from "../store
 import {useDispatch} from "react-redux";
 
 
+
+
 const Filters = () => {
   const dispatch = useDispatch()
 

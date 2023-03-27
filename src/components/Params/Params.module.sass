@@ -1,0 +1,109 @@
+@import '../styles/vars'
+@import '../styles/fonts'
+@import '../styles/styles'
+
+h4
+  margin-top: 15px
+  margin-bottom: 5px
+  font-weight: 500
+  font-size: 16px
+  line-height: 150%
+
+.params
+  width: 240px
+  .btns
+    display: flex
+    margin-top: 20px
+
+  &__header
+    font-style: normal
+    font-weight: 500
+    font-size: 16px
+    line-height: 150%
+  &__small
+    font-style: normal
+    font-weight: 300
+    font-size: 14px
+    line-height: 150%
+    strong
+      font-weight: 500
+
+.price
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  margin-bottom: 10px
+  &__input
+    display: flex
+    text-align: center
+    background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%)
+    border-radius: 1000px
+    border: 0
+    width: 100px
+    height: 23px
+    font-weight: 300
+    font-size: 12px
+    line-height: 15px
+    color: $gray
+  .line
+    display: flex
+    align-items: center
+
+.input
+  margin: 15px 0
+
+.sort
+  display: flex
+  flex-direction: column
+  .checkbox
+    margin-right: 10px
+  &__item
+    display: flex
+    color: $gray
+    font-weight: 400
+    font-size: 14px
+    line-height: 150%
+    span
+      margin-left: 5px
+      font-size: 10px
+  .input
+    button
+      margin-left: -40px
+      margin-top: 8px
+      width: 31px
+      padding: 5px
+
+      svg
+        margin-top: 2px
+
+
+.checkbox
+  border: 0.5px solid $gray
+  border-radius: 1px
+  &:checked, :active, :target
+    accent-color: rgba($yellow, 0.6)
+  &:hover
+    border-radius: 4px
+
+.categories
+  font-weight: 500
+  font-size: 16px
+  line-height: 150%
+  &__btns
+    display: flex
+    margin-top: 15px
+    margin-bottom: 5px
+    flex-direction: column
+    align-items: flex-start
+    .hl
+      margin-bottom: 20px
+
+    button
+      border: 0
+      background-color: $white
+      cursor: pointer
+      color: $black
+      font-weight: 500
+      font-size: 16px
+      line-height: 150%
+

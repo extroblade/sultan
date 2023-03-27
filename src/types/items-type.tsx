@@ -8,5 +8,4 @@ export default interface ItemsType {
   brand: string,
   desc: string,
   price: number,
-  count?: number
 }

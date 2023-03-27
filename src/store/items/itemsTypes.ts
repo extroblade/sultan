@@ -5,9 +5,16 @@ export interface Filters {
   value: string | []
 }
 
+export interface Categories {
+  name: string,
+  itemsCodes: string[]
+}
+
 export interface ItemsSliceState {
   items: ItemsType[];
   limit: number;
+  categories: Categories[]
+  currentCat: string
   filters: Filters[];
   brands: string[];
   sellers: string[];
