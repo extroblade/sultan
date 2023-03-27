@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/sultan/static/css/main.fb390b24.css",
-    "main.js": "/sultan/static/js/main.d2ff59e8.js",
+    "main.css": "/sultan/static/css/main.a625b8d0.css",
+    "main.js": "/sultan/static/js/main.d8d6509c.js",
     "static/media/main-logo.svg": "/sultan/static/media/main-logo.1d66fdf6e476ec0b232b8bb092392c80.svg",
     "static/media/main-logo-white.svg": "/sultan/static/media/main-logo-white.08f290e5579616811ac3769551aef450.svg",
     "static/media/cart.svg": "/sultan/static/media/cart.7e3f10a67cbf7efab90673a8b0ccf897.svg",
+    "static/media/delete.svg": "/sultan/static/media/delete.44202266d5f12854837e97d26b8ce355.svg",
     "static/media/email.svg": "/sultan/static/media/email.3340915fd443967adca6bd4a1fe514ba.svg",
     "static/media/lit.svg": "/sultan/static/media/lit.4dcb2f7b2fce5e4998ce83687d126773.svg",
     "static/media/gr.svg": "/sultan/static/media/gr.16318598fb0d18ca14637ccdf28201f7.svg",
@@ -15,11 +16,11 @@
     "static/media/hamburger-white.svg": "/sultan/static/media/hamburger-white.68477cbb72e2d65876b45a12c3f6bc09.svg",
     "static/media/download.svg": "/sultan/static/media/download.22e356ed7d36f448dcbf0ac7a1a1a990.svg",
     "static/media/right-wing.svg": "/sultan/static/media/right-wing.35ab94e2f8817f324bd31c2293385fa8.svg",
-    "main.fb390b24.css.map": "/sultan/static/css/main.fb390b24.css.map",
-    "main.d2ff59e8.js.map": "/sultan/static/js/main.d2ff59e8.js.map"
+    "main.a625b8d0.css.map": "/sultan/static/css/main.a625b8d0.css.map",
+    "main.d8d6509c.js.map": "/sultan/static/js/main.d8d6509c.js.map"
   },
   "entrypoints": [
-    "static/css/main.fb390b24.css",
-    "static/js/main.d2ff59e8.js"
+    "static/css/main.a625b8d0.css",
+    "static/js/main.d8d6509c.js"
   ]
 }
