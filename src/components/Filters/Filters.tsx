@@ -24,16 +24,46 @@ const Filters = () => {
     window.scrollTo(0, 0)
   },[cat])
 
+  const changeSort = (event: any) => {
+    switch (event.target.value){
+      case("Цена (сначала недорогие)"): {
+        dispatch(sortPriceASC());
+        break
+      }
+      case("Цена (сначала дорогие)"): {
+        dispatch(sortPriceDESC());
+        break
+      }
+      case("Название А-Я "): {
+        dispatch(sortPriceASC());
+        break
+      }
+      case("Название Я-А"):{
+        dispatch(sortTitleDESC());
+        break
+      }
+      default: {
+        dispatch(sortTitleASC());
+        break;
+      }
+    }
+  }
+
+  // @ts-ignore
   return (
     <div className={styles.filters}>
       <div className={styles.filters__top}>
         <h2>Косметика и гигиена</h2>
-        <div className={"sort"}>
-          <button onClick={() => dispatch(sortPriceASC())}> Цена &#9650; </button>
-          <button onClick={() => dispatch(sortPriceDESC())}> Цена &#9660; </button>
-          <button onClick={() => dispatch(sortTitleDESC())}> Название &#9650; </button>
-          <button onClick={() => dispatch(sortTitleASC())}> Название &#9660; </button>
+        <div className={styles.sort__container}>
+          <span className={styles.small}>Сортировка:</span>
+          <select onChange={changeSort} className={styles.sort}>
+            <option className={styles.value__list}> Цена (сначала недорогие) </option>
+            <option className={styles.value__list}> Цена (сначала дорогие) </option>
+            <option className={styles.value__list}> Название А-Я </option>
+            <option className={styles.value__list}> Название Я-А </option>
+          </select>
         </div>
+
       </div>
 
       <div className={styles.categories__row}>

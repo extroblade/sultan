@@ -26,7 +26,7 @@ const Catalog: FC = () => {
   };
 
   return (
-    <div style={{"padding": "0 10vw"}}>
+    <div style={{"padding": "20px 16vw"}}>
       <div className="breadcrumbs">
         <Link to={SHOP_ROUTE} className={"crumb"}> Главная </Link>
         <span className="{styles.vl}">v</span>
@@ -37,12 +37,12 @@ const Catalog: FC = () => {
 
       <div style={{"display":"flex", "flexDirection":"row", justifyContent: "space-between"}}>
         <Params/>
-        <div style={{"display":"flex", "flexDirection":"column"}}>
+        <span style={{display:"flex", flexDirection:"column"}}>
           <div className={"items"} style={{
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
             gridTemplateRows: "repeat(1, 1fr)",
-            gridColumnGap: "21px",
+            gridColumnGap: "10px",
             rowGap: "20px"
           }}>
             {itemsList.length ? itemsList.map((i) =>
@@ -57,7 +57,7 @@ const Catalog: FC = () => {
           <div style={{"display":"flex", "flexDirection":"row", justifyContent: "center"}}>
             <Pagination currentPage={currentPage} onChangePage={onChangePage}/>
           </div>
-        </div>
+        </span>
 
 
       </div>
