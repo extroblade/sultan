@@ -1,50 +1,67 @@
-import React, {FC} from 'react';
-import {CATALOG_ROUTE, SHOP_ROUTE} from "../utils/consts";
+import React, {FC, useEffect} from 'react';
+import {CATALOG_ROUTE, PRODUCT_ROUTE, SHOP_ROUTE} from "../utils/consts";
 import Pagination from "../components/Pagination/Pagination";
 import {Link} from "react-router-dom";
 import Filters from '../components/Filters/Filters';
 import Params from '../components/Params/Params';
 import {useSelector} from "react-redux";
-import {selectFilter} from "../store/filters/selectors";
-import { setCurrentPage } from '../store/filters/filterSlice';
 import {useAppDispatch} from "../store";
 import ProductCard from "../components/ProductCard/ProductCard";
 import {selectItemData} from "../store/items/selectors";
 import ItemsType from "../types/items-type";
 
+import styles from "./Catalog.module.css"
+
 import "../components/styles/styles.css"
+import { setCurrentPage } from '../store/items/itemsSlice';
+import {ReactComponent as LeftArrow} from "../static/leftarrow.svg";
 
 const Catalog: FC = () => {
   const dispatch = useAppDispatch()
-  const { currentPage } = useSelector(selectFilter);
-  const { limit, items} = useSelector(selectItemData);
+  const { limit, items, currentPage, currentCat } = useSelector(selectItemData);
 
   const itemsList: ItemsType[] = items.slice(limit*(currentPage-1), limit*(currentPage))
 
   const onChangePage = (page: number) => {
     dispatch(setCurrentPage(page));
+    window.scrollTo(0,0)
   };
 
+  useEffect(()=>{
+    if (currentCat)
+      document.title = `${currentCat}`;
+    else
+      document.title = `Каталог`
+  },[currentCat])
+
   return (
-    <div style={{"padding": "20px 16vw"}}>
-      <div className="breadcrumbs">
-        <Link to={SHOP_ROUTE} className={"crumb"}> Главная </Link>
-        <span className="{styles.vl}">v</span>
-        <Link to={CATALOG_ROUTE} className={"crumb"}> Каталог </Link>
+    <div className={styles.catalog}>
+      <div className={`${styles.breadcrumbs} ${styles.pc}`}>
+        <Link to={SHOP_ROUTE} className={styles.breadcrumb}> Главная </Link>
+        <div className={styles.vl}></div>
+        <Link to={CATALOG_ROUTE} className={`${styles.breadcrumb} ${styles.active}`}> Каталог </Link>
+      </div>
+      <div className={`${styles.breadcrumbs} ${styles.mobile}`}>
+        <Link to={SHOP_ROUTE} className={styles.breadcrumb}>
+          <div className={styles.arrow}>
+            <LeftArrow/>
+          </div>
+          <span>
+            Назад
+          </span>
+        </Link>
       </div>
 
-      <Filters/>
+      <h2 className={styles.mobile}>Косметика и гигиена</h2>
 
-      <div style={{"display":"flex", "flexDirection":"row", justifyContent: "space-between"}}>
+      <span className={styles.pc}><Filters/></span>
+
+      <div className={styles.main__content}>
         <Params/>
-        <span style={{display:"flex", flexDirection:"column"}}>
-          <div className={"items"} style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gridTemplateRows: "repeat(1, 1fr)",
-            gridColumnGap: "10px",
-            rowGap: "20px"
-          }}>
+        <span className={styles.mobile}><Filters/></span>
+
+        <span className={styles.items__container}>
+          <div className={styles.items__grid}>
             {itemsList.length ? itemsList.map((i) =>
                 <ProductCard i={i} key={i.code}/>
               ):
@@ -53,15 +70,11 @@ const Catalog: FC = () => {
               </div>
             }
           </div>
+          {items.length ? <Pagination currentPage={currentPage} onChangePage={onChangePage}/> : ""}
 
-          <div style={{"display":"flex", "flexDirection":"row", justifyContent: "center"}}>
-            <Pagination currentPage={currentPage} onChangePage={onChangePage}/>
-          </div>
         </span>
 
-
       </div>
-
     </div>
   );
 };

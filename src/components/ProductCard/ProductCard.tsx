@@ -30,34 +30,51 @@ const ProductCard: FC<IType> = ({i }) => {
       </div>
 
       <div className={styles.text__container}>
+        <p className={styles.size}>
+          {i.type==="weight" ? <GrIcon/> : <LitIcon/>}
+          <span>{`  ${i.size}`} {i.type==="weight" ? " г" : " мл"}</span>
+        </p>
         <Link to={PRODUCT_ROUTE+'/'+i.code}>
-          <p className={styles.size}>
-            {i.type==="weight" ? <GrIcon/> : <LitIcon/>}
-            {`  ${i.size}`}
-            {i.type==="weight" ? " г" : " мл"}
-          </p>
+          <p className={styles.name}> <strong>{i.brand.toUpperCase()}</strong> {i.name} </p>
         </Link>
+        <div className={styles.info__container}>
+          <p> Штрихкод: <span className={styles.item__info}>
+              {i.code}
+            </span>
+          </p>
 
-        <p className={styles.name}> <strong>{i.brand.toUpperCase()}</strong> {i.name} </p>
-        <p> Штрихкод: <span>{i.code}</span> </p>
-        <p> Производитель: <span>{i.seller}</span> </p>
-        <p> Бренд: <span>{i.brand.toUpperCase()}</span> </p>
-        <div> <p>тип ухода: </p>
-            {
-              categories.find((c: any) => {
-                return c.itemsCodes.find((item:any) => item===i.code)===i.code
-              }) ?
-              // @ts-ignore
-              categories.filter((c: any) => {
-                return c.itemsCodes.find((item:any) => item===i.code)===i.code
-              }).map(f =>
-                <span key={f.name}>
-                  <p>{f.name}</p>
-                </span>
-              ) :
-                <span>Не указан </span>
-            }
+          <p>
+            Производитель: <span className={styles.item__info}>
+              {i.seller}
+            </span>
+          </p>
+
+          <p>
+            Бренд: <span className={styles.item__info}>
+              {i.brand.toUpperCase()}
+            </span>
+          </p>
+
+          <p>
+            Тип ухода: <span>
+              <select>
+                {
+                  categories.find((c: any) => {
+                    return c.itemsCodes.find((item:any) => item===i.code)===i.code
+                  }) ?
+                    // @ts-ignore
+                    categories.filter((c: any) => {
+                      return c.itemsCodes.find((item:any) => item===i.code)===i.code
+                    }).map(f =>
+                      <option key={f.name}>{f.name}</option>
+                    ) :
+                    <option>Не указан </option>
+                }
+              </select>
+            </span>
+          </p>
         </div>
+
       </div>
       <div className={styles.bottom}>
         <strong> {Math.ceil(i.price)} &#8376; </strong>

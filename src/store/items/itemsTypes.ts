@@ -13,6 +13,7 @@ export interface Categories {
 export interface ItemsSliceState {
   items: ItemsType[];
   limit: number;
+  currentPage: number;
   categories: Categories[]
   currentCat: string
   filters: Filters[];

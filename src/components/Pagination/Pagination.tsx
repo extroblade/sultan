@@ -1,34 +1,58 @@
 import React from 'react';
 
-import ReactPaginate from "react-paginate";
 import styles from './Pagination.module.css';
 import ItemsType from "../../types/items-type";
 import {useSelector} from "react-redux";
 import {selectItemData} from "../../store/items/selectors";
+import { ReactComponent as LeftArrow } from '../../static/leftarrow.svg';
+import { ReactComponent as RightArrow } from '../../static/rightarrow.svg';
 
 type PaginationProps = {
   currentPage: number;
   onChangePage: (page: number) => void;
 };
 
+
 const Pagination: React.FC<PaginationProps> = ({ currentPage, onChangePage }) => {
   const countAmount = (arr: ItemsType[]): number => arr.reduce((a) => a+1, 0)
   const { items, limit } = useSelector(selectItemData);
 
-
   const count = Math.ceil(countAmount(items)/limit)
 
+  const pages = []
+  for(let i=0; i<(count>5 ? 5 : count); i++){
+    pages.push(i+1)
+  }
+
   return (
-    <ReactPaginate
-      breakLabel="..."
-      className={styles.root}
-      nextLabel=">"
-      previousLabel="<"
-      onPageChange={(event) => onChangePage(event.selected + 1)}
-      pageRangeDisplayed={count>3 ? 4 : count}
-      pageCount={count}
-      forcePage={currentPage - 1}
-    />
+    <nav className={styles.pages}>
+      <ul>
+        <li>
+          <button
+            disabled={currentPage<=1}
+            onClick={() => onChangePage(currentPage-1>0 ? currentPage-1 : currentPage)}
+          >
+            <LeftArrow/>
+          </button>
+        </li>
+
+        {pages.map(p =>
+          <li key={p}>
+            <button
+              onClick={() => onChangePage(p)}
+              className={p==currentPage ? styles.selected : styles.list}
+            >
+              {p}
+            </button>
+          </li>
+        )}
+      <li>
+        <button disabled={currentPage>=count} onClick={() => onChangePage(currentPage+1<=count ? currentPage+1 : currentPage)}>
+          <RightArrow/>
+        </button>
+      </li>
+      </ul>
+    </nav>
   );
 };
 

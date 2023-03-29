@@ -10,6 +10,7 @@ const initialState: ItemsSliceState = {
   limit: 15,
   filters: [],
   categories: cats,
+  currentPage: 1,
   currentCat: "",
   brands: [...[...new Set([...getItemsFromAdmin()].map(i => i.brand))].sort((a,b) => a.localeCompare(b))],
   sellers: [...[...new Set([...getItemsFromAdmin()].map(i => i.seller))].sort((a,b) => a.localeCompare(b))],
@@ -31,6 +32,9 @@ const itemsSlice = createSlice({
       localStorage.setItem("items", JSON.stringify(state.items));
       state.items = getItemsFromAdmin()
     },
+    setCurrentPage(state, action: PayloadAction<number>) {
+      state.currentPage = action.payload;
+    },
 
     sortPriceASC(state) {
       state.items = state.items.sort((a,b) => a.price - b.price)
@@ -45,7 +49,7 @@ const itemsSlice = createSlice({
       state.items = state.items.sort((a,b) =>  b.name.localeCompare(a.name))
     },
     sortCat(state){
-      if(state.currentCat){
+      if(state.currentCat.length){
         state.items = [...getItemsFromAdmin()].filter((i: any) => {
 
           // @ts-ignore
@@ -53,6 +57,8 @@ const itemsSlice = createSlice({
             return item.name === state.currentCat
           }).itemsCodes.find(item => item===i.code)
         })
+      } else {
+        state.items = [...getItemsFromAdmin()]
       }
     },
     sort(state){
@@ -111,6 +117,7 @@ export const {
   sort,
   sortCat,
   setFilters,
+  setCurrentPage,
   setCategories,
   addToLocalStorage,
   removeFromLocalStorage,

@@ -1,0 +1,32 @@
+@import '../components/styles/styles'
+
+.cart
+  display: flex
+  flex-direction: column
+  padding: 0 $padding
+  min-height: 53vh
+  .btn__text
+    padding: 15px 25px
+  .buy
+    margin-top: 20px
+    display: flex
+    justify-content: space-between
+    strong
+      font-weight: 700
+      font-size: 30px
+      line-height: 130%
+  @media (max-width: $mobile)
+    .buy
+      flex-direction: column-reverse
+      strong
+        display: flex
+
+        align-items: center
+        justify-content: center
+
+        margin: 20px 0
+      .btn__text
+        padding: 30px
+        display: flex
+        align-items: center
+        justify-content: center

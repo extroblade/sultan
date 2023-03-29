@@ -1,23 +1,37 @@
-.root
-  li
-    display: inline-block
+@import '../styles/vars'
+@import '../styles/fonts'
+@import '../styles/styles'
 
-    a
+
+.pages
+  justify-content: center
+  margin-top: 20px
+  display: flex
+  flex-direction: row
+
+  ul
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+  li
+    display: flex
+    flex-direction: row
+    border-radius: 50%
+    margin: 13px
+    button
+      background-color: $white
+      display: flex
+      justify-content: center
+      align-items: center
+      border-radius: 50%
       text-align: center
       width: 45px
       line-height: 42px
       height: 45px
-      border: 1px solid #fe5f1e
-      border-radius: 30px
-      margin-right: 10px
+      border: 0
       cursor: pointer
-      display: inline-block
-      color: #fe5f1e
+      color: $gray
 
-      &:hover
-        background-color: #fe5f1e
-        color: #fff
-
-
-
-
+  .selected
+    background-color: rgba($yellow, 0.3)

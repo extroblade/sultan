@@ -1,25 +1,33 @@
-import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { addToLocalStorage, removeFromLocalStorage } from '../store/items/itemsSlice';
 import ItemsType from "../types/items-type";
-import {selectItemData} from "../store/items/selectors";
+import { selectItemData } from "../store/items/selectors";
 import ProductCard from '../components/ProductCard/ProductCard';
 
 const Admin = () => {
   const dispatch = useDispatch()
-  const {items} = useSelector(selectItemData)
+  const { items, categories } = useSelector(selectItemData)
 
   const newItem: ItemsType = {brand: "", code: String(Date.now()), desc: "", name: "", price: 0, seller: "", size: 0, type: "", url: ""}
 
   const [d, setD] = useState(localStorage.getItem('items'))
+
+  useEffect(() => {
+    document.title = `Админка`;
+  },[])
 
   useEffect(()=>{
     setD(() => localStorage.getItem('items'))
     newItem.code = String(Date.now())
   },[items, newItem])
 
+  // const changeCat = (event: any) => {
+  //   console.log(event.target.value)
+  // }
+
   return (
-    <div>
+    <div style={{minHeight: "50vh"}}>
       <div className="add">
         <button onClick={() => localStorage.clear()}>clear</button>
         <form onSubmit={(event) => {
@@ -66,11 +74,14 @@ const Admin = () => {
             placeholder={"price"}
             min={0}
             max={1_000_000}
-            onChange={e => {
-              console.log(newItem)
-              newItem.price = +(e.target.value)
-            }}
+            onChange={e => newItem.price = +(e.target.value)}
           />
+
+          {/*<select onChange={changeCat} >*/}
+          {/*  {categories.map(c =>*/}
+          {/*    <option key={c.name}> {c.name} </option>*/}
+          {/*  )}*/}
+          {/*</select>*/}
 
           <button type={"submit"}>Add</button>
         </form>
@@ -87,8 +98,6 @@ const Admin = () => {
           </div>
         }
       </div>
-
-
     </div>
   );
 };

@@ -11,7 +11,7 @@ import { ReactComponent as DownloadIcon } from '../../static/download.svg';
 import { ReactComponent as CartIcon } from '../../static/cart.svg';
 import { ReactComponent as HamburgerIcon } from '../../static/hamburger-white.svg';
 
-import {CART_ROUTE, CATALOG_ROUTE, SHOP_ROUTE} from '../../utils/consts';
+import {ADMIN_ROUTE, CART_ROUTE, CATALOG_ROUTE, SHOP_ROUTE} from '../../utils/consts';
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {selectCart} from "../../store/cart/selectors";
@@ -25,7 +25,6 @@ const Header = () => {
 
   const [amount, setAmount] = useState(0)
   const [price, setPrice] = useState(0)
-
 
   useEffect(() => {
     setAmount(() => countAmount(cartItems));
@@ -55,10 +54,13 @@ const Header = () => {
           </div>
         </div>
         <ul className={styles.navigation}>
+          <li className={`${styles.navigation__item} ${styles.admin}`}>
+            <Link to={ADMIN_ROUTE}>Админка</Link>
+          </li>
+          <div className={styles.vl}></div>
           <li className={styles.navigation__item}>
             <Link to={"#"}>О компании</Link>
           </li>
-          <div className={styles.vl}></div>
           <li className={styles.navigation__item}>
             <Link to={"#"}>Доставка и оплата</Link>
           </li>
@@ -96,10 +98,10 @@ const Header = () => {
           </button>
         </div>
 
-        <div className={styles.col}>
-          <strong>+7 (777) 490-00-91</strong>
-          <p>время работы: 9:00-20:00</p>
-          <p>Заказать звонок</p>
+        <div className={styles.header__call}>
+          <strong className={styles.header__call__item}>+7 (777) 490-00-91</strong>
+          <p className={styles.header__call__item}>время работы: 9:00-20:00</p>
+          <a className={styles.header__call__item}>Заказать звонок</a>
         </div>
 
         <div className={`${styles.col} ${styles.nav__img}`}>
@@ -116,7 +118,7 @@ const Header = () => {
         <div className={styles.cart}>
           <Link to={CART_ROUTE} className={styles.btn__cart}>
             <CartIcon/>
-            <p className={`${styles.btn} ${styles.btn__indicator}`}>{amount}</p>
+            <p className={`${styles.btn__indicator}`}>{amount}</p>
           </Link>
 
           <div className={styles.col}>

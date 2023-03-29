@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 const Shop = () => {
+  useEffect(() => {
+    document.title = `Султан`;
+  },[])
   return (
-    <div>
-      shop
+    <div style={{minHeight: "55vh"}}>
+      Главная страница магазина
+
     </div>
   );
 };

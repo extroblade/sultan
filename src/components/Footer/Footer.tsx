@@ -15,7 +15,13 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.col}>
-        <img src={mainLogoDark} alt="logo" className={styles.logo}/>
+        <div>
+          <img src={mainLogoDark} alt="logo" className={styles.logo}/>
+          <button className={`${styles.btn} ${styles.btn__text} ${styles.mobile}`}>
+            Прайс-лист
+            <DownloadIcon/>
+          </button>
+        </div>
         <p className={styles.long}>
           Компания «Султан» — снабжаем розничные магазины товарами
           "под ключ" в Кокчетаве и Акмолинской области
@@ -28,11 +34,10 @@ const Footer = () => {
               <RightWingIcon/>
             </button>
           </div>
-
         </div>
       </div>
 
-      <div className={styles.row}>
+      <div className={styles.middle}>
         <div className={styles.col}>
           <h3>Меню сайта:</h3>
           <Link to={"#"} className={styles.link}>
@@ -70,7 +75,7 @@ const Footer = () => {
       </div>
 
 
-      <div className={styles.col}>
+      <div className={`${styles.col} ${styles.pc}`}>
         <h3>Скачать прайс-лист:</h3>
         <button  className={`${styles.btn} ${styles.btn__text}`}>
           Прайс-лист
@@ -78,7 +83,7 @@ const Footer = () => {
         </button>
         <div className={styles.col}>
           <p>Связь в мессенджерах:</p>
-          <div className={styles.row}>
+          <div className={styles.logos}>
             <img src={whatsup} alt="wu"/>
             <img src={telegram} alt="tg"/>
           </div>
@@ -87,14 +92,19 @@ const Footer = () => {
 
       <div className={styles.col}>
         <h3>Контакты:</h3>
-        <p>+7 (777) 490-00-91</p>
-        <p>время работы: 9:00-20:00</p>
-        <button className={`${styles.btn} ${styles.btn__text}`}>Заказать звонок</button>
-        <p>opt.sultan@mail.ru</p>
-        <p>На связи в любое время</p>
-        <div className={styles.row}>
-          <img src={visa} alt="visa" className={styles.promo__img}/>
-          <img src={mastercard} alt="mc" className={styles.promo__img}/>
+        <div className={styles.footer__call}>
+          <strong className={styles.footer__call__item}>+7 (777) 490-00-91</strong>
+          <p className={styles.footer__call__item}>время работы: 9:00-20:00</p>
+          <a className={styles.footer__call__item}>Заказать звонок</a>
+        </div>
+        <div className={styles.footer__call}>
+          <strong className={styles.footer__call__item}>opt.sultan@mail.ru</strong>
+          <p className={styles.footer__call__item}>На связи в любое время</p>
+        </div>
+
+        <div className={styles.logos}>
+          <img src={visa} alt="visa"/>
+          <img src={mastercard} alt="mc"/>
         </div>
       </div>
     </footer>

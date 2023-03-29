@@ -12,10 +12,9 @@ import {selectItemData} from "../../store/items/selectors";
 import styles from './Filters.module.css'
 
 
-
 const Filters = () => {
   const dispatch = useDispatch()
-  const { categories } = useSelector(selectItemData);
+  const { categories, currentCat } = useSelector(selectItemData);
   const [cat, setCat] = useState("")
 
   useEffect(()=>{
@@ -49,11 +48,10 @@ const Filters = () => {
     }
   }
 
-  // @ts-ignore
   return (
     <div className={styles.filters}>
-      <div className={styles.filters__top}>
-        <h2>Косметика и гигиена</h2>
+      <div className={`${styles.filters__top} ${styles.pc}`}>
+        <h2 className={styles.pc}>Косметика и гигиена</h2>
         <div className={styles.sort__container}>
           <span className={styles.small}>Сортировка:</span>
           <select onChange={changeSort} className={styles.sort}>
@@ -63,20 +61,25 @@ const Filters = () => {
             <option className={styles.value__list}> Название Я-А </option>
           </select>
         </div>
-
       </div>
 
       <div className={styles.categories__row}>
         {categories.length > 11 ? [categories.splice(0, 10)].map((c: any) =>
           <div key={c.name}>
-            <button onClick={() => setCat(c.name)} className={styles.categories__card}>
+            <button
+              onClick={() => setCat(c.name)}
+              className={`${styles.categories__card} ${c.name==currentCat ? styles.type__current : ""}`}
+            >
               {c.name}
             </button>
           </div>
         ):
           [...categories].map((c: any) =>
             <div key={c.name}>
-              <button onClick={() => setCat(c.name)} className={styles.categories__card}>
+              <button
+                onClick={() => currentCat===c.name ? setCat("") : setCat(c.name)}
+                className={`${styles.categories__card} ${c.name==currentCat ? styles.type__current : ""}`}
+              >
                 {c.name}
               </button>
             </div>

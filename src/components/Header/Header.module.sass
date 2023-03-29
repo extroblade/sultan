@@ -1,174 +1,190 @@
 
 //-----------------imports------------------
 
-@import '../styles/vars'
 @import '../styles/fonts'
 @import '../styles/styles'
 
 //-----------------commons------------------
 
-a:visited
-  color: $gray
-
-
-li a, strong p, li a:visited
-  color: $gray
-
-
-strong
-  font-style: normal
-  font-weight: 600
-  font-size: 14px
-  line-height: 130.02%
-.contact__container
-  display: flex
-  flex-direction: row
-  align-items: center
-  padding: 10px 0
-  p
-    padding: 0 10px
-
-
 .header
   background-color: $white
-.cart
-  display: flex
-  flex-direction: row
-.menu__open
-  display: none
-.head
-  padding: 0 $padding
-  display: flex
-  flex-direction: row
-  justify-content: space-between
-  align-items: center
-
-
-.input
-  button
-    padding: 8px
-    width: 34px
-
-    margin-top: -42px
-    margin-left: 217px
-    min-width: 10px
-    img
-      min-width: 100%
-
-.contact
-  display: flex
-  flex-direction: row
-  .vl
-    margin-top: 10px
-
-.navigation
-  display: flex
-  flex-direction: row
-  .vl
-    margin-top: 13px
-  &__item
-    display: flex
-    align-items: center
-    justify-content: center
-
-
-.nav
-  padding: 24px $padding
-  border-top: 1px solid rgba($gray, 0.2)
-  border-bottom: 1px solid rgba($gray, 0.2)
-  display: flex
-  flex-direction: row
-  align-items: center
-  justify-content: space-between
-  &__img
-    position: relative
-    height: 60px
-    width: 70px
-    img
-      position: absolute
-      top: -22px
-
-
-.col
-  display: flex
-  flex-direction: column
-
-.mobile
-  display: none
-
-@media (max-width: 768px)
-  .nav
-    padding: 0 10px
-    justify-content: center
-    align-items: center
-
-  .main_logo
-    padding: 0 10px
-
-  .head
-    display: none
-  .col
-    display: none
-
-  .menu__open
-    margin-right: 30px
-    display: flex
-    background-color: $yellow
-    align-items: center
-    border: 0
-    border-radius: 50px
-    padding: 15px
   .cart
-    margin-left: 25px
-
-
-    img
-      width: 20px
-  .nav
     display: flex
-    justify-content: space-around
+    flex-direction: row
+  .menu__open
+    display: none
+    cursor: pointer
+  .head
+    padding: 0 $padding
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+  .admin
+    background-color: rgba($yellow, 0.2)
+
+  a:visited
+    color: inherit
+
+  &__call
+    display: flex
+    flex-direction: column
+    justify-content: flex-end
+    &__item
+      white-space: nowrap
+      text-align: end
+    p
+      color: $gray
+      font-weight: 300
+      font-size: 12px
+      line-height: 150%
+    a
+      cursor: pointer
+      text-decoration: underline
+
+  li a, strong p, li a:visited
+    color: $gray
+
+  .btn__text
+    padding: 20px 30px
+  strong
+    font-style: normal
+    font-weight: 600
+    font-size: 14px
+    line-height: 130.02%
+  .contact__container
+    display: flex
+    flex-direction: row
+    align-items: center
+    padding: 10px 0
+    p
+      padding: 0 10px
+
+  .input
+    button
+      padding: 8px
+      width: 34px
+
+      margin-top: -42px
+      margin-left: 217px
+      min-width: 10px
+      img
+        min-width: 100%
+
+  .contact
+    display: flex
+    flex-direction: row
+    .vl
+      margin-top: 10px
+
+  .navigation
+    display: flex
+    flex-direction: row
+    .vl
+      margin-top: 13px
+    &__item
+      display: flex
+      padding: 0 10px
+      align-items: center
+      justify-content: center
+
+
+  .nav
+    padding: 24px $padding
+    border-top: 1px solid rgba($gray, 0.2)
+    border-bottom: 1px solid rgba($gray, 0.2)
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-between
+    &__img
+      position: relative
+      height: 60px
+      width: 70px
+      img
+        position: absolute
+        top: -22px
+
 
   .mobile
-    border-bottom: 1px solid rgba($gray, 0.2)
-    color: $gray
-    display: flex
-    align-items: stretch
-    justify-content: center
-    hr
-      width: 30px
-      height: 0
-      rotate: 90deg
-      border:  1px dotted rgba($gray, 0.1)
-    &__img
-      min-width: 15px
-      g
-        fill: $white
-      path
-        stroke: $gray
-        stroke-width: 1px
-    .vl
-      display: flex
-      margin-top: 7px
-      border-left: 1px dotted rgba($gray, 0.1)
-      height: 30px
+    display: none
 
-    &__link
+  @media (max-width: $mobile)
+    position: sticky
+    top: 0
+    width: 100%
+    z-index: 2
+    &__call
+      display: none
+    .nav
       display: flex
+      justify-content: space-around
+      padding: 0 10px
       align-items: center
-      padding: 13px 55px
-      p
-        font-style: normal
-        font-weight: 600
-        font-size: 12px
-        line-height: 15px
-        margin-left: 10px
 
-    &__btn
-      justify-content: center
-      width: 100%
-      color: $gray
+    .main_logo
+      padding: 0 10px
+
+    .head
+      display: none!important
+    .col
+      display: none
+
+    .menu__open
+      margin-right: 30px
       display: flex
+      background-color: $yellow
       align-items: center
+      border: 0
+      border-radius: 50px
+      padding: 15px
+    .cart
+      margin-left: 25px
       img
+        width: 20px
+
+    .mobile
+      border-bottom: 1px solid rgba($gray, 0.2)
+      color: $gray
+      display: flex!important
+      align-items: stretch
+      justify-content: center
+      hr
         width: 30px
+        height: 0
+        rotate: 90deg
+        border:  1px dotted rgba($gray, 0.1)
+      &__img
+        min-width: 15px
+        g
+          fill: $white
+        path
+          stroke: $gray
+          stroke-width: 1px
+      .vl
+        display: flex
+        margin-top: 7px
+        border-left: 1px dotted rgba($gray, 0.1)
+        height: 30px
+
+      &__link
+        display: flex
+        align-items: center
+        padding: 13px 55px
+        p
+          font-style: normal
+          font-weight: 600
+          font-size: 12px
+          line-height: 15px
+          margin-left: 10px
+
+      &__btn
+        justify-content: center
+        width: 100%
+        color: $gray
+        display: flex
+        align-items: center
+        img
+          width: 30px
+
 
