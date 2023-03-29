@@ -2,14 +2,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {Categories, ItemsSliceState} from './itemsTypes';
 import {getItemsFromAdmin} from "../../utils/getItemsFromAdmin";
 import ItemsType from "../../types/items-type";
+import {getTypes} from "../../utils/getTypes";
 
-import cats from "../../utils/cats.json"
 
 const initialState: ItemsSliceState = {
   items: getItemsFromAdmin(),
   limit: 15,
   filters: [],
-  categories: cats,
+  categories: getTypes(),
   currentPage: 1,
   currentCat: "",
   brands: [...[...new Set([...getItemsFromAdmin()].map(i => i.brand))].sort((a,b) => a.localeCompare(b))],
@@ -32,8 +32,16 @@ const itemsSlice = createSlice({
       localStorage.setItem("items", JSON.stringify(state.items));
       state.items = getItemsFromAdmin()
     },
+    editFromLocalStorage(state, action: PayloadAction<string>) {
+      state.items = [...getItemsFromAdmin()].filter((obj) => obj.code !== action.payload);
+      localStorage.setItem("items", JSON.stringify(state.items));
+      state.items = getItemsFromAdmin()
+    },
     setCurrentPage(state, action: PayloadAction<number>) {
       state.currentPage = action.payload;
+    },
+    setTypes(state){
+      state.categories = getTypes()
     },
 
     sortPriceASC(state) {
@@ -117,10 +125,12 @@ export const {
   sort,
   sortCat,
   setFilters,
+  setTypes,
   setCurrentPage,
   setCategories,
   addToLocalStorage,
   removeFromLocalStorage,
+  editFromLocalStorage,
   sortPriceASC,
   sortPriceDESC,
   sortTitleASC,
