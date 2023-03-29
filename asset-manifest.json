@@ -1,11 +1,12 @@
 {
   "files": {
-    "main.css": "/sultan/static/css/main.a625b8d0.css",
-    "main.js": "/sultan/static/js/main.d8d6509c.js",
+    "main.css": "/sultan/static/css/main.6bbfab30.css",
+    "main.js": "/sultan/static/js/main.44fa956f.js",
     "static/media/main-logo.svg": "/sultan/static/media/main-logo.1d66fdf6e476ec0b232b8bb092392c80.svg",
     "static/media/main-logo-white.svg": "/sultan/static/media/main-logo-white.08f290e5579616811ac3769551aef450.svg",
     "static/media/cart.svg": "/sultan/static/media/cart.7e3f10a67cbf7efab90673a8b0ccf897.svg",
     "static/media/delete.svg": "/sultan/static/media/delete.44202266d5f12854837e97d26b8ce355.svg",
+    "static/media/share.svg": "/sultan/static/media/share.5201f4defbefb503f0cd54ced3977e87.svg",
     "static/media/email.svg": "/sultan/static/media/email.3340915fd443967adca6bd4a1fe514ba.svg",
     "static/media/lit.svg": "/sultan/static/media/lit.4dcb2f7b2fce5e4998ce83687d126773.svg",
     "static/media/gr.svg": "/sultan/static/media/gr.16318598fb0d18ca14637ccdf28201f7.svg",
@@ -13,14 +14,21 @@
     "static/media/catalog.svg": "/sultan/static/media/catalog.4756189f8fb2f4cdf0b38c581c7033d8.svg",
     "index.html": "/sultan/index.html",
     "static/media/lens.svg": "/sultan/static/media/lens.ea9ef697bfe0d73dc61f4d8bcff567cc.svg",
+    "static/media/completed.svg": "/sultan/static/media/completed.11e14fa52a93853c049af6bfb487140d.svg",
     "static/media/hamburger-white.svg": "/sultan/static/media/hamburger-white.68477cbb72e2d65876b45a12c3f6bc09.svg",
     "static/media/download.svg": "/sultan/static/media/download.22e356ed7d36f448dcbf0ac7a1a1a990.svg",
+    "static/media/leftarrow.svg": "/sultan/static/media/leftarrow.8009929457bde0328f8f182170fd2c0f.svg",
+    "static/media/rightarrow.svg": "/sultan/static/media/rightarrow.93ba4abe5846a231d455ec0417dd0a4b.svg",
     "static/media/right-wing.svg": "/sultan/static/media/right-wing.35ab94e2f8817f324bd31c2293385fa8.svg",
-    "main.a625b8d0.css.map": "/sultan/static/css/main.a625b8d0.css.map",
-    "main.d8d6509c.js.map": "/sultan/static/js/main.d8d6509c.js.map"
+    "static/media/small_arrow_open.svg": "/sultan/static/media/small_arrow_open.260e242d67fc23d29ab014c3406116d8.svg",
+    "static/media/small_arrow.svg": "/sultan/static/media/small_arrow.5e5d30daddeae7614a94f9346edb1e23.svg",
+    "static/media/arrow_down.svg": "/sultan/static/media/arrow_down.90a0847e2609fe35eb180fd09df108b9.svg",
+    "static/media/arrow_up.svg": "/sultan/static/media/arrow_up.80566af4e2a61f1f1d7b01637e2cc31d.svg",
+    "main.6bbfab30.css.map": "/sultan/static/css/main.6bbfab30.css.map",
+    "main.44fa956f.js.map": "/sultan/static/js/main.44fa956f.js.map"
   },
   "entrypoints": [
-    "static/css/main.a625b8d0.css",
-    "static/js/main.d8d6509c.js"
+    "static/css/main.6bbfab30.css",
+    "static/js/main.44fa956f.js"
   ]
 }
