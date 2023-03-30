@@ -5,7 +5,6 @@ import {Link} from "react-router-dom";
 import Filters from '../../components/Filters/Filters';
 import Params from '../../components/Params/Params';
 import {useSelector} from "react-redux";
-import {useAppDispatch} from "../../store";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import {selectItemData} from "../../store/items/selectors";
 import ItemsType from "../../types/items-type";
@@ -15,9 +14,10 @@ import styles from "./Catalog.module.css"
 import "../../components/styles/styles.css"
 import {setCurrentPage, sortPriceASC} from '../../store/items/itemsSlice';
 import {ReactComponent as LeftArrow} from "../../static/leftarrow.svg";
+import { useDispatch } from 'react-redux';
 
 const Catalog: FC = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useDispatch()
   const { limit, items, currentPage, currentCat } = useSelector(selectItemData);
 
   const itemsList: ItemsType[] = items.slice(limit*(currentPage-1), limit*(currentPage))

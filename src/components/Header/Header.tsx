@@ -33,7 +33,7 @@ const Header = () => {
 
   useEffect(() => {
     setAmount(() => countAmount(cartItems));
-    setPrice(():any => (Math.ceil(totalPrice*10)/10))
+    setPrice(() => (Math.ceil(totalPrice*10)/10))
     dispatch(setTotalPrice())
   }, [dispatch, cartItems, totalPrice, items])
 

@@ -239,4 +239,95 @@
   }
 }
 
-/*# sourceMappingURL=Admin.modules.css.map */
+.admin {
+  min-height: 50vh;
+  padding: 0 14vw;
+}
+.admin .btn__open {
+  border: 1px solid #FFFFFF;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 20px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  color: #FFFFFF;
+  font-size: 24px;
+}
+.admin .btn {
+  border: 1px solid #FFFFFF;
+  border-radius: 10px;
+  color: #FFFFFF;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  padding: 10px;
+  min-width: 100px;
+}
+.admin .open {
+  background-color: rgb(110, 147, 238) !important;
+}
+.admin .close {
+  background-color: rgb(119, 238, 110) !important;
+}
+.admin .delete {
+  background-color: rgb(238, 110, 110) !important;
+}
+.admin .add {
+  display: flex;
+  flex-direction: column;
+}
+.admin .add input {
+  font-size: 12px;
+  margin: 5px;
+  max-width: 400px;
+  border: 1px solid rgb(110, 147, 238);
+  border-radius: 10px;
+  padding: 10px;
+}
+.admin .checks {
+  display: flex;
+  flex-direction: column;
+}
+.admin .checks .inner {
+  max-width: 400px;
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgb(110, 147, 238);
+  border-radius: 10px;
+  margin: 5px;
+  padding: 10px;
+}
+.admin .checks .inner input {
+  margin-right: 5px;
+}
+.admin__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 20px;
+  row-gap: 20px;
+}
+@media (max-width: 1600px) {
+  .admin__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 1220px) {
+  .admin__grid {
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+    justify-content: center;
+  }
+}
+.admin__card {
+  padding: 10px;
+  border: 1px solid rgb(110, 147, 238);
+  border-radius: 15px;
+}
+.admin__card .btns {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/*# sourceMappingURL=Admin.module.css.map */

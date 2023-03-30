@@ -4,12 +4,12 @@ import {useDispatch, useSelector} from "react-redux";
 import ItemsType from "../types/items-type";
 import {selectItemData} from "../store/items/selectors";
 import {getItemsFromAdmin} from "../utils/getItemsFromAdmin";
-import styles from "./ProductCard/ProductCard.module.css";
 import {Link} from "react-router-dom";
 import {PRODUCT_ROUTE} from "../utils/consts";
 import {ReactComponent as GrIcon} from "../static/gr.svg";
 import {ReactComponent as LitIcon} from "../static/lit.svg";
 import {Categories} from "../store/items/itemsTypes";
+import styles from "../pages/Admin/Admin.module.css"
 
 interface IType {
   i: ItemsType
@@ -39,28 +39,23 @@ const AdminCard: FC<IType> = ({i}) => {
     dispatch(setTypes())
   },[cat])
 
-  const changeCat = (event: any) => {
-
+  const changeCat = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const findItemNew = newCats.find((item: Categories) => item.name === event.target.value)
     if(event.target.checked && newCats){
       newCats = [...[...newCats].filter(item => item.name !== event.target.value), {
-        // @ts-ignore
-        name: newCats.find((item: Categories) => item.name === event.target.value).name,
-        // @ts-ignore
-        itemsCodes: [...newCats.find((item: Categories) => item.name === event.target.value).itemsCodes, i.code]
+        name: findItemNew ? findItemNew.name : "",
+        itemsCodes: findItemNew ? [...findItemNew.itemsCodes, i.code] : []
       }]
     } else {
+      const findItem = cat.find((item: Categories) => item.name === event.target.value)
       newCats = [...[...newCats].filter(item => item.name !== event.target.value), {
-        // @ts-ignore
-        name: newCats.find((item: Categories) => item.name === event.target.value).name,
-        // @ts-ignore
-        itemsCodes: [...[...cat].find((item: Categories) => item.name === event.target.value).itemsCodes.filter(c => c!==i.code)]
+        name: findItemNew ? findItemNew.name : "",
+        itemsCodes: findItem ? [...findItem.itemsCodes.filter(c => c!==i.code)] : []
       }]
     }
     setCat(() => [...newCats])
     localStorage.setItem("types", JSON.stringify(cat));
     dispatch(setTypes())
-
-
   }
 
 
@@ -73,26 +68,43 @@ const AdminCard: FC<IType> = ({i}) => {
     newItem.price = price
     newItem.url = url
     setCat(() => [...newCats])
-    setEditing(false)
+    setEditing(() => false)
     dispatch(setTypes())
     dispatch(removeFromLocalStorage(i.code))
     dispatch(addToLocalStorage(newItem))
-
   }
 
   return (
-    <div>
-      <button onClick={() => dispatch(removeFromLocalStorage(i.code))}>delete</button>
+    <div className={styles.admin__card}>
+      <div className={styles.btns}>
+        <button
+          className={`${styles.btn} ${styles.delete}`}
+          onClick={() => dispatch(removeFromLocalStorage(i.code))}
+        >
+          delete
+        </button>
+        {editing ?
+          <button className={`${styles.btn} ${styles.close}`} onClick={ready}>
+            ready
+          </button> :
+
+          <button className={`${styles.btn} ${styles.open}`} onClick={() => setEditing(true)}>
+            edit
+          </button>
+        }
+
+      </div>
+
 
       {editing ?
 
         <div className={styles.item} key={i.code} style={{backgroundColor: "rgba(255, 200, 94, 0.2)", border: "1px dotted lightblue"}}>
-          <button onClick={ready}>ready</button>
+
           <div className={styles.img__container}>
-            <Link to={"#"}>
+            <div>
               <img src={i.url} alt="product" className={styles.img}/>
               <input type="text" value={url} onChange={(event) => setUrl(event.target.value)}/>
-            </Link>
+            </div>
           </div>
 
           <div className={styles.text__container}>
@@ -149,10 +161,10 @@ const AdminCard: FC<IType> = ({i}) => {
 
                   <span key={c.name} style={{display: "flex", flexDirection: "row"}}>
                     <input
-                    type={"checkbox"}
-                    value={c.name}
-                    checked={c.itemsCodes.find(item => item === i.code) === i.code}
-                    onChange={changeCat}
+                      type={"checkbox"}
+                      value={c.name}
+                      checked={c.itemsCodes.find(item => item === i.code) === i.code}
+                      onChange={changeCat}
                     /> {c.name}
                   </span>
                 )}
@@ -163,7 +175,6 @@ const AdminCard: FC<IType> = ({i}) => {
         </div>
         :
         <div className={styles.item} key={i.code}>
-          <button onClick={() => setEditing(true)}>edit</button>
           <div className={styles.img__container}>
             <Link to={PRODUCT_ROUTE+'/'+i.code}>
               <img src={i.url} alt="product" className={styles.img}/>
@@ -179,40 +190,40 @@ const AdminCard: FC<IType> = ({i}) => {
               <p className={styles.name}> <strong>{i.brand.toUpperCase()}</strong> {i.name} </p>
             </Link>
             <div className={styles.info__container}>
-              <p> Штрихкод: <span className={styles.item__info}>
-              {i.code}
-            </span>
+              <p>
+                Штрихкод: <span className={styles.item__info}>
+                  {i.code}
+                </span>
               </p>
 
               <p>
                 Производитель: <span className={styles.item__info}>
-              {i.seller}
-            </span>
+                  {i.seller}
+                </span>
               </p>
 
               <p>
                 Бренд: <span className={styles.item__info}>
-              {i.brand.toUpperCase()}
-            </span>
+                  {i.brand.toUpperCase()}
+                </span>
               </p>
 
               <p>
                 Тип ухода: <span>
-              <select>
-                {
-                  categories.find((c: any) => {
-                    return c.itemsCodes.find((item:any) => item===i.code)===i.code
-                  }) ?
-                    // @ts-ignore
-                    categories.filter((c: any) => {
-                      return c.itemsCodes.find((item:any) => item===i.code)===i.code
-                    }).map(f =>
-                      <option key={f.name}>{f.name}</option>
-                    ) :
-                    <option>Не указан </option>
-                }
-              </select>
-            </span>
+                  <select>
+                    {
+                      categories.find((c: Categories) => {
+                        return c.itemsCodes.find((item: string) => item === i.code) === i.code
+                      }) ?
+                      categories.filter((c: Categories) => {
+                        return c.itemsCodes.find((item: string) => item === i.code) === i.code
+                      }).map(f =>
+                        <option key={f.name}> {f.name} </option>
+                      ) :
+                      <option>Не указан </option>
+                    }
+                  </select>
+                </span>
               </p>
             </div>
 

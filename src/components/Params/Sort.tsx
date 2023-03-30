@@ -17,6 +17,7 @@ interface iSort {
 }
 
 const Sort: FC<iSort> = ({name, field, pressed, sorted, sortSearch, getFilters, changePressed}) => {
+
   return (
     <div className={styles.sort}>
       <h4>{name}</h4>

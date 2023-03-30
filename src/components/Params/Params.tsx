@@ -113,7 +113,6 @@ const Params = () => {
     }
     setMinValue(0)
     setMaxValue([...getItemsFromAdmin()].sort((a,b) => b.price-a.price)[0].price)
-
     dispatch(setFilters([] ))
     setCat(() => "")
     dispatch(setCategories(""))

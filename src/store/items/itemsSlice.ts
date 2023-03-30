@@ -32,11 +32,6 @@ const itemsSlice = createSlice({
       localStorage.setItem("items", JSON.stringify(state.items));
       state.items = getItemsFromAdmin()
     },
-    editFromLocalStorage(state, action: PayloadAction<string>) {
-      state.items = [...getItemsFromAdmin()].filter((obj) => obj.code !== action.payload);
-      localStorage.setItem("items", JSON.stringify(state.items));
-      state.items = getItemsFromAdmin()
-    },
     setCurrentPage(state, action: PayloadAction<number>) {
       state.currentPage = action.payload;
     },
@@ -56,14 +51,14 @@ const itemsSlice = createSlice({
     sortTitleDESC(state) {
       state.items = state.items.sort((a,b) =>  b.name.localeCompare(a.name))
     },
+
     sortCat(state){
       if(state.currentCat.length){
-        state.items = [...getItemsFromAdmin()].filter((i: any) => {
-
-          // @ts-ignore
-          return i.code === state.categories.find((item: Categories) => {
-            return item.name === state.currentCat
-          }).itemsCodes.find(item => item===i.code)
+        const findItem = state.categories.find((item: Categories) => {
+          return item.name === state.currentCat
+        })
+        state.items = [...getItemsFromAdmin()].filter((i: ItemsType) => {
+          return i.code === (findItem ? findItem.itemsCodes.find(item => item === i.code) : "")
         })
       } else {
         state.items = [...getItemsFromAdmin()]
@@ -108,7 +103,7 @@ const itemsSlice = createSlice({
       } else if (state.filters.length === 1 && state.filters[0].key === "price") {
         minVal = +state.filters[0].value[0];
         maxVal = +state.filters[0].value[1];
-        state.items = [...getItemsFromAdmin()].filter(i => i.price>=minVal && i.price <= maxVal)
+        state.items = [...getItemsFromAdmin()].filter(i => i.price >= minVal && i.price <= maxVal)
       } else {
         state.items = [...getItemsFromAdmin()]
       }
@@ -130,7 +125,6 @@ export const {
   setCategories,
   addToLocalStorage,
   removeFromLocalStorage,
-  editFromLocalStorage,
   sortPriceASC,
   sortPriceDESC,
   sortTitleASC,

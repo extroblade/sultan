@@ -20,7 +20,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, onChangePage }) =>
   const count = Math.ceil(countAmount(items)/limit)
 
   const pages = []
-  for(let i=0; i<(count>5 ? 5 : count); i++){
+  for (let i=0; i < (count>5 ? 5 : count); i++){
     pages.push(i+1)
   }
 
@@ -30,7 +30,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, onChangePage }) =>
         <li>
           <button
             disabled={currentPage<=1}
-            onClick={() => onChangePage(currentPage-1>0 ? currentPage-1 : currentPage)}
+            onClick={() => onChangePage(currentPage>1 ? currentPage-1 : currentPage)}
           >
             <LeftArrow/>
           </button>
@@ -46,11 +46,11 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, onChangePage }) =>
             </button>
           </li>
         )}
-      <li>
-        <button disabled={currentPage>=count} onClick={() => onChangePage(currentPage+1<=count ? currentPage+1 : currentPage)}>
-          <RightArrow/>
-        </button>
-      </li>
+          <li>
+            <button disabled={currentPage>=count} onClick={() => onChangePage(currentPage+1<=count ? currentPage+1 : currentPage)}>
+              <RightArrow/>
+            </button>
+          </li>
       </ul>
     </nav>
   );

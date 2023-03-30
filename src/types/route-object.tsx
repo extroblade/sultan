@@ -1,5 +1,6 @@
+import React from "react";
+
 export default interface RouteObject {
   path: string,
-  element: any, //todo: fix
-  exact?: boolean,
+  element: React.ReactNode,
 }

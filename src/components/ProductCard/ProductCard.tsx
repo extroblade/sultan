@@ -32,13 +32,14 @@ const ProductCard: FC<IType> = ({i }) => {
       <div className={styles.text__container}>
         <p className={styles.size}>
           {i.type==="weight" ? <GrIcon/> : <LitIcon/>}
-          <span>{`  ${i.size}`} {i.type==="weight" ? " г" : " мл"}</span>
+          <span>{`${i.size}`} {i.type==="weight" ? " г" : " мл"}</span>
         </p>
         <Link to={PRODUCT_ROUTE+'/'+i.code}>
           <p className={styles.name}> <strong>{i.brand.toUpperCase()}</strong> {i.name} </p>
         </Link>
         <div className={styles.info__container}>
-          <p> Штрихкод: <span className={styles.item__info}>
+          <p>
+            Штрихкод: <span className={styles.item__info}>
               {i.code}
             </span>
           </p>

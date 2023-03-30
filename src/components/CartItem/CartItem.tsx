@@ -75,9 +75,11 @@ const CartItem: FC<CIType> = ({i}) => {
 
   return (
     <div className={styles.cart__item} key={i.code}>
+
       <Link to={PRODUCT_ROUTE+'/'+item.code}  className={styles.cart__img}>
         <img src={item.url} alt="item"/>
       </Link>
+
       <div className={styles.col}>
         <p className="size">
           {item.type==="weight" ? <GrIcon/> : <LitIcon/>}
@@ -91,6 +93,7 @@ const CartItem: FC<CIType> = ({i}) => {
         </Link>
         <p style={{width:"450px"}}>{item.desc.length >=150 ? `${item.desc.substring(0, 150)}...` : item.desc}</p>
       </div>
+
       <span className={styles.cart__btns}>
         <div className={styles.cart__item__price}>
         <button onClick={() => minus()} className={styles.amount}>-</button>

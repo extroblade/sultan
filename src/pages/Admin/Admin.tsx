@@ -6,6 +6,8 @@ import { selectItemData } from "../../store/items/selectors";
 import {Categories} from "../../store/items/itemsTypes";
 import AdminCard from "../../components/AdminCard";
 
+import styles from "./Admin.module.css"
+
 const Admin = () => {
   const dispatch = useDispatch()
   const { items, categories } = useSelector(selectItemData)
@@ -31,7 +33,7 @@ const Admin = () => {
 
   let newCats: Categories[] = [...cat]
 
-  const changeCat = (event: any) => {
+  const changeCat = (event: React.ChangeEvent<HTMLInputElement>) => {
     const findItemNew = newCats.find((item: Categories) => item.name === event.target.value)
     if(event.target.checked && newCats){
       newCats = [...[...newCats].filter(item => item.name !== event.target.value), {
@@ -61,52 +63,63 @@ const Admin = () => {
         inputs[index].checked = !inputs[index].checked
       }
     }
+    setForm(() => false)
     setId(() => Date.now())
   }
 
   return (
-    <div style={{minHeight: "50vh", padding: "0 15vw"}}>
-      <button onClick={() => setForm(!form)}>{!form ? "Open" : "Close"}</button>
+    <div className={styles.admin}>
+      <button className={`${styles.btn__open} ${(form ? styles.open : styles.close)}`} onClick={() => setForm(!form)}>
+        {!form ? "Open Form" : "Close Form"}
+      </button>
       {form &&
-        <div className="add">
+        <div>
           <form>
-            <div>
+            <div className={styles.add}>
               <input
+                required
                 type="text"
                 placeholder={"URL изображения"}
                 onChange={e => newItem.url = (e.target.value)}
               />
               <input
+                required
                 type="text"
                 placeholder={"Название товара"}
                 onChange={e => newItem.name = (e.target.value)}
               />
               <input
+                required
                 type="text"
                 placeholder={"weight | any"}
                 onChange={e => newItem.type = (e.target.value)}
               />
               <input
+                required
                 type="number"
                 placeholder={"Размер товара"}
                 onChange={e => newItem.size = +(e.target.value)}
               />
               <input
+                required
                 type="text"
                 placeholder={"Производитель"}
                 onChange={e => newItem.seller = (e.target.value)}
               />
               <input
+                required
                 type="text"
                 placeholder={"Бренд"}
                 onChange={e => newItem.brand = (e.target.value)}
               />
               <input
+                required
                 type="text"
                 placeholder={"Описание товара"}
                 onChange={e => newItem.desc = (e.target.value)}
               />
               <input
+                required
                 type="number"
                 placeholder={"Цена"}
                 min={0}
@@ -115,24 +128,26 @@ const Admin = () => {
               />
             </div>
 
-            <div style={{display: "flex", flexDirection: "column"}}>
+            <div className={styles.checks}>
               {[...cat].sort((a,b) => a.name.localeCompare(b.name)).map(c =>
-                  <span key={c.name} style={{display: "flex", flexDirection: "row"}}>
-                <input
-                  type={"checkbox"}
-                  value={c.name}
-                  onChange={changeCat}
-                /> {c.name}
-              </span>
+                <span key={c.name} className={styles.inner}>
+                  <input
+                    type={"checkbox"}
+                    value={c.name}
+                    onChange={changeCat}
+                  /> {c.name}
+                </span>
               )}
             </div>
 
-            <button type={"button"} onClick={submit}>Add</button>
+            <button type={"button"} className={`${styles.btn__open} ${styles.close}`} onClick={submit}>
+              Add
+            </button>
           </form>
         </div>
       }
 
-      <div>
+      <div className={styles.admin__grid}>
         {d && JSON.parse(d).length ?[...JSON.parse(d)].sort((a,b) => a.code-b.code).map((i: ItemsType) =>
           <div key={i.code}>
             <AdminCard i={i}></AdminCard>

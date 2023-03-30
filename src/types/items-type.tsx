@@ -1,9 +1,9 @@
 export default interface ItemsType {
-  url: string, //!!!
+  url: string,
   name: string,
-  type: string, //"weight" | "volume" | "еще какое-то",
+  type: string, // "weight" | "volume" | "...",
   size: number,
-  code: string, //!!!
+  code: string, //  (Date.now()) at localstorage
   seller: string,
   brand: string,
   desc: string,

@@ -36,8 +36,9 @@ const Item = () => {
   const i = items.find((item) => item.code === code)
 
   useEffect(()=>{
-    if(i) document.title = `${i.name[0].toUpperCase()}${i.name.substring(1, i.name.length)}`;
-    else document.title = `Товар не найден`
+    (i)
+    ? document.title = `${i.name[0].toUpperCase()}${i.name.substring(1, i.name.length)}`
+    : document.title = `Товар не найден...`
   },[code])
 
   if(!i) return <Page404/>
