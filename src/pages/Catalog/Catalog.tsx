@@ -1,20 +1,20 @@
 import React, {FC, useEffect} from 'react';
-import {CATALOG_ROUTE, PRODUCT_ROUTE, SHOP_ROUTE} from "../utils/consts";
-import Pagination from "../components/Pagination/Pagination";
+import {CATALOG_ROUTE, SHOP_ROUTE} from "../../utils/consts";
+import Pagination from "../../components/Pagination/Pagination";
 import {Link} from "react-router-dom";
-import Filters from '../components/Filters/Filters';
-import Params from '../components/Params/Params';
+import Filters from '../../components/Filters/Filters';
+import Params from '../../components/Params/Params';
 import {useSelector} from "react-redux";
-import {useAppDispatch} from "../store";
-import ProductCard from "../components/ProductCard/ProductCard";
-import {selectItemData} from "../store/items/selectors";
-import ItemsType from "../types/items-type";
+import {useAppDispatch} from "../../store";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import {selectItemData} from "../../store/items/selectors";
+import ItemsType from "../../types/items-type";
 
 import styles from "./Catalog.module.css"
 
-import "../components/styles/styles.css"
-import { setCurrentPage } from '../store/items/itemsSlice';
-import {ReactComponent as LeftArrow} from "../static/leftarrow.svg";
+import "../../components/styles/styles.css"
+import {setCurrentPage, sortPriceASC} from '../../store/items/itemsSlice';
+import {ReactComponent as LeftArrow} from "../../static/leftarrow.svg";
 
 const Catalog: FC = () => {
   const dispatch = useAppDispatch()
@@ -26,7 +26,9 @@ const Catalog: FC = () => {
     dispatch(setCurrentPage(page));
     window.scrollTo(0,0)
   };
-
+  useEffect(()=>{
+    dispatch(sortPriceASC())
+  },[])
   useEffect(()=>{
     if (currentCat)
       document.title = `${currentCat}`;
@@ -66,7 +68,8 @@ const Catalog: FC = () => {
                 <ProductCard i={i} key={i.code}/>
               ):
               <div>
-                no items
+                <p>Нет товаров, соответствующих выбранным фильтрам,</p>
+                <a href={CATALOG_ROUTE}>Вернуться в каталог</a>
               </div>
             }
           </div>

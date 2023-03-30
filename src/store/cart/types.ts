@@ -1,12 +1,11 @@
-import ItemsType from "../../types/items-type";
 
-interface CI {
+export interface CartItem {
   count: number
+  code: string
 }
 
-export type CartItem = ItemsType & CI
-
 export interface CartSliceState {
-  totalPrice: number
+  totalPrice: number,
   cartItems: CartItem[]
+
 }

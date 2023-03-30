@@ -290,9 +290,13 @@
 @media (max-width: 950px) {
   .cart__item {
     flex-direction: column;
+    margin: 0;
   }
   .cart__item .cart__btns {
     margin: 20px 0;
+  }
+  .cart__item .cart__btns strong {
+    font-size: 15px;
   }
 }
 

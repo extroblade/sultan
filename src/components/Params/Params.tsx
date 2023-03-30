@@ -4,13 +4,14 @@ import {selectItemData} from "../../store/items/selectors";
 import {setCategories, setFilters, sort, sortCat} from '../../store/items/itemsSlice';
 import {getItemsFromAdmin} from "../../utils/getItemsFromAdmin";
 import styles from './Params.module.css'
-import {ReactComponent as LensIcon} from "../../static/lens.svg";
 import {ReactComponent as TrashIcon} from "../../static/delete.svg";
 import {ReactComponent as ArrowUpIcon} from "../../static/arrow_up.svg";
 import {ReactComponent as ArrowDownIcon} from "../../static/arrow_down.svg";
 import {Link} from "react-router-dom";
 import {SHOP_ROUTE} from "../../utils/consts";
 import {ReactComponent as LeftArrow} from "../../static/leftarrow.svg";
+import Sort from "./Sort";
+import Price from './Price';
 
 export interface iFilters {
   key: string;
@@ -36,7 +37,7 @@ const Params = () => {
 
   const [mobileOpen, setMobileOpen] = useState(false)
 
-  function sortSellersSearch(event: { target: { value: string } }) {
+  function sortSellersSearch(event: React.ChangeEvent<HTMLInputElement>) {
     setSortedSellers(
       [...[...sellers].filter((i:string) => {
         const regex = new RegExp(event.target.value, 'gi')
@@ -50,7 +51,7 @@ const Params = () => {
     pressedSellers ? setSortedSellers([...sellers.slice(0,4)]) : setSortedSellers([...sellers])
   }
 
-  function sortBrandsSearch(event: { target: { value: string } }) {
+  function sortBrandsSearch(event: React.ChangeEvent<HTMLInputElement>) {
     setSortedBrands(
       [...[...brands].filter((i:string) => {
         const regex = new RegExp(event.target.value, 'gi')
@@ -75,7 +76,6 @@ const Params = () => {
     }
   },[minValue, maxValue])
 
-
   useEffect(()=>{
     dispatch(sort())
   },[filters])
@@ -86,16 +86,13 @@ const Params = () => {
     window.scrollTo(0, 0)
   },[cat])
 
-  const getFilters = (event:any) => {
+  const getFilters = (event: React.ChangeEvent<HTMLInputElement>) => {
     if(event.target.checked){
       setFiltersList(() => [...filtersList, {key: event.target.id, value: event.target.name}])
-    } else {
-      if(filtersList.length){
-        // @ts-ignore
-        setFiltersList((f) => f.filter((i) => {
-          return i ? (i.key !== event.target.id) && (i.value !== event.target.name) : false
-        }))
-      }
+    } else if (filtersList.length) {
+      setFiltersList((f) => f.filter((i) => {
+        return i ? (i.key !== event.target.id) && (i.value !== event.target.name) : false
+      }))
     }
   }
 
@@ -130,7 +127,7 @@ const Params = () => {
   }
 
   if (mobileOpen) return (
-    <div className={styles.params}>
+    <div className={`${styles.params}`}>
       <div className={styles.open_modal}>
         <div className={`${styles.breadcrumbs} ${styles.mobile}`}>
           <Link to={SHOP_ROUTE} className={styles.breadcrumb}>
@@ -150,74 +147,33 @@ const Params = () => {
             <ArrowUpIcon/>
           </button>
         </h4>
-        <p className={styles.params__small}>
-          Цена <strong> &#8376; </strong>
-        </p>
-        <div className={styles.price}>
-          <input
-            type="number"
-            value={Math.abs(minValue)}
-            className={styles.price__input}
-            onChange={(event: any) => setMinValue(event.target.value)}
-            min={0}
-            max={maxValue}
-          />
-          <span className={`${styles.price} ${styles.line}`}>-</span>
-          <input
-            type="number"
-            value={Math.abs(maxValue)}
-            className={styles.price__input}
-            onChange={(event) => setMaxValue(event.target.value)}
-            min={minValue}
-            max={1000000}
-          />
-        </div>
 
-        <div className={styles.sort}>
-          <h4>Производитель</h4>
-          <div className={`${styles.input}`}>
-            <input type="text" placeholder={"Поиск..."} onChange={sortSellersSearch}/>
-            <button type={"submit"} className={``}>
-              <LensIcon/>
-            </button>
-          </div>
-          {sortedSellers.map(i =>
-              <div key={i} className={styles.sort__item}>
-                <input type="checkbox" name={i} id={"seller"} className={styles.checkbox} onChange={getFilters}/>{i}
-                <span>
-          ({[...getItemsFromAdmin()].filter(it => it.seller === i || "all" === i).reduce((a:number) => a+1,0)})
-        </span>
-              </div>
-          )}
-          <button className={styles.link__opener} onClick={() => changePressedSellers()}>
-            {pressedSellers ?
-              <span>Скрыть &#9650;</span>:
-              <span>Показать все &#9660;</span>}
-          </button>
-        </div>
+        <Price
+          minValue={minValue}
+          maxValue={maxValue}
+          setMinValue={setMinValue}
+          setMaxValue={setMaxValue}
+        />
 
-        <div className={styles.sort}>
-          <h4>Бренд</h4>
-          <div className={`${styles.input}`}>
-            <input type="text" placeholder={"Поиск..."} onChange={sortBrandsSearch}/>
-            <button type={"submit"} className={``}>
-              <LensIcon/>
-            </button>
-          </div>
-          {sortedBrands.map(i =>
-              <div key={i} className={styles.sort__item}>
-                <input type="checkbox" name={i} id={"brand"} className={styles.checkbox} onChange={getFilters}/>{i}
-                <span>
-          ({[...getItemsFromAdmin()].filter(it => it.brand === i || "all" === i).reduce((a:number) => a+1,0)})
-        </span>
-              </div>
-          )}
-          <button className={styles.link__opener} onClick={() => changePressedBrands()}>
-            {pressedBrands ?
-              <span>Скрыть &#9650;</span>:
-              <span>Показать все &#9660;</span>}
-          </button>
-        </div>
+        <Sort
+          name={"Производитель"}
+          field={"seller"}
+          pressed={pressedSellers}
+          sorted={sortedSellers}
+          sortSearch={sortSellersSearch}
+          getFilters={getFilters}
+          changePressed={changePressedSellers}
+        />
+
+        <Sort
+          name={"Бренд"}
+          field={"brand"}
+          pressed={pressedBrands}
+          sorted={sortedBrands}
+          sortSearch={sortBrandsSearch}
+          getFilters={getFilters}
+          changePressed={changePressedBrands}
+        />
 
 
         <div className={styles.btns}>
@@ -241,75 +197,32 @@ const Params = () => {
         </button>
       </h4>
       <span className={styles.pc}>
-        <p className={styles.params__small}>
-          Цена <strong> &#8376; </strong>
-        </p>
-        <div className={styles.price}>
-          <input
-            type="number"
-            value={Math.abs(minValue)}
-            className={styles.price__input}
-            onChange={(event: any) => setMinValue(event.target.value)}
-            min={0}
-            max={maxValue}
-          />
-          <span className={`${styles.price} ${styles.line}`}>-</span>
-          <input
-            type="number"
-            value={Math.abs(maxValue)}
-            className={styles.price__input}
-            onChange={(event) => setMaxValue(event.target.value)}
-            min={minValue}
-            max={1000000}
-          />
-        </div>
+        <Price
+          minValue={minValue}
+          maxValue={maxValue}
+          setMinValue={setMinValue}
+          setMaxValue={setMaxValue}
+        />
 
-        <div className={styles.sort}>
-          <h4>Производитель</h4>
-          <div className={`${styles.input}`}>
-            <input type="text" placeholder={"Поиск..."} onChange={sortSellersSearch}/>
-            <button type={"submit"} className={``}>
-              <LensIcon/>
-            </button>
-          </div>
-          {sortedSellers.map(i =>
-            <div key={i} className={styles.sort__item}>
-              <input type="checkbox" name={i} id={"seller"} className={styles.checkbox} onChange={getFilters}/>{i}
-              <span>
-                ({[...getItemsFromAdmin()].filter(it => it.seller === i || "all" === i).reduce((a:number) => a+1,0)})
-              </span>
-            </div>
-          )}
-          <button className={styles.link__opener} onClick={() => changePressedSellers()}>
-            {pressedSellers ?
-              <span>Скрыть &#9650;</span>:
-              <span>Показать все &#9660;</span>}
-          </button>
-        </div>
+        <Sort
+          name={"Производитель"}
+          field={"seller"}
+          pressed={pressedSellers}
+          sorted={sortedSellers}
+          sortSearch={sortSellersSearch}
+          getFilters={getFilters}
+          changePressed={changePressedSellers}
+        />
 
-        <div className={styles.sort}>
-          <h4>Бренд</h4>
-          <div className={`${styles.input}`}>
-            <input type="text" placeholder={"Поиск..."} onChange={sortBrandsSearch}/>
-            <button type={"submit"} className={``}>
-              <LensIcon/>
-            </button>
-          </div>
-          {sortedBrands.map(i =>
-            <div key={i} className={styles.sort__item}>
-              <input type="checkbox" name={i} id={"brand"} className={styles.checkbox} onChange={getFilters}/>{i}
-              <span>
-                ({[...getItemsFromAdmin()].filter(it => it.brand === i || "all" === i).reduce((a:number) => a+1,0)})
-              </span>
-            </div>
-          )}
-          <button className={styles.link__opener} onClick={() => changePressedBrands()}>
-            {pressedBrands ?
-              <span>Скрыть &#9650;</span>:
-              <span>Показать все &#9660;</span>}
-          </button>
-        </div>
-
+        <Sort
+          name={"Бренд"}
+          field={"brand"}
+          pressed={pressedBrands}
+          sorted={sortedBrands}
+          sortSearch={sortBrandsSearch}
+          getFilters={getFilters}
+          changePressed={changePressedBrands}
+        />
 
         <div className={styles.btns}>
           <button className={styles.btn__text} onClick={() => show()}>

@@ -1,26 +1,33 @@
-import React from 'react';
+import React, {FC} from 'react';
 import styles from "./AddToCartModal.module.css";
 
 import {ReactComponent as Completed} from "../../static/completed.svg";
+import {ReactComponent as Close} from "../../static/close.svg";
 
-const Ordered = ({show, onHide}: any) => {
+
+interface ModalType {
+  show: boolean,
+  onHide: () => void,
+}
+
+const Ordered: FC<ModalType> = ({show, onHide} ) => {
   return (
     <div>
       {show &&
-        <div className={styles.modal} style={{display: "flex", flexDirection: "column", justifyContent:"flex-start"}}>
-          <div style={{display: "flex", justifyContent:"flex-end", marginBottom: "20vh", marginLeft: "50vw"}}>
-            <button onClick={onHide} className={styles.btn__text}>
-              X
+        <div className={styles.modal}>
+          <div className={styles.modal__top}>
+            <button onClick={onHide} className={styles.btn__close}>
+              <Close/>
             </button>
           </div>
-          <div>
-            <div className={styles.btn__text} style={{width: "60px"}}>
+
+          <div className={styles.modal__content}>
+            <div className={styles.btn__img}>
               <Completed/>
             </div>
             <h2>Спасибо за заказ</h2>
             <p>Наш менеджер свяжется с вами в ближайшее время</p>
           </div>
-
         </div>
       }
     </div>

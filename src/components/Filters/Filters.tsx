@@ -17,6 +17,7 @@ const Filters = () => {
   const { categories, currentCat } = useSelector(selectItemData);
   const [cat, setCat] = useState("")
 
+
   useEffect(()=>{
     dispatch(setCategories(cat))
     dispatch(sortCat())
@@ -34,7 +35,7 @@ const Filters = () => {
         break
       }
       case("Название А-Я "): {
-        dispatch(sortPriceASC());
+        dispatch(sortTitleASC());
         break
       }
       case("Название Я-А"):{

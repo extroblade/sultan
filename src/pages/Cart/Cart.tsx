@@ -1,14 +1,14 @@
 import React, {FC, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { selectCart } from '../store/cart/selectors';
-import CartItem from "../components/CartItem/CartItem";
+import { selectCart } from '../../store/cart/selectors';
+import CartItem from "../../components/CartItem/CartItem";
 import {Link} from "react-router-dom";
-import {CART_ROUTE, CATALOG_ROUTE, SHOP_ROUTE} from '../utils/consts';
-import Ordered from "../components/modals/Ordered";
-import {clearItems} from "../store/cart/cartSlice";
-import {getCartFromLS} from "../utils/getCartFromLs";
+import {CART_ROUTE, CATALOG_ROUTE, SHOP_ROUTE} from '../../utils/consts';
+import Ordered from "../../components/modals/Ordered";
+import {clearItems} from "../../store/cart/cartSlice";
+import {getCartFromLS} from "../../utils/getCartFromLs";
 import styles from "./Cart.module.css";
-import {ReactComponent as LeftArrow} from "../static/leftarrow.svg";
+import {ReactComponent as LeftArrow} from "../../static/leftarrow.svg";
 
 const Cart: FC = () => {
   const dispatch = useDispatch()
@@ -49,11 +49,11 @@ const Cart: FC = () => {
       </div>
 
       {cartItems.map(i =>
-        <div key={i.code}>
+        <div key={i.code} className={styles.cart__items}>
           <CartItem i={i}/>
         </div>
-
       )}
+
       <div className={styles.buy}>
         <button className={styles.btn__text} onClick={() => setOrderedVisible(true)
         }>

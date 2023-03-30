@@ -1,4 +1,4 @@
-@import '../components/styles/styles'
+@import '../../components/styles/styles.sass'
 
 .cart
   display: flex
@@ -16,6 +16,7 @@
       font-size: 30px
       line-height: 130%
   @media (max-width: $mobile)
+    padding: 0 10px
     .buy
       flex-direction: column-reverse
       strong
@@ -26,7 +27,11 @@
 
         margin: 20px 0
       .btn__text
-        padding: 30px
+        padding: 30px 10px
         display: flex
         align-items: center
         justify-content: center
+      .btn__img
+        min-width: 30px
+    .cart__items
+      margin: 0

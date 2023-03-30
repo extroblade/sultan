@@ -36,18 +36,31 @@ const AdminCard: FC<IType> = ({i}) => {
 
   useEffect(()=>{
     localStorage.setItem("types", JSON.stringify(cat));
+    dispatch(setTypes())
   },[cat])
 
   const changeCat = (event: any) => {
-    if(!event.target.checked && newCats){
 
+    if(event.target.checked && newCats){
       newCats = [...[...newCats].filter(item => item.name !== event.target.value), {
         // @ts-ignore
         name: newCats.find((item: Categories) => item.name === event.target.value).name,
         // @ts-ignore
         itemsCodes: [...newCats.find((item: Categories) => item.name === event.target.value).itemsCodes, i.code]
       }]
+    } else {
+      newCats = [...[...newCats].filter(item => item.name !== event.target.value), {
+        // @ts-ignore
+        name: newCats.find((item: Categories) => item.name === event.target.value).name,
+        // @ts-ignore
+        itemsCodes: [...[...cat].find((item: Categories) => item.name === event.target.value).itemsCodes.filter(c => c!==i.code)]
+      }]
     }
+    setCat(() => [...newCats])
+    localStorage.setItem("types", JSON.stringify(cat));
+    dispatch(setTypes())
+
+
   }
 
 
@@ -64,39 +77,43 @@ const AdminCard: FC<IType> = ({i}) => {
     dispatch(setTypes())
     dispatch(removeFromLocalStorage(i.code))
     dispatch(addToLocalStorage(newItem))
+
   }
 
   return (
     <div>
       <button onClick={() => dispatch(removeFromLocalStorage(i.code))}>delete</button>
-      <button onClick={() => setEditing(true)}>edit</button>
-      <button onClick={ready}>ready</button>
 
       {editing ?
 
-        <div className={styles.item} key={i.code}>
+        <div className={styles.item} key={i.code} style={{backgroundColor: "rgba(255, 200, 94, 0.2)", border: "1px dotted lightblue"}}>
+          <button onClick={ready}>ready</button>
           <div className={styles.img__container}>
-            <Link to={PRODUCT_ROUTE+'/'+i.code}>
+            <Link to={"#"}>
               <img src={i.url} alt="product" className={styles.img}/>
               <input type="text" value={url} onChange={(event) => setUrl(event.target.value)}/>
             </Link>
           </div>
 
           <div className={styles.text__container}>
-            <p className={styles.size}>
-              {i.type==="weight" ? <GrIcon/> : <LitIcon/>}
-              <span>
-                {`  ${i.size}`} {i.type==="weight" ? " г" : " мл"}
-                <input type="number" value={size} onChange={(event) => setSize(+event.target.value)}/>
-                <input type="text" value={type} onChange={(event) => setType(event.target.value)}/>
-
-              </span>
-            </p>
             <div className={styles.info__container}>
               <p>
                 Название:
                 <span className={styles.item__info}>
                   <input type="text" value={name} onChange={(event) => setName(event.target.value)}/>
+                </span>
+              </p>
+              <p>
+                Тип:
+                <span className={styles.item__info}>
+                  <input type="text" value={type} onChange={(event) => setType(event.target.value)}/>
+                </span>
+              </p>
+
+              <p>
+                Размер:
+                <span className={styles.item__info}>
+                  <input type="text" value={size} onChange={(event) => setSize(+event.target.value)}/>
                 </span>
               </p>
 
@@ -112,39 +129,41 @@ const AdminCard: FC<IType> = ({i}) => {
                   <input type="text" value={seller} onChange={(event) => setSeller(event.target.value)}/>
                 </span>
               </p>
-
               <p>
                 Бренд:
                 <span className={styles.item__info}>
                   <input type="text" value={brand} onChange={(event) => setBrand(event.target.value)}/>
                 </span>
               </p>
+              <p>
+                Цена:
+                <span className={styles.item__info}>
+                  <input type="number" value={price} onChange={(event) => setPrice(+event.target.value)}/> &#8376;
+                </span>
+              </p>
 
 
               <div style={{display: "flex", flexDirection: "column"}}>
-                <p> Тип ухода: (временно нельзя менять)</p>
+                <p> Тип ухода: </p>
                 {[...cat].sort((a,b) => a.name.localeCompare(b.name)).map(c =>
-                  <div key={c.name}>
+
+                  <span key={c.name} style={{display: "flex", flexDirection: "row"}}>
                     <input
-                      style={{display: "flex"}}
-                      type={"checkbox"}
-                      value={c.name}
-                      checked={c.itemsCodes.find(item => item === i.code) === i.code}
-                      onChange={changeCat}
+                    type={"checkbox"}
+                    value={c.name}
+                    checked={c.itemsCodes.find(item => item === i.code) === i.code}
+                    onChange={changeCat}
                     /> {c.name}
-                  </div>
+                  </span>
                 )}
               </div>
             </div>
           </div>
-          <div className={styles.bottom}>
-            <strong>
-              <input type="number" value={price} onChange={(event) => setPrice(+event.target.value)}/> &#8376;
-            </strong>
-          </div>
+
         </div>
         :
         <div className={styles.item} key={i.code}>
+          <button onClick={() => setEditing(true)}>edit</button>
           <div className={styles.img__container}>
             <Link to={PRODUCT_ROUTE+'/'+i.code}>
               <img src={i.url} alt="product" className={styles.img}/>

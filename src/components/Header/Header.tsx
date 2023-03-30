@@ -16,12 +16,17 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {selectCart} from "../../store/cart/selectors";
 import {CartItem} from "../../store/cart/types";
+import {setTotalPrice} from "../../store/cart/cartSlice";
+import {selectItemData} from "../../store/items/selectors";
 
 
 const Header = () => {
   const { totalPrice, cartItems } = useSelector(selectCart);
+  const { items } = useSelector(selectItemData);
   const dispatch = useDispatch()
-  const countAmount = (it: CartItem[]): number => it.reduce((i, next) => i+next.count,0)
+  const countAmount = (it: CartItem[]): number => {
+    return  it.reduce((i, next) => i+next.count,0)
+  }
 
   const [amount, setAmount] = useState(0)
   const [price, setPrice] = useState(0)
@@ -29,7 +34,8 @@ const Header = () => {
   useEffect(() => {
     setAmount(() => countAmount(cartItems));
     setPrice(():any => (Math.ceil(totalPrice*10)/10))
-  }, [dispatch, cartItems, totalPrice])
+    dispatch(setTotalPrice())
+  }, [dispatch, cartItems, totalPrice, items])
 
 
   return (
@@ -54,13 +60,14 @@ const Header = () => {
           </div>
         </div>
         <ul className={styles.navigation}>
-          <li className={`${styles.navigation__item} ${styles.admin}`}>
+          <li className={`${styles.navigation__item} ${styles.admin}`} style={{marginRight: "20px"}}>
             <Link to={ADMIN_ROUTE}>Админка</Link>
           </li>
-          <div className={styles.vl}></div>
+
           <li className={styles.navigation__item}>
             <Link to={"#"}>О компании</Link>
           </li>
+          <div className={styles.vl}></div>
           <li className={styles.navigation__item}>
             <Link to={"#"}>Доставка и оплата</Link>
           </li>

@@ -1,22 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router';
-import {CATALOG_ROUTE, PRODUCT_ROUTE, SHOP_ROUTE} from '../utils/consts';
+import {CATALOG_ROUTE, PRODUCT_ROUTE, SHOP_ROUTE} from '../../utils/consts';
 import {useDispatch, useSelector} from "react-redux";
 
 import {Link} from "react-router-dom";
-import {addItem} from "../store/cart/cartSlice";
-import {selectItemData} from "../store/items/selectors";
-import ItemsType from "../types/items-type";
-import Page404 from "./Page404";
-import { ReactComponent as GrIcon } from "../static/gr.svg";
-import { ReactComponent as CartIcon } from "../static/cart.svg";
-import { ReactComponent as LitIcon } from '../static/lit.svg';
-import { ReactComponent as ShareIcon } from '../static/share.svg';
-import { ReactComponent as DownloadIcon } from '../static/download.svg';
-import { ReactComponent as ArrowIcon } from '../static/small_arrow.svg';
-import { ReactComponent as ArrowOpenIcon } from '../static/small_arrow_open.svg';
+import {addItem} from "../../store/cart/cartSlice";
+import {selectItemData} from "../../store/items/selectors";
+import ItemsType from "../../types/items-type";
+import Page404 from "../Page404";
+import { ReactComponent as GrIcon } from "../../static/gr.svg";
+import { ReactComponent as CartIcon } from "../../static/cart.svg";
+import { ReactComponent as LitIcon } from '../../static/lit.svg';
+import { ReactComponent as ShareIcon } from '../../static/share.svg';
+import { ReactComponent as DownloadIcon } from '../../static/download.svg';
+import { ReactComponent as ArrowIcon } from '../../static/small_arrow.svg';
+import { ReactComponent as ArrowOpenIcon } from '../../static/small_arrow_open.svg';
 import styles from "./Item.module.css"
-import {ReactComponent as LeftArrow} from "../static/leftarrow.svg";
+import {ReactComponent as LeftArrow} from "../../static/leftarrow.svg";
 
 const Item = () => {
 
@@ -155,9 +155,10 @@ const Item = () => {
                 <p>
                   Артикул: <span className={styles.item__info}>{i.code.slice(0, 5)}</span>
                 </p>
-                <p>
-                  Вес: <span className={styles.item__info}>{i.type==="weight" ? ` ${i.size}г` : `Объем: ${i.size} мл`}</span>
-                </p>
+                {i.type === "weight" ?
+                  (<p> Вес: <span className={styles.item__info}> {i.size} г</span></p>) :
+                  (<p> Объем: <span className={styles.item__info}> {i.size} мл</span></p>)
+                }
               </div>
             )}
           </div>
