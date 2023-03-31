@@ -17,6 +17,7 @@ import { ReactComponent as ArrowIcon } from '../../static/small_arrow.svg';
 import { ReactComponent as ArrowOpenIcon } from '../../static/small_arrow_open.svg';
 import styles from "./Item.module.css"
 import {ReactComponent as LeftArrow} from "../../static/leftarrow.svg";
+import AddToCartModal from '../../components/modals/AddToCartModal';
 
 const Item = () => {
 
@@ -26,7 +27,7 @@ const Item = () => {
   const {items} = useSelector(selectItemData)
   const dispatch = useDispatch()
 
-  // const [addToCartVisible, setAddToCartVisible] = useState(false);
+  const [addToCartVisible, setAddToCartVisible] = useState(false);
   const [curCount, setCurCount] = useState(1)
 
   const minus = () => {
@@ -39,13 +40,13 @@ const Item = () => {
     (i)
     ? document.title = `${i.name[0].toUpperCase()}${i.name.substring(1, i.name.length)}`
     : document.title = `Товар не найден...`
-  },[code])
+  },[code, i])
 
   if(!i) return <Page404/>
 
   const addItemToCart = (i:ItemsType) => {
     dispatch(addItem({...i, count: curCount}));
-    // setAddToCartVisible(() => true)
+    setAddToCartVisible(() => true)
     setCurCount(() => 1)
   };
 
@@ -166,7 +167,7 @@ const Item = () => {
         </div>
       </div>
 
-    {/*<AddToCartModal show={addToCartVisible} onHide={() => setAddToCartVisible(false)} />*/}
+      <AddToCartModal show={addToCartVisible} onHide={() => setAddToCartVisible(false)} />
     </div>
   );
 };

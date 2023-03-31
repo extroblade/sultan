@@ -258,9 +258,18 @@
   font-size: 30px;
   line-height: 130%;
 }
+.cart .hl {
+  border: 1px dashed rgba(63, 78, 101, 0.3);
+  margin: 20px 0;
+  width: 100%;
+}
 @media (max-width: 950px) {
   .cart {
     padding: 0 10px;
+  }
+  .cart .hl {
+    width: 80%;
+    margin-left: 10%;
   }
   .cart .buy {
     flex-direction: column-reverse;

@@ -29,7 +29,6 @@ const CartItem: FC<CIType> = ({i}) => {
 
   const remove = () => window.confirm('Вы действительно хотите удалить товар?') && dispatch(removeItem(i.code))
 
-
   const item = getItemsFromAdmin().find((item: ItemsType) => item.code === i.code)
 
   const minus = () => {
@@ -39,7 +38,7 @@ const CartItem: FC<CIType> = ({i}) => {
 
 
   if (!item) return (
-    <div className={styles.cart__item} key={i.code} style={{boxShadow: "#e4e4e4 0px 3px 10px 2px", padding: "0 20px", margin: "20px"}}>
+    <div className={styles.cart__item} key={i.code}>
       <Link to={"#"}  className={styles.cart__img} style={{filter: "blur(5px)", cursor: "default"}}>
         <img src={placeholder} alt="item" style={{width: "160px", height: "160px"}}/>
       </Link>
@@ -103,7 +102,7 @@ const CartItem: FC<CIType> = ({i}) => {
         <button onClick={() => plus()} className={styles.amount}>+</button>
       </div>
       <div className={styles.vl}></div>
-      <strong style={{marginRight: "20px"}}> {i.count*item.price} &#8376; </strong>
+      <strong> {i.count*item.price} &#8376; </strong>
       <div className={styles.vl}></div>
 
       <button className={styles.btn__img} onClick={() => remove()}>

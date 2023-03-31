@@ -18,7 +18,7 @@
     "code": "4604049097547",
     "seller": "Издатель2",
     "brand": "Бренд1",
-    "desc": "name",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id mauris ut purus venenatis laoreet. Donec hendrerit urna dapibus pulvinar fermentum. Aenean vitae erat odio. Nunc non malesuada dui. Quisque ac sapien at nisl dignissim finibus ac quis dolor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer sollicitudin ac lorem id luctus. Etiam pretium consequat dapibus. Cras maximus, ante a viverra condimentum, turpis felis tincidunt velit, non aliquam diam arcu vel massa. Aenean ut ipsum molestie, tristique sem ut, facilisis elit. Aliquam erat volutpat. Morbi auctor augue non neque facilisis faucibus. Sed sagittis eros at arcu rhoncus, nec tempor nunc eleifend.\n\nMaecenas ornare risus faucibus, scelerisque sapien ac, suscipit lorem. In eleifend tortor eleifend, pharetra diam et, interdum mi. In convallis diam sed tincidunt varius. Mauris consequat lorem in nisl convallis vestibulum. Phasellus euismod bibendum lacus, at rutrum sem lobortis at. Nam non neque ut urna facilisis euismod in sit amet mi. Etiam nec lectus ipsum. Aenean luctus sed ligula sed lobortis. Mauris at ipsum sit amet leo egestas aliquet in laoreet augue. Aenean tincidunt, elit vitae faucibus molestie, mauris est blandit orci, vel malesuada tortor leo vel neque. Suspendisse porta sed tellus et euismod. Cras vitae mattis turpis.\n\nUt posuere faucibus neque vitae varius. Curabitur vitae placerat turpis. In hac habitasse platea dictumst. Quisque ut lorem turpis. Pellentesque aliquet odio et pulvinar ultrices. Vestibulum rutrum molestie nisi. Donec maximus vehicula mauris ut imperdiet. Suspendisse sit amet accumsan eros, vel tempus mi. Phasellus elementum dignissim tincidunt. Nulla vestibulum ultricies eleifend. Integer urna sapien, convallis in felis non, hendrerit ultricies libero. Nulla sollicitudin odio eu turpis tristique, ut vulputate velit faucibus. Proin eleifend risus sit amet dolor tempor vulputate. In tellus nisl, euismod sed porttitor sit amet, sagittis rutrum leo. Donec ac gravida ex, et tempus arcu. Sed commodo sed purus nec dictum.\n\nPhasellus ac porttitor metus. Nunc malesuada eu nulla at fermentum. Aliquam sodales purus ut tortor dapibus, a vestibulum ipsum viverra. Pellentesque fringilla, libero quis congue consectetur, ipsum felis vehicula metus, malesuada ultrices odio eros id lectus. Vivamus lectus libero, placerat consequat quam ac, sagittis iaculis nunc. Vivamus nec tristique tortor. Donec quam nulla, bibendum tempus aliquet rhoncus, aliquam sit amet leo. Cras volutpat pretium erat, quis pulvinar metus consequat nec. Fusce rhoncus non massa viverra gravida. Mauris et lacus eleifend tortor molestie ultricies. Integer vitae quam imperdiet, pulvinar lorem at, facilisis libero. Integer fringilla tempus augue et venenatis. Nunc volutpat, lectus vitae imperdiet ultrices, nisl lorem ultrices magna, ac feugiat risus sapien sit amet ante.\n\nPraesent sed arcu sit amet odio semper pharetra. Donec rutrum, magna quis sodales eleifend, orci urna sagittis felis, non finibus lacus sapien laoreet nibh. Curabitur sit amet molestie risus. Vivamus id quam ac odio hendrerit consectetur. Vestibulum euismod euismod nisi et aliquet. Fusce vel velit eget quam lacinia ornare vitae a arcu. Aliquam lobortis augue et tellus rhoncus rhoncus. Proin at justo lorem. In erat massa, rutrum ut rutrum quis, gravida ut orci.",
     "price": 2
   },
   {
@@ -29,7 +29,7 @@
     "code": "4604049097548",
     "seller": "Издатель3",
     "brand": "Бренд1",
-    "desc": "name",
+    "desc": "description",
     "price": 3
   },
   {
@@ -40,7 +40,7 @@
     "code": "1",
     "seller": "Издатель2",
     "brand": "Бренд1",
-    "desc": "huge text like lorem ipsum ",
+    "desc": "description",
     "price": 4
   },
   {
@@ -51,7 +51,7 @@
     "code": "2",
     "seller": "Издатель2",
     "brand": "Бренд2",
-    "desc": "name",
+    "desc": "description",
     "price": 5
   },
   {
@@ -62,7 +62,7 @@
     "code": "3",
     "seller": "Издатель2",
     "brand": "Бренд3",
-    "desc": "name",
+    "desc": "description",
     "price": 6
   },
   {
@@ -73,7 +73,7 @@
     "code": "4",
     "seller": "Издатель3",
     "brand": "Бренд1",
-    "desc": "name",
+    "desc": "description",
     "price": 7
   },
   {
@@ -84,7 +84,7 @@
     "code": "5",
     "seller": "Издатель3",
     "brand": "Бренд2",
-    "desc": "huge text like lorem ipsum ",
+    "desc": "description",
     "price": 8
   },
   {
@@ -95,7 +95,7 @@
     "code": "6",
     "seller": "Издатель3",
     "brand": "Бренд3",
-    "desc": "name",
+    "desc": "description",
     "price": 9
   },
   {
@@ -106,7 +106,7 @@
     "code": "7",
     "seller": "Нэфис",
     "brand": "Ariel",
-    "desc": "name",
+    "desc": "description",
     "price": 10
   },
   {
@@ -117,7 +117,7 @@
     "code": "8",
     "seller": "Нэфис",
     "brand": "Bimax",
-    "desc": "name",
+    "desc": "description",
     "price": 11
   },
   {
@@ -128,7 +128,7 @@
     "code": "9",
     "seller": "BioMio",
     "brand": "BIO-SOAP",
-    "desc": "huge text like lorem ipsum ",
+    "desc": "description",
     "price": 12
   },{
   "url": "https://avatars.mds.yandex.net/get-mpic/4721581/img_id7739073593422149788.jpeg/orig",
@@ -138,7 +138,7 @@
   "code": "11",
   "seller": "Нэфис",
   "brand": "AOS",
-  "desc": "name",
+  "desc": "description",
   "price": 13
 },
   {
@@ -149,7 +149,7 @@
     "code": "12",
     "seller": "Нэфис",
     "brand": "Ariel",
-    "desc": "name",
+    "desc": "description",
     "price": 14
   },
   {
@@ -160,7 +160,7 @@
     "code": "13",
     "seller": "биомио",
     "brand": "Bimax",
-    "desc": "name",
+    "desc": "description",
     "price": 15
   },
   {
@@ -171,17 +171,17 @@
     "code": "4241",
     "seller": "биомио",
     "brand": "BIO-SOAP",
-    "desc": "sadasdasd ",
+    "desc": "description",
     "price": 15756.13123
   },
   {
     "url": "https://avatars.mds.yandex.net/get-mpic/4721581/img_id7739073593422149788.jpeg/orig",
-    "name": "товар с большой стоимостью",
+    "name": "Большая стоимость",
     "type": "volume",
     "size": 1002,
     "code": "42097546",
-    "seller": "Дорогой",
-    "brand": "Очень короткое описание",
+    "seller": "bc",
+    "brand": "Нет описания",
     "desc": "",
     "price": 17312
   }

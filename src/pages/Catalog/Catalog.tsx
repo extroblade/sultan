@@ -28,7 +28,8 @@ const Catalog: FC = () => {
   };
   useEffect(()=>{
     dispatch(sortPriceASC())
-  },[])
+  },[dispatch])
+
   useEffect(()=>{
     if (currentCat)
       document.title = `${currentCat}`;

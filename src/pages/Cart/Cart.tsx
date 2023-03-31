@@ -47,10 +47,13 @@ const Cart: FC = () => {
           </span>
         </Link>
       </div>
+      <div className={styles.hl}></div>
+
 
       {cartItems.map(i =>
         <div key={i.code} className={styles.cart__items}>
           <CartItem i={i}/>
+          <div className={styles.hl}></div>
         </div>
       )}
 

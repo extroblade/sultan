@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import {addToLocalStorage, setTypes} from '../../store/items/itemsSlice';
+import {addToLocalStorage, setTypes, updateItems} from '../../store/items/itemsSlice';
 import ItemsType from "../../types/items-type";
 import { selectItemData } from "../../store/items/selectors";
 import {Categories} from "../../store/items/itemsTypes";
 import AdminCard from "../../components/AdminCard";
 
 import styles from "./Admin.module.css"
+import {getItemsFromAdmin} from "../../utils/getItemsFromAdmin";
 
 const Admin = () => {
   const dispatch = useDispatch()
@@ -26,10 +27,20 @@ const Admin = () => {
     setD(() => localStorage.getItem('items'))
   },[items, newItem])
 
+  const addItems = () => {
+    localStorage.setItem("items", JSON.stringify(getItemsFromAdmin()));
+    dispatch(updateItems())
+  }
+
+  const removeItems = () => {
+    localStorage.removeItem("items");
+    dispatch(updateItems())
+  }
+
   useEffect(()=>{
     localStorage.setItem("types", JSON.stringify(cat));
     dispatch(setTypes())
-  },[cat])
+  },[cat, dispatch])
 
   let newCats: Categories[] = [...cat]
 
@@ -69,6 +80,20 @@ const Admin = () => {
 
   return (
     <div className={styles.admin}>
+      <button
+        onClick={() => addItems()}
+        className={`${styles.btn__open} ${styles.open}`}
+      >
+        Заполнить стор товарами из JSON
+      </button>
+
+      <button
+        onClick={() => removeItems()}
+        className={`${styles.btn__open} ${styles.delete}`}
+      >
+        Очистить стор
+      </button>
+      <p></p>
       <button className={`${styles.btn__open} ${(form ? styles.open : styles.close)}`} onClick={() => setForm(!form)}>
         {!form ? "Open Form" : "Close Form"}
       </button>

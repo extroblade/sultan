@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {selectItemData} from "../../store/items/selectors";
-import {setCategories, setFilters, sort, sortCat} from '../../store/items/itemsSlice';
+import {setCategories, setFilters, sort, sortCat, updateItems} from '../../store/items/itemsSlice';
 import {getItemsFromAdmin} from "../../utils/getItemsFromAdmin";
 import styles from './Params.module.css'
 import {ReactComponent as TrashIcon} from "../../static/delete.svg";
@@ -54,7 +54,7 @@ const Params = () => {
   function sortBrandsSearch(event: React.ChangeEvent<HTMLInputElement>) {
     setSortedBrands(
       [...[...brands].filter((i:string) => {
-        const regex = new RegExp(event.target.value, 'gi')
+        const regex: RegExp = new RegExp(event.target.value, 'gi')
         return i.match(regex)
       })]
     )
@@ -78,13 +78,19 @@ const Params = () => {
 
   useEffect(()=>{
     dispatch(sort())
-  },[filters])
+  },[filters, dispatch])
+
+  useEffect(()=>{
+    dispatch(updateItems)
+    setSortedBrands(() => [...[...new Set([...getItemsFromAdmin()].map(i => i.brand))].sort((a,b) => a.localeCompare(b))])
+    setSortedSellers( () => [...[...new Set([...getItemsFromAdmin()].map(i => i.seller))].sort((a,b) => a.localeCompare(b))])
+  },[localStorage.getItem("items")])
 
   useEffect(()=>{
     dispatch(setCategories(cat))
     dispatch(sortCat())
     window.scrollTo(0, 0)
-  },[cat])
+  },[cat, dispatch])
 
   const getFilters = (event: React.ChangeEvent<HTMLInputElement>) => {
     if(event.target.checked){
@@ -236,7 +242,10 @@ const Params = () => {
         {categories.map((c: any) =>
           <div className={styles.categories__btns} key={c.name}>
             <div className={`${styles.hl} ${styles.pc}`}></div>
-            <button onClick={() => setCat(c.name)} className={c.name===currentCat ? styles.type__current : styles.type}>
+            <button
+              onClick={() => currentCat===c.name ? setCat("") : setCat(c.name)}
+              className={c.name===currentCat ? styles.type__current : styles.type}
+            >
               {c.name.toUpperCase()}
             </button>
           </div>

@@ -21,6 +21,9 @@ const itemsSlice = createSlice({
   name: 'items',
   initialState,
   reducers: {
+    updateItems(state){
+      state.items = getItemsFromAdmin()
+    },
     addToLocalStorage(state, action: PayloadAction<ItemsType>) {
       const data = localStorage.getItem('items');
       state.items = [...(data ? JSON.parse(data) : []), action.payload]
@@ -117,6 +120,7 @@ const itemsSlice = createSlice({
   },
 });
 export const {
+  updateItems,
   sort,
   sortCat,
   setFilters,

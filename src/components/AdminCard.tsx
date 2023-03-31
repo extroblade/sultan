@@ -37,7 +37,7 @@ const AdminCard: FC<IType> = ({i}) => {
   useEffect(()=>{
     localStorage.setItem("types", JSON.stringify(cat));
     dispatch(setTypes())
-  },[cat])
+  },[cat, dispatch])
 
   const changeCat = (event: React.ChangeEvent<HTMLInputElement>) => {
     const findItemNew = newCats.find((item: Categories) => item.name === event.target.value)
@@ -98,83 +98,84 @@ const AdminCard: FC<IType> = ({i}) => {
 
       {editing ?
 
-        <div className={styles.item} key={i.code} style={{backgroundColor: "rgba(255, 200, 94, 0.2)", border: "1px dotted lightblue"}}>
-
+        <div className={styles.admin__card__inner} key={i.code} >
           <div className={styles.img__container}>
             <div>
               <img src={i.url} alt="product" className={styles.img}/>
-              <input type="text" value={url} onChange={(event) => setUrl(event.target.value)}/>
             </div>
           </div>
+          <div className={styles.add}>
+            <p>
+              URL:
+              <span className={styles.item__info}>
+                <input type="text" value={url} onChange={(event) => setUrl(event.target.value)}/>
+              </span>
+            </p>
+            <p>
+              Название:
+              <span className={styles.item__info}>
+                <input type="text" value={name} onChange={(event) => setName(event.target.value)}/>
+              </span>
+            </p>
+            <p>
+              Тип:
+              <span className={styles.item__info}>
+                <input type="text" value={type} onChange={(event) => setType(event.target.value)}/>
+              </span>
+            </p>
 
-          <div className={styles.text__container}>
-            <div className={styles.info__container}>
-              <p>
-                Название:
-                <span className={styles.item__info}>
-                  <input type="text" value={name} onChange={(event) => setName(event.target.value)}/>
-                </span>
-              </p>
-              <p>
-                Тип:
-                <span className={styles.item__info}>
-                  <input type="text" value={type} onChange={(event) => setType(event.target.value)}/>
-                </span>
-              </p>
+            <p>
+              Размер:
+              <span className={styles.item__info}>
+                <input type="text" value={size} onChange={(event) => setSize(+event.target.value)}/>
+              </span>
+            </p>
 
-              <p>
-                Размер:
-                <span className={styles.item__info}>
-                  <input type="text" value={size} onChange={(event) => setSize(+event.target.value)}/>
-                </span>
-              </p>
+            <p> Штрихкод:
+              <span className={styles.item__info}>
+                {i.code}
+              </span>
+            </p>
 
-              <p> Штрихкод:
-                <span className={styles.item__info}>
-                  {i.code}
-                </span>
-              </p>
-
-              <p>
-                Производитель:
-                <span className={styles.item__info}>
-                  <input type="text" value={seller} onChange={(event) => setSeller(event.target.value)}/>
-                </span>
-              </p>
-              <p>
-                Бренд:
-                <span className={styles.item__info}>
-                  <input type="text" value={brand} onChange={(event) => setBrand(event.target.value)}/>
-                </span>
-              </p>
-              <p>
-                Цена:
-                <span className={styles.item__info}>
-                  <input type="number" value={price} onChange={(event) => setPrice(+event.target.value)}/> &#8376;
-                </span>
-              </p>
+            <p>
+              Производитель:
+              <span className={styles.item__info}>
+                <input type="text" value={seller} onChange={(event) => setSeller(event.target.value)}/>
+              </span>
+            </p>
+            <p>
+              Бренд:
+              <span className={styles.item__info}>
+                <input type="text" value={brand} onChange={(event) => setBrand(event.target.value)}/>
+              </span>
+            </p>
+            <p>
+              Цена:
+              <span className={styles.item__info}>
+                <input type="number" value={price} onChange={(event) => setPrice(+event.target.value)}/>
+              </span>
+            </p>
 
 
-              <div style={{display: "flex", flexDirection: "column"}}>
-                <p> Тип ухода: </p>
-                {[...cat].sort((a,b) => a.name.localeCompare(b.name)).map(c =>
+            <div className={styles.checks}>
+              <p> Тип ухода: </p>
+              {[...cat].sort((a,b) => a.name.localeCompare(b.name)).map(c =>
 
-                  <span key={c.name} style={{display: "flex", flexDirection: "row"}}>
-                    <input
-                      type={"checkbox"}
-                      value={c.name}
-                      checked={c.itemsCodes.find(item => item === i.code) === i.code}
-                      onChange={changeCat}
-                    /> {c.name}
-                  </span>
-                )}
-              </div>
+                <span key={c.name}>
+                  <input
+                    type={"checkbox"}
+                    value={c.name}
+                    checked={c.itemsCodes.find(item => item === i.code) === i.code}
+                    onChange={changeCat}
+                  /> {c.name}
+                </span>
+              )}
             </div>
           </div>
 
         </div>
         :
-        <div className={styles.item} key={i.code}>
+        <div key={i.code}>
           <div className={styles.img__container}>
             <Link to={PRODUCT_ROUTE+'/'+i.code}>
               <img src={i.url} alt="product" className={styles.img}/>

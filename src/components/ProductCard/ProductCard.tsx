@@ -11,6 +11,7 @@ import styles from './ProductCard.module.css'
 import {addItem} from "../../store/cart/cartSlice";
 import {useDispatch, useSelector} from 'react-redux';
 import {selectItemData} from "../../store/items/selectors";
+import {Categories} from "../../store/items/itemsTypes";
 
 interface IType {
   i: ItemsType
@@ -60,12 +61,11 @@ const ProductCard: FC<IType> = ({i }) => {
             Тип ухода: <span>
               <select>
                 {
-                  categories.find((c: any) => {
-                    return c.itemsCodes.find((item:any) => item===i.code)===i.code
+                  categories.find((c: Categories) => {
+                    return c.itemsCodes.find((item) => item===i.code)===i.code
                   }) ?
-                    // @ts-ignore
-                    categories.filter((c: any) => {
-                      return c.itemsCodes.find((item:any) => item===i.code)===i.code
+                    categories.filter((c: Categories) => {
+                      return c.itemsCodes.find((item) => item===i.code)===i.code
                     }).map(f =>
                       <option key={f.name}>{f.name}</option>
                     ) :
