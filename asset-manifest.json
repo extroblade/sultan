@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/sultan/static/css/main.6bbfab30.css",
-    "main.js": "/sultan/static/js/main.44fa956f.js",
+    "main.css": "/sultan/static/css/main.effc35ad.css",
+    "main.js": "/sultan/static/js/main.8005a1c8.js",
     "static/media/main-logo.svg": "/sultan/static/media/main-logo.1d66fdf6e476ec0b232b8bb092392c80.svg",
     "static/media/main-logo-white.svg": "/sultan/static/media/main-logo-white.08f290e5579616811ac3769551aef450.svg",
     "static/media/cart.svg": "/sultan/static/media/cart.7e3f10a67cbf7efab90673a8b0ccf897.svg",
@@ -15,6 +15,7 @@
     "index.html": "/sultan/index.html",
     "static/media/lens.svg": "/sultan/static/media/lens.ea9ef697bfe0d73dc61f4d8bcff567cc.svg",
     "static/media/completed.svg": "/sultan/static/media/completed.11e14fa52a93853c049af6bfb487140d.svg",
+    "static/media/close.svg": "/sultan/static/media/close.c19f573b2af452b55dcb93f02879ca3a.svg",
     "static/media/hamburger-white.svg": "/sultan/static/media/hamburger-white.68477cbb72e2d65876b45a12c3f6bc09.svg",
     "static/media/download.svg": "/sultan/static/media/download.22e356ed7d36f448dcbf0ac7a1a1a990.svg",
     "static/media/leftarrow.svg": "/sultan/static/media/leftarrow.8009929457bde0328f8f182170fd2c0f.svg",
@@ -24,11 +25,11 @@
     "static/media/small_arrow.svg": "/sultan/static/media/small_arrow.5e5d30daddeae7614a94f9346edb1e23.svg",
     "static/media/arrow_down.svg": "/sultan/static/media/arrow_down.90a0847e2609fe35eb180fd09df108b9.svg",
     "static/media/arrow_up.svg": "/sultan/static/media/arrow_up.80566af4e2a61f1f1d7b01637e2cc31d.svg",
-    "main.6bbfab30.css.map": "/sultan/static/css/main.6bbfab30.css.map",
-    "main.44fa956f.js.map": "/sultan/static/js/main.44fa956f.js.map"
+    "main.effc35ad.css.map": "/sultan/static/css/main.effc35ad.css.map",
+    "main.8005a1c8.js.map": "/sultan/static/js/main.8005a1c8.js.map"
   },
   "entrypoints": [
-    "static/css/main.6bbfab30.css",
-    "static/js/main.44fa956f.js"
+    "static/css/main.effc35ad.css",
+    "static/js/main.8005a1c8.js"
   ]
 }
