@@ -16,7 +16,7 @@ const Admin = () => {
   const [id, setId] = useState(Date.now())
   const [form, setForm] = useState(false)
 
-  const newItem: ItemsType = {brand: "", code: String(id), desc: "", name: "", price: 0, seller: "", size: 0, type: "", url: ""}
+  const newItem: ItemsType = {brand: "Не указан", code: String(id), desc: "Не указан", name: "Не указан", price: 0, seller: "Не указан", size: 0, type: "Не указан", url: "Не указан"}
   const [d, setD] = useState(localStorage.getItem('items'))
 
   useEffect(() => {
