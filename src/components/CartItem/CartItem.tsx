@@ -80,7 +80,7 @@ const CartItem: FC<CIType> = ({i}) => {
       </Link>
 
       <div className={styles.col}>
-        <p className="size">
+        <p className={styles.size}>
           {item.type==="weight" ? <GrIcon/> : <LitIcon/>}
           {`  ${item.size}`}
           {item.type==="weight" ? " г" : " мл"}

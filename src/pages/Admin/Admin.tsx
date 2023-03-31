@@ -16,7 +16,17 @@ const Admin = () => {
   const [id, setId] = useState(Date.now())
   const [form, setForm] = useState(false)
 
-  const newItem: ItemsType = {brand: "Не указан", code: String(id), desc: "Не указан", name: "Не указан", price: 0, seller: "Не указан", size: 0, type: "Не указан", url: "Не указан"}
+  const newItem: ItemsType = {
+    brand: "Бренд",
+    code: String(id),
+    desc: "Описание",
+    name: "Имя",
+    price: 0,
+    seller: "Производитель",
+    size: 0,
+    type: "Не указан",
+    url: "https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?format=jpg&quality=90&v=1530129081"
+  }
   const [d, setD] = useState(localStorage.getItem('items'))
 
   useEffect(() => {

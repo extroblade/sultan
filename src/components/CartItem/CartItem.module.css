@@ -265,6 +265,12 @@
   font-size: 30px;
   line-height: 36px;
 }
+.cart__item .size {
+  color: rgba(63, 78, 101, 0.4);
+}
+.cart__item .size svg path {
+  fill: rgba(63, 78, 101, 0.4);
+}
 .cart__item__price {
   display: flex;
   flex-direction: row;
