@@ -1,6 +1,40 @@
 
 @import '../styles/styles'
 
+.burger
+  display: flex
+  flex-direction: column
+  min-height: 90vh
+  &__row
+    display: flex
+    flex-direction: row
+    align-items: center
+    padding: 10px 0
+    margin: 0 20px
+    p
+      padding: 0 10px
+  &__col
+    display: flex
+    flex-direction: column
+  h2
+    margin: 10px
+  &__navs
+    display: flex
+    flex-direction: column
+
+
+  &__nav
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    margin: 10px
+  .btn__text
+    align-items: center
+    justify-content: center
+    margin: 10px
+
+
+
 .header
   font-style: normal
   font-weight: 600
@@ -9,6 +43,8 @@
   overflow: hidden
   max-width: 100%
   background-color: $white
+  img
+    min-width: 100%
   .cart
     display: flex
     flex-direction: row
@@ -37,7 +73,7 @@
     p
       color: $gray
       font-weight: 300
-      font-size: 1.2rem
+      font-size: 12px
       line-height: 150%
     a
       cursor: pointer
@@ -47,7 +83,7 @@
     color: $gray
 
   .btn__text
-    padding: 20px 30px
+    padding: 1em 1.5em
   strong
     font-style: normal
     font-weight: 600
@@ -63,6 +99,7 @@
       padding: 0 10px
 
   .input
+    margin-top: -8px
     button
       padding: 8px
       width: 34px
@@ -156,7 +193,7 @@
         width: 30px
         height: 0
         rotate: 90deg
-        border:  1px dotted rgba($gray, 0.1)
+        border: 1px dotted rgba($gray, 0.1)
       &__img
         min-width: 15px
         g
@@ -175,10 +212,9 @@
         align-items: center
         padding: 13px 20px
         p
-          font-style: normal
           font-weight: 600
           font-size: 1.2rem
-          line-height: 15px
+          line-height: 150%
           margin-left: 10px
 
       &__btn

@@ -239,6 +239,44 @@
   }
 }
 
+.burger {
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+}
+.burger__row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 0;
+  margin: 0 20px;
+}
+.burger__row p {
+  padding: 0 10px;
+}
+.burger__col {
+  display: flex;
+  flex-direction: column;
+}
+.burger h2 {
+  margin: 10px;
+}
+.burger__navs {
+  display: flex;
+  flex-direction: column;
+}
+.burger__nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 10px;
+}
+.burger .btn__text {
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
 .header {
   font-style: normal;
   font-weight: 600;
@@ -247,6 +285,9 @@
   overflow: hidden;
   max-width: 100%;
   background-color: #FFFFFF;
+}
+.header img {
+  min-width: 100%;
 }
 .header .cart {
   display: flex;
@@ -281,7 +322,7 @@
 .header__call p {
   color: #3F4E65;
   font-weight: 300;
-  font-size: 1.2rem;
+  font-size: 12px;
   line-height: 150%;
 }
 .header__call a {
@@ -292,7 +333,7 @@
   color: #3F4E65;
 }
 .header .btn__text {
-  padding: 20px 30px;
+  padding: 1em 1.5em;
 }
 .header strong {
   font-style: normal;
@@ -309,6 +350,9 @@
 }
 .header .contact__container p {
   padding: 0 10px;
+}
+.header .input {
+  margin-top: -8px;
 }
 .header .input button {
   padding: 8px;
@@ -438,10 +482,9 @@
     padding: 13px 20px;
   }
   .header .mobile__link p {
-    font-style: normal;
     font-weight: 600;
     font-size: 1.2rem;
-    line-height: 15px;
+    line-height: 150%;
     margin-left: 10px;
   }
   .header .mobile__btn {
