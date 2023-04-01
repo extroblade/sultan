@@ -269,6 +269,9 @@ img {
   flex-direction: row;
   justify-content: space-between;
 }
+.footer .input {
+  margin-top: 10px;
+}
 .footer .input button {
   margin-top: 5px;
   margin-left: -45px;
@@ -280,7 +283,6 @@ img {
   width: 12px;
 }
 .footer .btn__text {
-  padding: 20px 10px;
   justify-content: center;
 }
 .footer .btn__text .mobile {

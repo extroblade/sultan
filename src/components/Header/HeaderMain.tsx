@@ -92,10 +92,10 @@ const HeaderMain: FC<iHeader> = ({price, amount}) => {
         </div>
 
         <div className={styles.col}>
-          <button className={styles.btn__text}>
+          <Link to={"#"} className={styles.btn__text}>
             <span>Прайс-лист</span>
             <DownloadIcon/>
-          </button>
+          </Link>
         </div>
 
         <div className={styles.cart}>
