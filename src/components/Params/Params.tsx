@@ -98,7 +98,7 @@ const Params = () => {
       setFiltersList(() => [...filtersList, {key: event.target.id, value: event.target.name}])
     } else if (filtersList.length) {
       setFiltersList((f) => f.filter((i) => {
-        return i ? (i.key !== event.target.id) && (i.value !== event.target.name) : false
+        return i ? ((i.key !== event.target.id) || (i.value !== event.target.name)) : false
       }))
     }
   }

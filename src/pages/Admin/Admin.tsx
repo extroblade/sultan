@@ -10,6 +10,7 @@ import styles from "./Admin.module.css"
 import {getItemsFromAdmin} from "../../utils/getItemsFromAdmin";
 
 const Admin = () => {
+
   const dispatch = useDispatch()
   const { items, categories } = useSelector(selectItemData)
   const [cat, setCat] = useState<Categories[]>([...categories])
@@ -43,7 +44,9 @@ const Admin = () => {
   }
 
   const removeItems = () => {
+    localStorage.removeItem("types");
     localStorage.removeItem("items");
+    dispatch(setTypes())
     dispatch(updateItems())
   }
 

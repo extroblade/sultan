@@ -28,7 +28,6 @@ const AdminCard: FC<IType> = ({i}) => {
   const [seller, setSeller] = useState(i.seller)
   const [price, setPrice] = useState(i.price)
   const [url, setUrl] = useState(i.url)
-
   const newItem = [...getItemsFromAdmin()].find(item => item.code === i.code)
 
   const [cat, setCat] = useState([...categories])
@@ -38,6 +37,7 @@ const AdminCard: FC<IType> = ({i}) => {
     localStorage.setItem("types", JSON.stringify(cat));
     dispatch(setTypes())
   },[cat, dispatch])
+
 
   const changeCat = (event: React.ChangeEvent<HTMLInputElement>) => {
     const findItemNew = newCats.find((item: Categories) => item.name === event.target.value)
@@ -53,9 +53,9 @@ const AdminCard: FC<IType> = ({i}) => {
         itemsCodes: findItem ? [...findItem.itemsCodes.filter(c => c!==i.code)] : []
       }]
     }
+    dispatch(setTypes())
     setCat(() => [...newCats])
     localStorage.setItem("types", JSON.stringify(cat));
-    dispatch(setTypes())
   }
 
 
@@ -159,7 +159,7 @@ const AdminCard: FC<IType> = ({i}) => {
 
             <div className={styles.checks}>
               <p> Тип ухода: </p>
-              {[...cat].sort((a,b) => a.name.localeCompare(b.name)).map(c =>
+              {[...cat].sort((a,b) => a.name.localeCompare(b.name)).map((c: Categories) =>
 
                 <span key={c.name}>
                   <input
