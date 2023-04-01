@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/sultan/static/css/main.d5212498.css",
-    "main.js": "/sultan/static/js/main.242d7280.js",
+    "main.css": "/sultan/static/css/main.f6660b06.css",
+    "main.js": "/sultan/static/js/main.2e106f63.js",
     "static/media/main-logo.svg": "/sultan/static/media/main-logo.1d66fdf6e476ec0b232b8bb092392c80.svg",
     "static/media/main-logo-white.svg": "/sultan/static/media/main-logo-white.08f290e5579616811ac3769551aef450.svg",
     "static/media/cart.svg": "/sultan/static/media/cart.7e3f10a67cbf7efab90673a8b0ccf897.svg",
@@ -9,6 +9,7 @@
     "static/media/share.svg": "/sultan/static/media/share.5201f4defbefb503f0cd54ced3977e87.svg",
     "static/media/email.svg": "/sultan/static/media/email.3340915fd443967adca6bd4a1fe514ba.svg",
     "static/media/lit.svg": "/sultan/static/media/lit.4dcb2f7b2fce5e4998ce83687d126773.svg",
+    "static/media/call.svg": "/sultan/static/media/call.4dd3f9cbdfd5e5b6a1b3c551139505da.svg",
     "static/media/gr.svg": "/sultan/static/media/gr.16318598fb0d18ca14637ccdf28201f7.svg",
     "static/media/address.svg": "/sultan/static/media/address.ac8d5a925aa65f28f8c1f78a97674963.svg",
     "static/media/catalog.svg": "/sultan/static/media/catalog.4756189f8fb2f4cdf0b38c581c7033d8.svg",
@@ -25,11 +26,11 @@
     "static/media/small_arrow.svg": "/sultan/static/media/small_arrow.5e5d30daddeae7614a94f9346edb1e23.svg",
     "static/media/arrow_down.svg": "/sultan/static/media/arrow_down.90a0847e2609fe35eb180fd09df108b9.svg",
     "static/media/arrow_up.svg": "/sultan/static/media/arrow_up.80566af4e2a61f1f1d7b01637e2cc31d.svg",
-    "main.d5212498.css.map": "/sultan/static/css/main.d5212498.css.map",
-    "main.242d7280.js.map": "/sultan/static/js/main.242d7280.js.map"
+    "main.f6660b06.css.map": "/sultan/static/css/main.f6660b06.css.map",
+    "main.2e106f63.js.map": "/sultan/static/js/main.2e106f63.js.map"
   },
   "entrypoints": [
-    "static/css/main.d5212498.css",
-    "static/js/main.242d7280.js"
+    "static/css/main.f6660b06.css",
+    "static/js/main.2e106f63.js"
   ]
 }
