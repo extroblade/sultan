@@ -78,6 +78,7 @@ const Params = () => {
 
   useEffect(()=>{
     dispatch(sort())
+    console.log(filtersList)
   },[filters, dispatch])
 
   useEffect(()=>{
@@ -140,8 +141,8 @@ const Params = () => {
               <LeftArrow/>
             </div>
             <span>
-            Назад
-          </span>
+              Назад
+            </span>
           </Link>
         </div>
         <h2 className={styles.mobile}>Косметика и гигиена</h2>
