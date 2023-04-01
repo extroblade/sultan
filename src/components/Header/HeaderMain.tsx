@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {FC} from 'react';
 import styles from "./Header.module.css";
 import {ReactComponent as AddressIcon} from "../../static/address.svg";
 import {ReactComponent as EmailIcon} from "../../static/email.svg";
@@ -10,29 +10,13 @@ import {ReactComponent as LensIcon} from "../../static/lens.svg";
 import consultant from "../../static/consultant.png";
 import {ReactComponent as DownloadIcon} from "../../static/download.svg";
 import {ReactComponent as CartIcon} from "../../static/cart.svg";
-import {useDispatch, useSelector} from "react-redux";
-import {selectCart} from "../../store/cart/selectors";
-import {selectItemData} from "../../store/items/selectors";
-import {CartItem} from "../../store/cart/types";
-import {setTotalPrice} from "../../store/cart/cartSlice";
 
-const HeaderMain = () => {
-  const { totalPrice, cartItems } = useSelector(selectCart);
-  const { items } = useSelector(selectItemData);
-  const dispatch = useDispatch()
-  const countAmount = (it: CartItem[]): number => {
-    return  it.reduce((i, next) => i+next.count,0)
-  }
+interface iHeader {
+  price: number,
+  amount: number
+}
 
-
-  const [amount, setAmount] = useState(0)
-  const [price, setPrice] = useState(0)
-
-  useEffect(() => {
-    setAmount(() => countAmount(cartItems));
-    setPrice(() => (Math.ceil(totalPrice*10)/10))
-    dispatch(setTotalPrice())
-  }, [dispatch, cartItems, totalPrice, items])
+const HeaderMain: FC<iHeader> = ({price, amount}) => {
 
   return (
     <div className={styles.pc}>

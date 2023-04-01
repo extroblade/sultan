@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {FC, useState} from 'react';
 import styles from "./Header.module.css";
 import {ReactComponent as CloseIcon} from "../../static/close.svg";
 import {ReactComponent as HamburgerIcon} from "../../static/hamburger-white.svg";
@@ -10,31 +10,16 @@ import {ReactComponent as LensIcon} from "../../static/lens.svg";
 import consultant from "../../static/consultant.png";
 import {ReactComponent as DownloadIcon} from "../../static/download.svg";
 import {ReactComponent as CartIcon} from "../../static/cart.svg";
-import {useDispatch, useSelector} from "react-redux";
-import {selectCart} from "../../store/cart/selectors";
-import {selectItemData} from "../../store/items/selectors";
-import {CartItem} from "../../store/cart/types";
-import {setTotalPrice} from "../../store/cart/cartSlice";
+
 import BurgerModal from "../modals/BurgerModal";
 
-const HeaderMobile = () => {
-  const { totalPrice, cartItems } = useSelector(selectCart);
-  const { items } = useSelector(selectItemData);
-  const dispatch = useDispatch()
-  const countAmount = (it: CartItem[]): number => {
-    return  it.reduce((i, next) => i+next.count,0)
-  }
+interface iHeader {
+  price: number,
+  amount: number
+}
+
+const HeaderMobile: FC<iHeader> = ({price, amount}) => {
   const [modalOpen, setModalOpen] = useState(false);
-
-
-  const [amount, setAmount] = useState(0)
-  const [price, setPrice] = useState(0)
-
-  useEffect(() => {
-    setAmount(() => countAmount(cartItems));
-    setPrice(() => (Math.ceil(totalPrice*10)/10))
-    dispatch(setTotalPrice())
-  }, [dispatch, cartItems, totalPrice, items])
 
   return (
     <div className={styles.mobile} style={{flexDirection: "column"}}>
@@ -99,7 +84,7 @@ const HeaderMobile = () => {
           </Link>
         </div>
       </div>
-      <BurgerModal show={modalOpen} onHide={() => setModalOpen(false)}/>
+      <BurgerModal show={modalOpen}/>
     </div>
 
   );
