@@ -133,7 +133,7 @@ const Item = () => {
             <button onClick={() => setDescActive(() => !descActive)} className={styles.open__button}>
               Описание {descActive ? <ArrowOpenIcon/> : <ArrowIcon/>}
             </button>
-            <p style={{width: "500px"}}>
+            <p className={styles.desc}>
               {!descActive && i.desc}
             </p>
             <div className={styles.hl}></div>
@@ -146,7 +146,7 @@ const Item = () => {
                   Назначение: <span className={styles.item__info}>{i.seller}</span>
                 </p>
                 <p>
-                  Тип: <span className={styles.item__info}>{i.type}</span>
+                  Тип: <span className={styles.item__info}>{i.type==="weight" ? "Вес" : "Объем"}</span>
                 </p>
                 <p>
                   Производитель: <span className={styles.item__info}>{i.seller}</span>

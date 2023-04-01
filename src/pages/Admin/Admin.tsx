@@ -164,15 +164,17 @@ const Admin = () => {
             </div>
 
             <div className={styles.checks}>
-              {[...cat].sort((a,b) => a.name.localeCompare(b.name)).map(c =>
-                <span key={c.name} className={styles.inner}>
-                  <input
-                    type={"checkbox"}
-                    value={c.name}
-                    onChange={changeCat}
-                  /> {c.name}
-                </span>
-              )}
+              <div className={styles.inner} style={{display: "flex", flexDirection: "column"}}>
+                {[...cat].sort((a,b) => a.name.localeCompare(b.name)).map(c =>
+                  <span key={c.name}>
+                    <input
+                      type={"checkbox"}
+                      value={c.name}
+                      onChange={changeCat}
+                    /> {c.name}
+                  </span>
+                )}
+              </div>
             </div>
 
             <button type={"button"} className={`${styles.btn__open} ${styles.close}`} onClick={submit}>
@@ -184,9 +186,7 @@ const Admin = () => {
 
       <div className={styles.admin__grid}>
         {d && JSON.parse(d).length ?[...JSON.parse(d)].sort((a,b) => a.code-b.code).map((i: ItemsType) =>
-          <div key={i.code}>
-            <AdminCard i={i}></AdminCard>
-          </div>
+            <AdminCard i={i} key={i.code}></AdminCard>
         ):
           <div>
             No items at localstorage

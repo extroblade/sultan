@@ -336,6 +336,9 @@
   border: 1px solid rgb(110, 147, 238);
   border-radius: 15px;
 }
+.admin__card img {
+  height: 200px;
+}
 .admin__card .btns {
   margin-bottom: 20px;
   display: flex;

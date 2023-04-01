@@ -12,7 +12,7 @@ export const publicRoutes: RouteObject[] = [
   {path: CATALOG_ROUTE, element: <Catalog/>},
   {path: CART_ROUTE, element: <Cart/>},
   {path: PRODUCT_ROUTE+"/:code", element: <Item/>},
-  {path: "*", element: <Navigate to="/" replace />}
+  {path: "*", element: <Navigate to={CATALOG_ROUTE} replace />} //!!! SHOP_ROUTE
 ]
 
 export const authRoutes: RouteObject[] = [

@@ -303,7 +303,7 @@
   flex-direction: column;
 }
 .item .img {
-  height: 194px;
+  max-height: 194px;
   width: 100%;
 }
 .item .img__container {

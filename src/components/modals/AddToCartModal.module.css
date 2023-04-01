@@ -277,7 +277,6 @@
 .modal .btn__img {
   width: 60px;
   height: 60px;
-  cursor: default;
 }
 .modal__top {
   display: flex;

@@ -22,9 +22,9 @@ const Ordered: FC<ModalType> = ({show, onHide} ) => {
           </div>
 
           <div className={styles.modal__content}>
-            <div className={styles.btn__img}>
+            <button className={styles.btn__img} onClick={onHide}>
               <Completed/>
-            </div>
+            </button>
             <h2>Спасибо за заказ</h2>
             <p>Наш менеджер свяжется с вами в ближайшее время</p>
           </div>
