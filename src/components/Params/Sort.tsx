@@ -21,13 +21,13 @@ const Sort: FC<iSort> = ({name, field, pressed, sorted, sortSearch, getFilters, 
   return (
     <div className={styles.sort}>
       <h4>{name}</h4>
-      <div className={`${styles.input}`}>
+      <div className={styles.input}>
         <input type="text" placeholder={"Поиск..."} onChange={sortSearch}/>
         <button type={"submit"} className={``}>
           <LensIcon/>
         </button>
       </div>
-      {sorted.map((i: any) =>
+      {sorted.map((i: string) =>
         <div key={i} className={styles.sort__item}>
           <input type="checkbox" name={i} id={field} className={styles.checkbox} onChange={getFilters}/>{i}
           <span>
@@ -35,7 +35,7 @@ const Sort: FC<iSort> = ({name, field, pressed, sorted, sortSearch, getFilters, 
           </span>
         </div>
       )}
-      <button className={styles.link__opener} onClick={() => changePressed()}>
+      <button className={styles.link__opener} onClick={changePressed}>
         {pressed ?
           <span>Скрыть <ArrowIcon/> </span>:
           <span>Показать все <ArrowOpenIcon/></span>}

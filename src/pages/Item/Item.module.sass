@@ -11,11 +11,11 @@
   &__page
     justify-content: space-between
   .right__side
-    width: 800px
+    max-width: 800px
   &__info
     color: $black
     font-weight: 500
-    font-size: 14px
+    font-size: 1rem
     line-height: 150%
   .info__container
     display: flex
@@ -24,7 +24,7 @@
       color: $gray
       font-style: normal
       font-weight: 300
-      font-size: 14px
+      font-size: 1rem
       line-height: 150%
 
   &__img
@@ -33,7 +33,7 @@
     max-width: 800px
     max-height: 600px
     overflow: hidden
-    width: 70%
+    min-width: 70%
     img
       min-height: 300px
       height: 80%
@@ -41,7 +41,7 @@
   .desc
     max-width: 500px
     font-weight: 300
-    font-size: 12px
+    font-size: 0.8rem
     line-height: 150%
     color: $gray
 
@@ -50,6 +50,7 @@
     flex-direction: row
     align-items: center
     justify-content: space-between
+
   .amount
     display: flex
     flex-direction: row
@@ -70,7 +71,7 @@
     flex-direction: row
     justify-content: space-between
     font-weight: 800
-    font-size: 30px
+    font-size: 2rem
     line-height: 130%
   .size
     margin: 10px 0 20px 0
@@ -78,7 +79,7 @@
       fill: rgba($gray, 0.2)
   .btn__text
     font-weight: 700
-    font-size: 14px
+    font-size: 1rem
     line-height: 17px
     svg path
       fill: $white
@@ -101,7 +102,7 @@
     background-color: $white
     padding: 15px 25px
     font-weight: 400
-    font-size: 14px
+    font-size: 1rem
     line-height: 17px
     text-align: center
     border-radius: 10px
@@ -112,17 +113,17 @@
     color: $black
     font-style: normal
     font-weight: 400
-    font-size: 30px
+    font-size: 3rem
     line-height: 150%
     strong
       font-weight: 800
       font-style: normal
-      font-size: 30px
+      font-size: 2rem
       line-height: 150%
   .available
     color: #1FD85D
     font-weight: 500
-    font-size: 14px
+    font-size: 1.4rem
     line-height: 130%
   &__download
     white-space: nowrap
@@ -140,15 +141,16 @@
     background-color: $white
     margin: 10px 0
     font-weight: 500
-    font-size: 16px
+    font-size: 1.2rem
     line-height: 150%
-
 
   .info
     margin-top: 50px
 
-  @media (max-width: 768px)
+  @media (max-width: $mobile)
     padding: 0 20px
+    .right__side
+      max-width: 100%
     &__img
       display: flex
       align-items: center
@@ -156,10 +158,10 @@
       padding: 10px
       margin: 0
       object-fit: cover
-      height: auto
-      width: 80%
+      min-height: 0
+      min-width: 80%
       img
-        min-height: 300px
+        max-height: 300px
         height: 80%
         object-fit: cover
 
@@ -177,17 +179,19 @@
       margin-top: 20px
     .share
       .btn__text
-        padding: 5px 50px
+        padding: 5px 10px
       display: flex
+      flex-wrap: wrap
       flex-direction: row
-      justify-content: space-between
+      justify-content: space-around
     .info__container
       margin-bottom: 20px
     &__name, strong
-      font-size: 16px
+      font-size: 1rem
     .price
       margin-right: 60px
       &__info
+        flex-wrap: wrap
         margin: 20px 0
         justify-content: flex-start
 

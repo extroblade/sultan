@@ -26,9 +26,10 @@ const Catalog: FC = () => {
     dispatch(setCurrentPage(page));
     window.scrollTo(0,0)
   };
+
   useEffect(()=>{
     dispatch(sortPriceASC())
-  },[dispatch])
+  },[])
 
   useEffect(()=>{
     if (currentCat)

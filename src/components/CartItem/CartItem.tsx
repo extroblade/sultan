@@ -90,7 +90,7 @@ const CartItem: FC<CIType> = ({i}) => {
           {item.brand} {item.name.length >=35 ? `${item.name.substring(0, 35)}...` : item.name}
           </span>
         </Link>
-        <p style={{width:"450px"}}>{item.desc.length >=150 ? `${item.desc.substring(0, 150)}...` : item.desc}</p>
+        <p className={styles.desc}>{item.desc.length >=150 ? `${item.desc.substring(0, 150)}...` : item.desc}</p>
       </div>
 
       <span className={styles.cart__btns}>

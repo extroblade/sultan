@@ -33,10 +33,14 @@ const BurgerModal: FC<iModal> = ({show}) => {
         </div>
 
         <div className={styles.burger__row}>
-          <strong className={styles.header__call__item}>+7 (777) 490-00-91</strong>
-          <p className={styles.header__call__item}>время работы: 9:00-20:00</p>
-
+          <CallIcon fill={"black!important"}/>
+          <p>
+            <strong className={styles.header__call__item}>Отдел продаж</strong><br/>
+            +7 (777) 490-00-91 <br/>
+            время работы: 9:00-20:00
+          </p>
         </div>
+
         <div className={styles.burger__row}>
           <button className={styles.btn__img}>
             <CallIcon/>

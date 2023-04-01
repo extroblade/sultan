@@ -57,7 +57,9 @@ const Item = () => {
         <div className={styles.vl}></div>
         <Link to={CATALOG_ROUTE} className={styles.breadcrumb}> Каталог </Link>
         <div className={styles.vl}></div>
-        <Link to={`${PRODUCT_ROUTE}/${code}`} className={`${styles.breadcrumb} ${styles.active}`}> {i.name} </Link>
+        <Link to={`${PRODUCT_ROUTE}/${code}`} className={`${styles.breadcrumb} ${styles.active}`}>
+          {i.name[0].toUpperCase()}{i.name.substring(1, i.name.length)}
+        </Link>
       </div>
       <div className={`${styles.breadcrumbs} ${styles.mobile}`}>
         <Link to={CATALOG_ROUTE} className={styles.breadcrumb}>

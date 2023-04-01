@@ -1,159 +1,96 @@
-
 @import '../styles/styles'
 
+
 .burger
-  display: flex
-  flex-direction: column
-  min-height: 90vh
-  &__row
-    display: flex
-    flex-direction: row
-    align-items: center
-    padding: 10px 0
-    margin: 0 20px
-    p
-      padding: 0 10px
-  &__col
-    display: flex
-    flex-direction: column
-  h2
-    margin: 10px
-  &__navs
-    display: flex
-    flex-direction: column
-
-
-  &__nav
-    display: flex
-    align-items: center
-    justify-content: flex-start
-    margin: 10px
-  .btn__text
-    align-items: center
-    justify-content: center
-    margin: 10px
-
-
-
-.header
-  font-style: normal
-  font-weight: 600
-  font-size: 1.4rem
-  line-height: 130.02%
-  overflow: hidden
-  max-width: 100%
-  background-color: $white
-  img
-    min-width: 100%
-  .cart
-    display: flex
-    flex-direction: row
-  .menu__open
-    display: none
-    cursor: pointer
-  .head
+  display: none
+  font-size: 2rem
+  @media (max-width: $mobile)
+    background-color: $white
+    z-index: 1000
+    top: 12.3%
+    width: 100%
     padding: 0 $padding
-    display: flex
-    flex-direction: row
-    justify-content: space-between
-    align-items: center
-  .admin
-    background-color: rgba($yellow, 0.2)
-
-  a:visited
-    color: inherit
-
-  &__call
+    box-shadow: 0 350px rgba(black, 0.5)
     display: flex
     flex-direction: column
-    justify-content: flex-end
-    &__item
-      white-space: nowrap
-      text-align: end
-    p
+
+    &__row
       color: $gray
-      font-weight: 300
-      font-size: 12px
+      display: flex
+      flex-direction: row
+      align-items: center
+      padding: 10px 0
+      margin: 0 20px
+      font-size: 1rem
+      line-height: 18px
+
+      svg
+        min-height: 14px
+        min-width: 14px
+        margin: 10px
+        path
+          stroke: black
+      p
+        padding: 0 10px
+        color: $gray
+
+      strong
+        color: $black
+        font-weight: 600
+      a
+        text-decoration: underline
+        color: $gray
+      .btn__img
+        width: 30px
+        height: 30px
+    &__col
+      display: flex
+      flex-direction: column
+    h2
+      margin: 10px
+      font-weight: 600
+      font-size: 1.5rem
       line-height: 150%
-    a
-      cursor: pointer
-      text-decoration: underline
-
-  li a, strong p, li a:visited
-    color: $gray
-
-  .btn__text
-    padding: 1em 1.5em
-  strong
-    font-style: normal
-    font-weight: 600
-    font-size: 1.4rem
-    line-height: 130.02%
-  .contact__container
-    display: flex
-    flex-direction: row
-    align-items: center
-    padding: 10px 0
-    margin: 0 20px
-    p
-      padding: 0 10px
-
-  .input
-    margin-top: -8px
-    button
-      padding: 8px
-      width: 34px
-
-      margin-top: -42px
-      margin-left: 217px
-      min-width: 10px
-      img
-        min-width: 100%
-
-  .contact
-    display: flex
-    flex-direction: row
-    .vl
-      margin-top: 10px
-
-  .navigation
-    display: flex
-    flex-direction: row
-    .vl
-      margin-top: 13px
-    &__item
+    &__navs
+      display: flex
+      flex-direction: column
+    &__nav
       display: flex
       align-items: center
-      justify-content: center
+      justify-content: flex-start
+      padding: 10px
+      &.admin
+        background-color: rgba($yellow, 0.3)
       a
-        padding: 10px
+        font-weight: 400
+        font-size: 1.2rem
+        line-height: 150%
+    .btn__text
+      padding: 30px 20px
+      align-items: center
+      justify-content: center
+      margin: 30px 20px
+    .btn__img
+      svg path
+        stroke: none
 
 
-  .nav
-    padding: 24px $padding
-    border-top: 1px solid rgba($gray, 0.2)
-    border-bottom: 1px solid rgba($gray, 0.2)
-    display: flex
-    flex-direction: row
-    align-items: center
-    justify-content: space-between
-    &__img
-      position: relative
-      height: 60px
-      width: 70px
-      img
-        position: absolute
-        top: -22px
-
-
-  .mobile
-    display: none
-
+.header__mobile
+  display: none
   @media (max-width: $mobile)
-    position: sticky
+    background-color: $white
+
+    display: flex
+    flex-direction: column
     top: 0
     width: 100%
     z-index: 2
+    .bottom
+      display: flex
+      border-bottom: 1px solid rgba($gray, 0.2)
+      border-top: 1px solid rgba($gray, 0.2)
+
+
     &__call
       display: none
     .nav
@@ -165,10 +102,6 @@
     .main_logo
       padding: 0 10px
 
-    .head
-      display: none!important
-    .col
-      display: none
 
     .menu__open
       margin-right: 30px
@@ -227,3 +160,149 @@
           width: 30px
 
 
+.header__pc
+  font-style: normal
+  font-weight: 600
+  font-size: 0.8rem
+  line-height: 130.02%
+  overflow: hidden
+  max-width: 100%
+  background-color: $white
+
+  img
+    min-width: 100%
+  .cart
+    display: flex
+    flex-direction: row
+  .menu__open
+    display: none
+    cursor: pointer
+  .head
+    font-weight: 600
+    font-size: 0.7rem
+    line-height: 130.02%
+    padding: 0 $padding
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    color: $black
+    p
+      color: $gray
+      font-weight: 400
+      font-size: 0.7rem
+
+
+  .admin
+    background-color: rgba($yellow, 0.2)
+
+  a:visited
+    color: inherit
+
+  .col
+    a
+      font-weight: 300
+      font-size: 1rem
+      color: $gray
+  .call
+    display: flex
+    flex-direction: column
+    justify-content: flex-end
+    text-align: end
+    line-height: 130%
+    font-weight: 400
+    color: $gray
+    p
+      color: $gray
+      font-weight: 300
+      font-size: 0.8rem
+      line-height: 150%
+    a
+      font-size: 0.8rem
+      line-height: 150%
+      cursor: pointer
+      text-decoration: underline
+    strong
+      white-space: nowrap
+      font-weight: 600
+      font-size: 1rem
+      line-height: 150%
+
+  li a, strong p, li a:visited
+    color: $gray
+
+  .btn__text
+    padding: 10px 15px
+  strong
+    font-style: normal
+    font-weight: 600
+    font-size: 0.9rem
+    line-height: 130%
+  .contact__container
+    display: flex
+    flex-direction: row
+    align-items: center
+    padding: 10px 0
+    margin: 0 20px
+    p
+      padding: 0 10px
+    svg
+      min-width: 14px
+      min-height: 14px
+
+  .input button
+    padding: 8px
+    width: 34px
+    margin-top: -42px
+    margin-left: 217px
+    min-width: 10px
+    img
+      min-width: 100%
+
+  .contact
+    display: flex
+    flex-direction: row
+    .vl
+      margin-top: 10px
+
+  .navigation
+    display: flex
+    flex-direction: row
+    .vl
+      margin-top: 13px
+    &__item
+      display: flex
+      align-items: center
+      justify-content: center
+      a
+        color: $gray
+        padding: 10px
+  .nav
+    padding: 24px $padding
+    border-top: 1px solid rgba($gray, 0.2)
+    border-bottom: 1px solid rgba($gray, 0.2)
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-between
+    &__img
+      position: relative
+      height: 60px
+      width: 70px
+      img
+        position: absolute
+        top: -22px
+  @media (max-width: 1450px)
+    .head
+      align-items: center
+      justify-content: center
+    .main_logo, .nav__img, .input, .contact
+      display: none
+
+  @media (max-width: $mobile)
+    display: none
+
+.header
+  @media (max-width: $mobile)
+    position: sticky
+    overflow: hidden

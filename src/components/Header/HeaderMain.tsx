@@ -19,7 +19,7 @@ interface iHeader {
 const HeaderMain: FC<iHeader> = ({price, amount}) => {
 
   return (
-    <div className={styles.pc}>
+    <div className={styles.header__pc}>
       <div className={styles.head}>
         <div className={styles.contact}>
           <div className={styles.contact__container}>
@@ -81,7 +81,7 @@ const HeaderMain: FC<iHeader> = ({price, amount}) => {
           </button>
         </div>
 
-        <div className={styles.header__call}>
+        <div className={styles.call}>
           <strong className={styles.header__call__item}>+7 (777) 490-00-91</strong>
           <p className={styles.header__call__item}>время работы: 9:00-20:00</p>
           <a className={styles.header__call__item}>Заказать звонок</a>

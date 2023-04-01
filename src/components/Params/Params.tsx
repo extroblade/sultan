@@ -19,7 +19,7 @@ export interface iFilters {
 }
 
 const Params = () => {
-  const { brands, sellers, filters, categories, currentCat } = useSelector(selectItemData);
+  const { items, brands, sellers, filters, categories, currentCat } = useSelector(selectItemData);
 
   const maxPrice = [...getItemsFromAdmin()].sort((a,b) => b.price-a.price)[0].price
 
@@ -78,19 +78,17 @@ const Params = () => {
 
   useEffect(()=>{
     dispatch(sort())
-  },[filters, dispatch])
+  },[filters])
 
   useEffect(()=>{
     dispatch(updateItems)
-    setSortedBrands(() => [...[...new Set([...getItemsFromAdmin()].map(i => i.brand))].sort((a,b) => a.localeCompare(b))])
-    setSortedSellers( () => [...[...new Set([...getItemsFromAdmin()].map(i => i.seller))].sort((a,b) => a.localeCompare(b))])
-  },[localStorage.getItem("items")])
+  },[items])
 
   useEffect(()=>{
     dispatch(setCategories(cat))
     dispatch(sortCat())
     window.scrollTo(0, 0)
-  },[cat, dispatch])
+  },[cat])
 
   const getFilters = (event: React.ChangeEvent<HTMLInputElement>) => {
     if(event.target.checked){
@@ -180,12 +178,11 @@ const Params = () => {
           changePressed={changePressedBrands}
         />
 
-
         <div className={styles.btns}>
           <button className={styles.btn__text} onClick={() => show()}>
             <span>Показать</span>
           </button>
-          <button className={`${styles.btn} ${styles.btn__img}`} onClick={() => reset()}>
+          <button className={styles.btn__img} onClick={() => reset()}>
             <TrashIcon/>
           </button>
         </div>
@@ -233,7 +230,7 @@ const Params = () => {
           <button className={styles.btn__text} onClick={() => show()}>
             <span>Показать</span>
           </button>
-          <button className={`${styles.btn} ${styles.btn__img}`} onClick={() => reset()}>
+          <button className={styles.btn__img} onClick={() => reset()}>
             <TrashIcon/>
           </button>
         </div>

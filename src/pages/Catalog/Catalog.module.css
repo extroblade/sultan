@@ -2,32 +2,36 @@
 @import url("https://fonts.cdnfonts.com/css/inter");
 * {
   font-family: "Inter", sans-serif;
-  font-style: normal;
-  font-size: 10px;
-  font-weight: 400;
+  font-style: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  width: auto;
   text-decoration: none;
   list-style-type: none;
   max-width: 100%;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 *:focus {
   outline: none !important;
 }
 * a {
-  color: #3F4E65;
+  color: inherit;
 }
 * input::-webkit-outer-spin-button, * input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+svg {
+  min-width: 4px;
+  min-height: 4px;
+}
+svg path {
+  fill: child;
 }
 
 .col {
@@ -52,7 +56,7 @@
   justify-content: center;
   align-items: center;
   background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
-  border-radius: 1000px;
+  border-radius: 10px;
   border: 0;
   width: 34px;
   height: 23px;
@@ -87,24 +91,33 @@
   border: 0;
   border-radius: 50px;
   position: relative;
+  z-index: 0;
   background-color: rgba(255, 200, 94, 0.96);
+}
+
+img {
+  min-height: 50px !important;
+  min-width: 50px !important;
+  overflow: scroll;
 }
 
 .btn__text {
   color: #FFFFFF;
+  font-size: 0.8em;
   cursor: pointer;
   font-weight: 700;
   transition: all 0.2s;
   white-space: nowrap;
-  border-radius: 100px;
+  padding: 10px;
+  border-radius: 80px;
   background: rgba(255, 200, 94, 0.96);
-  border: 1px solid transparent;
+  border: 0;
   display: flex;
   align-items: center;
-  font-size: 15px;
 }
 .btn__text span {
   color: #FFFFFF;
+  margin: 10px;
 }
 .btn__text:hover {
   background: rgba(255, 208, 94, 0.96);
@@ -113,8 +126,9 @@
   transform: translateX(5px);
 }
 .btn__text svg {
-  width: 34px;
-  margin-left: 10px;
+  min-width: 15px;
+  min-height: 15px;
+  margin: 10px;
   transition: transform 0.3s ease-in-out;
 }
 .btn__text:active {
@@ -122,7 +136,9 @@
 }
 
 .btn__img {
-  cursor: pointer;
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer !important;
   border: 0;
   border-radius: 50%;
   display: flex;
@@ -133,8 +149,8 @@
   justify-content: center;
 }
 .btn__img img {
-  height: 14px;
-  width: 14px;
+  min-height: 12px;
+  min-width: 12px;
 }
 
 .btn__cart {
@@ -171,7 +187,7 @@
 }
 .breadcrumbs .breadcrumb {
   font-weight: 300;
-  font-size: 14px;
+  font-size: 0.8rem;
   line-height: 120%;
   color: #3F4E65;
 }
@@ -186,7 +202,7 @@
   }
   .breadcrumbs .breadcrumb span {
     font-weight: 600;
-    font-size: 18px;
+    font-size: 1rem;
     line-height: 120%;
     margin-left: 10px;
   }
@@ -255,7 +271,7 @@
   max-width: 45vw;
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 150%;
   color: #3F4E65;
 }
@@ -290,7 +306,7 @@
 }
 @media (max-width: 950px) {
   .catalog {
-    padding: 0 20vw;
+    padding: 0 14vw;
   }
   .catalog .breadcrumbs .mobile {
     justify-content: flex-start;
@@ -308,7 +324,7 @@
   .catalog h2 {
     margin: 5px;
     font-weight: 500;
-    font-size: 1.8em;
+    font-size: 1.6rem;
     line-height: 120%;
   }
 }
