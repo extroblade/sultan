@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router';
-import {CATALOG_ROUTE, PRODUCT_ROUTE, SHOP_ROUTE} from '../../utils/consts';
+import {CART_ROUTE, CATALOG_ROUTE, PRODUCT_ROUTE, SHOP_ROUTE} from '../../utils/consts';
 import {useDispatch, useSelector} from "react-redux";
 
 import {Link} from "react-router-dom";
@@ -17,7 +17,7 @@ import { ReactComponent as ArrowIcon } from '../../static/small_arrow.svg';
 import { ReactComponent as ArrowOpenIcon } from '../../static/small_arrow_open.svg';
 import styles from "./Item.module.css"
 import {ReactComponent as LeftArrow} from "../../static/leftarrow.svg";
-import AddToCartModal from '../../components/modals/AddToCartModal';
+import Modal from "../../components/modals/Modal";
 
 const Item = () => {
 
@@ -51,7 +51,7 @@ const Item = () => {
   };
 
   return (
-    <div className={styles.item}>
+    <div className={styles.item} onClick={() => setAddToCartVisible(false)}>
       <div className={`${styles.breadcrumbs} ${styles.pc}`}>
         <Link to={SHOP_ROUTE} className={styles.breadcrumb}> Главная </Link>
         <div className={styles.vl}></div>
@@ -100,7 +100,7 @@ const Item = () => {
                   <button onClick={() => setCurCount(() => curCount+1)} className={styles.amount}>+</button>
                 </div>
               </div>
-              <div className={styles.share}>
+              <div className={styles.share} onClick={e => e.stopPropagation()}>
                 <button onClick={() => addItemToCart(i)} className={styles.btn__text}>
                   <span>В корзину</span>
                   <CartIcon/>
@@ -167,7 +167,11 @@ const Item = () => {
         </div>
       </div>
 
-      <AddToCartModal show={addToCartVisible} onHide={() => setAddToCartVisible(false)} />
+      <Modal show={addToCartVisible} onHide={() => setAddToCartVisible(false)}>
+        <h2>Товар успешно добавлен в корзину</h2>
+        <Link to={CART_ROUTE}>КОРЗИНА</Link>
+      </Modal>
+
     </div>
   );
 };

@@ -1,22 +1,24 @@
 import React from 'react';
 import styles from './Footer.module.css'
+import {Link} from "react-router-dom";
+
 
 import telegram from '../../static/telegram.png'
 import whatsup from '../../static/whatsup.png'
 import visa from '../../static/visa.png'
 import mastercard from '../../static/mastercard.png'
-import mainLogoDark from '../../static/main-logo-white.svg'
 
 import { ReactComponent as DownloadIcon } from '../../static/download.svg';
 import { ReactComponent as RightWingIcon } from '../../static/right-wing.svg';
-import {Link} from "react-router-dom";
+
+import mainLogo from '../../static/main-logo-white.svg'
 
 const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.col}>
         <div className={styles.footer__logo}>
-          <img src={mainLogoDark} alt="logo" className={styles.logo}/>
+          <img src={mainLogo} alt="logo" className={styles.logo}/>
           <button className={`${styles.btn__text} ${styles.mobile}`}>
             <span>Прайс-лист</span>
             <DownloadIcon/>

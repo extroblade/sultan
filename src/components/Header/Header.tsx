@@ -18,6 +18,7 @@ import {selectCart} from "../../store/cart/selectors";
 import {CartItem} from "../../store/cart/types";
 import {setTotalPrice} from "../../store/cart/cartSlice";
 import {selectItemData} from "../../store/items/selectors";
+import BurgerModal from "../modals/BurgerModal";
 
 
 const Header = () => {
@@ -27,6 +28,8 @@ const Header = () => {
   const countAmount = (it: CartItem[]): number => {
     return  it.reduce((i, next) => i+next.count,0)
   }
+  const [modalOpen, setModalOpen] = useState(false);
+
 
   const [amount, setAmount] = useState(0)
   const [price, setPrice] = useState(0)
@@ -83,7 +86,7 @@ const Header = () => {
       </div>
 
       <nav className={styles.nav}>
-        <button className={styles.menu__open}>
+        <button className={styles.menu__open} onClick={() => setModalOpen(true)}>
           <HamburgerIcon/>
         </button>
 
@@ -150,6 +153,7 @@ const Header = () => {
           </Link>
         </div>
       </div>
+      <BurgerModal show={modalOpen} onHide={() => setModalOpen(false)}/>
     </header>
   );
 };

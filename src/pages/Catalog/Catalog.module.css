@@ -3,7 +3,7 @@
 * {
   font-family: "Inter", sans-serif;
   font-style: normal;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 400;
   padding: 0;
   margin: 0;
@@ -243,6 +243,21 @@
   display: flex;
   flex-direction: column;
   padding: 0 14vw;
+}
+.catalog .description {
+  margin-top: 20px;
+  margin-bottom: 10vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.catalog .description p {
+  max-width: 50vw;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #3F4E65;
 }
 .catalog .items__grid {
   display: grid;

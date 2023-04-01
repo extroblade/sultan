@@ -5,7 +5,7 @@
 * {
   font-family: "Inter", sans-serif;
   font-style: normal;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 400;
   padding: 0;
   margin: 0;
@@ -245,10 +245,11 @@
   padding: 25px;
   box-shadow: 0 0 20px 2000px rgba(0, 0, 0, 0.75);
   position: fixed;
-  left: 10%;
-  right: 10%;
-  top: 10%;
-  bottom: 10%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: 10%;
   width: 80%;
   border-radius: 8px;
   border: 0;
@@ -325,4 +326,4 @@
   }
 }
 
-/*# sourceMappingURL=AddToCartModal.module.css.map */
+/*# sourceMappingURL=Modal.module.css.map */

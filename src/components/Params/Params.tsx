@@ -78,7 +78,6 @@ const Params = () => {
 
   useEffect(()=>{
     dispatch(sort())
-    console.log(filtersList)
   },[filters, dispatch])
 
   useEffect(()=>{
@@ -244,7 +243,7 @@ const Params = () => {
           <div className={styles.categories__btns} key={c.name}>
             <div className={`${styles.hl} ${styles.pc}`}></div>
             <button
-              onClick={() => currentCat===c.name ? setCat("") : setCat(c.name)}
+              onClick={() => currentCat === c.name ? setCat("") : setCat(c.name)}
               className={c.name===currentCat ? styles.type__current : styles.type}
             >
               {c.name.toUpperCase()}

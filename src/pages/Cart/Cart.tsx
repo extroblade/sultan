@@ -4,11 +4,11 @@ import { selectCart } from '../../store/cart/selectors';
 import CartItem from "../../components/CartItem/CartItem";
 import {Link} from "react-router-dom";
 import {CART_ROUTE, CATALOG_ROUTE, SHOP_ROUTE} from '../../utils/consts';
-import Ordered from "../../components/modals/Ordered";
 import {clearItems} from "../../store/cart/cartSlice";
 import {getCartFromLS} from "../../utils/getCartFromLs";
 import styles from "./Cart.module.css";
 import {ReactComponent as LeftArrow} from "../../static/leftarrow.svg";
+import Modal from "../../components/modals/Modal";
 
 const Cart: FC = () => {
   const dispatch = useDispatch()
@@ -64,10 +64,13 @@ const Cart: FC = () => {
         </button>
         <strong> {Math.ceil(totalPrice*10)/10} &#8376; </strong>
       </div>
-      <Ordered show={orderedVisible} onHide={() => {
+      <Modal show={orderedVisible} onHide={() => {
         dispatch(clearItems())
         setOrderedVisible(false)
-      }} />
+      }}>
+        <h2>Спасибо за заказ</h2>
+        <p>Наш менеджер свяжется с вами в ближайшее время</p>
+      </Modal>
     </div>
   );
 };
