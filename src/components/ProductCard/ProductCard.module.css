@@ -317,7 +317,7 @@ img {
   font-style: normal;
   font-weight: 700;
   font-size: 0.8rem;
-  line-height: 130px;
+  line-height: 130%;
   letter-spacing: 0.15em;
   padding: 5px;
   max-height: 40px;
