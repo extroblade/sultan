@@ -25,6 +25,22 @@
   -webkit-appearance: none;
   margin: 0;
 }
+* input[type=search]::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+* input[type=search]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+* input[type=search]::-webkit-search-decoration,
+* input[type=search]::-webkit-search-cancel-button,
+* input[type=search]::-webkit-search-results-button,
+* input[type=search]::-webkit-search-results-decoration {
+  display: none;
+}
 
 svg {
   min-width: 4px;
@@ -91,7 +107,6 @@ svg path {
   border: 0;
   border-radius: 50px;
   position: relative;
-  z-index: 0;
   background-color: rgba(255, 200, 94, 0.96);
 }
 
@@ -169,9 +184,9 @@ img {
   background-color: rgba(255, 200, 94, 0.96);
   color: #FFFFFF;
   position: relative;
-  margin-top: -5px;
+  margin-top: -7px;
   margin-left: -12px;
-  padding: 10px;
+  padding: 12px;
   width: 10px;
   height: 10px;
 }
@@ -457,16 +472,15 @@ img {
     height: 10px;
   }
   .params .open_modal {
-    z-index: 1;
-    padding: 0 20vw;
+    z-index: 2;
+    padding: 0 14vw;
     background-color: #FFFFFF;
     position: fixed;
     left: 0;
     right: 0;
-    top: 12%;
+    height: 100vh;
     bottom: 0;
     overflow-x: hidden;
-    overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch;
     justify-content: center;
     width: 100%;

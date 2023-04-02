@@ -58,7 +58,7 @@ const Catalog: FC = () => {
 
       <h2 className={styles.mobile}>Косметика и гигиена</h2>
 
-      <span className={styles.pc}><Filters/></span>
+      <span className={`${styles.pc} ${styles.filt}`}><Filters/></span>
 
       <div className={styles.main__content}>
         <Params/>

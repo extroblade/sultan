@@ -28,7 +28,7 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <HeaderMobile price={price} amount={amount}/>
+      <HeaderMobile amount={amount}/>
 
       <HeaderMain price={price} amount={amount}/>
     </header>

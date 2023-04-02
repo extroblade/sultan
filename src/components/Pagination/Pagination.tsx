@@ -7,13 +7,12 @@ import {selectItemData} from "../../store/items/selectors";
 import { ReactComponent as LeftArrow } from '../../static/leftarrow.svg';
 import { ReactComponent as RightArrow } from '../../static/rightarrow.svg';
 
-type PaginationProps = {
-  currentPage: number;
-  onChangePage: (page: number) => void;
-};
+interface IPagination {
+  currentPage: number
+  onChangePage: (page: number) => void
+}
 
-
-const Pagination: React.FC<PaginationProps> = ({ currentPage, onChangePage }) => {
+const Pagination: React.FC<IPagination> = ({ currentPage, onChangePage }) => {
   const countAmount = (arr: ItemsType[]): number => arr.reduce((a) => a+1, 0)
   const { items, limit } = useSelector(selectItemData);
 

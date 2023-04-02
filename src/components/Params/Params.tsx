@@ -19,7 +19,7 @@ export interface iFilters {
 }
 
 const Params = () => {
-  const { items, brands, sellers, filters, categories, currentCat } = useSelector(selectItemData);
+  const { items, filters, categories, currentCat } = useSelector(selectItemData);
 
   const maxPrice = [...getItemsFromAdmin()].sort((a,b) => b.price-a.price)[0].price
 
@@ -28,42 +28,9 @@ const Params = () => {
   const [maxValue, setMaxValue] = useState(maxPrice>=10000 ? maxPrice : 10000)
 
   const [cat, setCat] = useState("")
-
   const [filtersList, setFiltersList] = useState<iFilters[]>([])
-  const [pressedBrands, setPressedBrands] = useState(false)
-  const [sortedBrands, setSortedBrands] = useState([...brands.slice(0, 4)])
-  const [pressedSellers, setPressedSellers] = useState(false)
-  const [sortedSellers, setSortedSellers] = useState([...sellers.slice(0, 4)])
-
   const [mobileOpen, setMobileOpen] = useState(false)
 
-  function sortSellersSearch(event: React.ChangeEvent<HTMLInputElement>) {
-    setSortedSellers(
-      [...[...sellers].filter((i:string) => {
-        const regex = new RegExp(event.target.value, 'gi')
-        return i.match(regex)
-      })]
-    )
-  }
-
-  const changePressedSellers = () => {
-    setPressedSellers(() => !pressedSellers)
-    pressedSellers ? setSortedSellers([...sellers.slice(0,4)]) : setSortedSellers([...sellers])
-  }
-
-  function sortBrandsSearch(event: React.ChangeEvent<HTMLInputElement>) {
-    setSortedBrands(
-      [...[...brands].filter((i:string) => {
-        const regex: RegExp = new RegExp(event.target.value, 'gi')
-        return i.match(regex)
-      })]
-    )
-  }
-
-  const changePressedBrands = () => {
-    setPressedBrands(() => !pressedBrands)
-    pressedBrands ? setSortedBrands([...brands.slice(0,4)]) : setSortedBrands([...brands])
-  }
 
   useEffect(() => {
     if(filtersList.find(item => item.key==="price")){
@@ -161,21 +128,13 @@ const Params = () => {
         <Sort
           name={"Производитель"}
           field={"seller"}
-          pressed={pressedSellers}
-          sorted={sortedSellers}
-          sortSearch={sortSellersSearch}
           getFilters={getFilters}
-          changePressed={changePressedSellers}
         />
 
         <Sort
           name={"Бренд"}
           field={"brand"}
-          pressed={pressedBrands}
-          sorted={sortedBrands}
-          sortSearch={sortBrandsSearch}
           getFilters={getFilters}
-          changePressed={changePressedBrands}
         />
 
         <div className={styles.btns}>
@@ -209,21 +168,13 @@ const Params = () => {
         <Sort
           name={"Производитель"}
           field={"seller"}
-          pressed={pressedSellers}
-          sorted={sortedSellers}
-          sortSearch={sortSellersSearch}
           getFilters={getFilters}
-          changePressed={changePressedSellers}
         />
 
         <Sort
           name={"Бренд"}
           field={"brand"}
-          pressed={pressedBrands}
-          sorted={sortedBrands}
-          sortSearch={sortBrandsSearch}
           getFilters={getFilters}
-          changePressed={changePressedBrands}
         />
 
         <div className={styles.btns}>

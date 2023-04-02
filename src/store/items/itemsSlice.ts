@@ -23,6 +23,8 @@ const itemsSlice = createSlice({
   reducers: {
     updateItems(state){
       state.items = getItemsFromAdmin()
+      state.brands = [...[...new Set([...getItemsFromAdmin()].map(i => i.brand))].sort((a,b) => a.localeCompare(b))]
+      state.sellers = [...[...new Set([...getItemsFromAdmin()].map(i => i.seller))].sort((a,b) => a.localeCompare(b))]
     },
     addToLocalStorage(state, action: PayloadAction<ItemsType>) {
       const data = localStorage.getItem('items');

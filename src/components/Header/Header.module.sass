@@ -6,8 +6,10 @@
   font-size: 2rem
   @media (max-width: $mobile)
     background-color: $white
-    z-index: 1000
-    top: 12.3%
+    position: fixed
+    overflow-x: hidden
+    z-index: 5
+    height: 75vh
     width: 100%
     padding: 0 $padding
     box-shadow: 0 350px rgba(black, 0.5)
@@ -49,7 +51,7 @@
     h2
       margin: 10px
       font-weight: 600
-      font-size: 1.5rem
+      font-size: 1.3rem
       line-height: 150%
     &__navs
       display: flex
@@ -63,10 +65,10 @@
         background-color: rgba($yellow, 0.3)
       a
         font-weight: 400
-        font-size: 1.2rem
+        font-size: 1rem
         line-height: 150%
     .btn__text
-      padding: 30px 20px
+      padding: 10px 5px
       align-items: center
       justify-content: center
       margin: 30px 20px
@@ -78,13 +80,15 @@
 .header__mobile
   display: none
   @media (max-width: $mobile)
+    position: relative
+
     background-color: $white
 
     display: flex
     flex-direction: column
     top: 0
     width: 100%
-    z-index: 2
+    z-index: 4
     .bottom
       display: flex
       border-bottom: 1px solid rgba($gray, 0.2)
@@ -191,14 +195,10 @@
       color: $gray
       font-weight: 400
       font-size: 0.7rem
-
-
   .admin
     background-color: rgba($yellow, 0.2)
-
   a:visited
     color: inherit
-
   .col
     a
       font-weight: 300
@@ -250,14 +250,16 @@
       min-width: 14px
       min-height: 14px
 
-  .input button
-    padding: 8px
-    width: 34px
-    margin-top: -42px
-    margin-left: 217px
-    min-width: 10px
-    img
-      min-width: 100%
+  .input
+    font-weight: 400
+    button
+      padding: 8px
+      width: 34px
+      margin-top: -42px
+      margin-left: 217px
+      min-width: 10px
+      img
+        min-width: 100%
 
   .contact
     display: flex

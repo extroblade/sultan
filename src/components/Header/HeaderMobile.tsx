@@ -12,7 +12,6 @@ import {ReactComponent as CartIcon} from "../../static/cart.svg";
 import BurgerModal from "../modals/BurgerModal";
 
 interface iHeader {
-  price?: number,
   amount: number
 }
 
@@ -20,7 +19,7 @@ const HeaderMobile: FC<iHeader> = ({amount}) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <div className={styles.header__mobile} onClick={() => setModalOpen(() => false)}>
+    <div className={styles.header__mobile} onClick={() => setModalOpen(() => false)} style={modalOpen ?{ position: "relative"} : {overflowY : "unset"}}>
       <nav className={styles.nav} onClick={e => e.stopPropagation()}>
         <button className={styles.btn__img} onClick={() => setModalOpen(!modalOpen)}>
           {modalOpen ? <CloseIcon/> : <HamburgerIcon/>}

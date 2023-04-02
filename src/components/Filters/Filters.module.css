@@ -27,6 +27,22 @@
   -webkit-appearance: none;
   margin: 0;
 }
+* input[type=search]::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+* input[type=search]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+* input[type=search]::-webkit-search-decoration,
+* input[type=search]::-webkit-search-cancel-button,
+* input[type=search]::-webkit-search-results-button,
+* input[type=search]::-webkit-search-results-decoration {
+  display: none;
+}
 
 svg {
   min-width: 4px;
@@ -93,7 +109,6 @@ svg path {
   border: 0;
   border-radius: 50px;
   position: relative;
-  z-index: 0;
   background-color: rgba(255, 200, 94, 0.96);
 }
 
@@ -171,9 +186,9 @@ img {
   background-color: rgba(255, 200, 94, 0.96);
   color: #FFFFFF;
   position: relative;
-  margin-top: -5px;
+  margin-top: -7px;
   margin-left: -12px;
-  padding: 10px;
+  padding: 12px;
   width: 10px;
   height: 10px;
 }
@@ -261,11 +276,13 @@ img {
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .filters__top {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: flex-end;
 }
 .filters h2 {
   font-style: normal;
@@ -286,6 +303,7 @@ img {
   background-color: #FFFFFF;
   padding: 7px;
   height: 70px;
+  max-width: 140px;
   font-weight: 400;
   font-size: 0.8rem;
   line-height: 130%;

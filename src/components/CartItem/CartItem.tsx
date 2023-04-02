@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addItem, minusItem, removeItem } from '../../store/cart/cartSlice';
 import { CartItem as CartItemType } from '../../store/cart/types';
-import {PRODUCT_ROUTE} from "../../utils/consts";
+import { PRODUCT_ROUTE } from "../../utils/consts";
 
 import styles from "./CartItem.module.css"
 import { ReactComponent as GrIcon } from "../../static/gr.svg";

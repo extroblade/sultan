@@ -16,6 +16,7 @@ const BurgerModal: FC<iModal> = ({show}) => {
   return show ? (
     <div className={styles.mobile}>
       <div className={styles.burger}>
+        <div></div>
         <div className={styles.burger__row}>
           <AddressIcon/>
           <p>
