@@ -280,7 +280,8 @@ img {
   right: 0;
   top: 0;
   bottom: 0;
-  margin: 10%;
+  margin: 5% 10%;
+  height: 80%;
   width: 80%;
   border-radius: 8px;
   border: 0;

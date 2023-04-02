@@ -24,6 +24,7 @@ const Modal: FC<iModal> = ({show, onHide, children}) => {
           </button>
           {children}
         </div>
+
       </div>
     ):
     <div></div>
