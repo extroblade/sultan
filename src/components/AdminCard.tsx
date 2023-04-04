@@ -3,7 +3,7 @@ import {addToLocalStorage, removeFromLocalStorage, setTypes} from "../store/item
 import {useDispatch, useSelector} from "react-redux";
 import ItemsType from "../types/items-type";
 import {selectItemData} from "../store/items/selectors";
-import {getItemsFromAdmin} from "../utils/getItemsFromAdmin";
+import {getItemsFromAdmin} from "../utils/functions";
 import {Link} from "react-router-dom";
 import {PRODUCT_ROUTE} from "../utils/consts";
 import {ReactComponent as GrIcon} from "../static/gr.svg";

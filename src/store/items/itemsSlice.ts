@@ -1,8 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {Categories, ItemsSliceState} from './itemsTypes';
-import {getItemsFromAdmin} from "../../utils/getItemsFromAdmin";
 import ItemsType from "../../types/items-type";
-import {getTypes} from "../../utils/getTypes";
+import {getTypes, getItemsFromAdmin} from "../../utils/functions";
 
 
 const initialState: ItemsSliceState = {

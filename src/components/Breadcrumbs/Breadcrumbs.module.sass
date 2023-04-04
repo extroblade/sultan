@@ -1,0 +1,17 @@
+@import '../styles/styles'
+
+.breadcrumbs
+  padding: 10px $padding
+  &.mobile
+    display: none
+
+  &.pc
+    display: flex
+    flex-direction: row
+  @media (max-width: $mobile)
+    padding: 10px 10vw
+
+    &.pc
+      display: none
+    &.mobile
+      display: inherit

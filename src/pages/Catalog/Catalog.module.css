@@ -318,13 +318,13 @@ img {
     align-items: center;
     justify-content: center;
   }
+  .catalog .items__container {
+    align-items: center;
+  }
 }
 @media (max-width: 950px) {
   .catalog {
     padding: 0 14vw;
-  }
-  .catalog .breadcrumbs .mobile {
-    justify-content: flex-start;
   }
   .catalog .main__content {
     display: flex;

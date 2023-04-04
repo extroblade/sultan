@@ -7,7 +7,7 @@ import {Categories} from "../../store/items/itemsTypes";
 import AdminCard from "../../components/AdminCard";
 
 import styles from "./Admin.module.css"
-import {getItemsFromAdmin} from "../../utils/getItemsFromAdmin";
+import {getItemsFromAdmin} from "../../utils/functions";
 
 const Admin = () => {
 

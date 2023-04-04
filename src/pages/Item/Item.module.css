@@ -401,7 +401,7 @@ img {
   color: #111111;
   font-style: normal;
   font-weight: 400;
-  font-size: 3rem;
+  font-size: 1.5rem;
   line-height: 150%;
 }
 .item__name strong {
@@ -413,7 +413,7 @@ img {
 .item .available {
   color: #1FD85D;
   font-weight: 500;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   line-height: 130%;
 }
 .item__download {

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router';
-import {CART_ROUTE, CATALOG_ROUTE, PRODUCT_ROUTE, SHOP_ROUTE} from '../../utils/consts';
+import {CART_ROUTE, CATALOG_ROUTE} from '../../utils/consts';
 import {useDispatch, useSelector} from "react-redux";
 
 import {Link} from "react-router-dom";
@@ -52,15 +52,6 @@ const Item = () => {
 
   return (
     <div className={styles.item} onClick={() => setAddToCartVisible(false)}>
-      <div className={`${styles.breadcrumbs} ${styles.pc}`}>
-        <Link to={SHOP_ROUTE} className={styles.breadcrumb}> Главная </Link>
-        <div className={styles.vl}></div>
-        <Link to={CATALOG_ROUTE} className={styles.breadcrumb}> Каталог </Link>
-        <div className={styles.vl}></div>
-        <Link to={`${PRODUCT_ROUTE}/${code}`} className={`${styles.breadcrumb} ${styles.active}`}>
-          {i.name[0].toUpperCase()}{i.name.substring(1, i.name.length)}
-        </Link>
-      </div>
       <div className={`${styles.breadcrumbs} ${styles.mobile}`}>
         <Link to={CATALOG_ROUTE} className={styles.breadcrumb}>
           <div className={styles.arrow}>

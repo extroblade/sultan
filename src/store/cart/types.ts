@@ -7,5 +7,4 @@ export interface CartItem {
 export interface CartSliceState {
   totalPrice: number,
   cartItems: CartItem[]
-
 }

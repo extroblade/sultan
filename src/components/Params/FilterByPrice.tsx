@@ -8,7 +8,7 @@ interface iPrice {
   setMaxValue: (event: number) => void
 }
 
-const Price: FC<iPrice> = ({minValue, maxValue, setMinValue, setMaxValue}) => {
+const FilterByPrice: FC<iPrice> = ({minValue, maxValue, setMinValue, setMaxValue}) => {
 
   return (
     <div>
@@ -38,4 +38,4 @@ const Price: FC<iPrice> = ({minValue, maxValue, setMinValue, setMaxValue}) => {
   );
 };
 
-export default Price;
+export default FilterByPrice;

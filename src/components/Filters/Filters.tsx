@@ -53,7 +53,7 @@ const Filters = () => {
     <div className={styles.filters}>
       <div className={`${styles.filters__top} ${styles.pc}`}>
         <h2 className={styles.pc}>Косметика и гигиена</h2>
-        <div className={styles.sort__container}>
+        <div className={styles.sortby}>
           <span className={styles.small}>Сортировка:</span>
           <select onChange={(event) => changeSort(event)} className={styles.sort}>
             <option className={styles.value__list}> Цена (сначала недорогие) </option>
