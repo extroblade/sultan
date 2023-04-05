@@ -1,52 +1,25 @@
 import React, {useEffect, useState} from 'react';
-import {
-  setCategories,
-  sortCat,
-  sortPriceASC,
-  sortPriceDESC,
-  sortTitleASC,
-  sortTitleDESC
-} from "../../store/items/itemsSlice";
+import {setCategories, setCurrentPage, sort, sortCat} from "../../store/items/itemsSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {selectItemData} from "../../store/items/selectors";
-import styles from './Filters.module.css'
+
+import styles from './TopFilters.module.css'
 
 
-const Filters = () => {
+const TopFilters = () => {
   const dispatch = useDispatch()
-  const { categories, currentCat } = useSelector(selectItemData);
+  const { categories, currentCat} = useSelector(selectItemData);
   const [cat, setCat] = useState("")
 
-
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(setCategories(cat))
     dispatch(sortCat())
+    dispatch(setCurrentPage(1))
     window.scrollTo(0, 0)
   },[cat])
 
   const changeSort = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    switch (event.target.value){
-      case("Цена (сначала недорогие)"): {
-        dispatch(sortPriceASC());
-        break
-      }
-      case("Цена (сначала дорогие)"): {
-        dispatch(sortPriceDESC());
-        break
-      }
-      case("Название А-Я "): {
-        dispatch(sortTitleASC());
-        break
-      }
-      case("Название Я-А"):{
-        dispatch(sortTitleDESC());
-        break
-      }
-      default: {
-        dispatch(sortTitleASC());
-        break;
-      }
-    }
+    dispatch(sort(event.target.value))
   }
 
   return (
@@ -69,7 +42,7 @@ const Filters = () => {
           <div key={c.name}>
             <button
               onClick={() => setCat(c.name)}
-              className={`${styles.categories__card} ${c.name==currentCat ? styles.type__current : ""}`}
+              className={`${styles.categories__card} ${c.name === currentCat ? styles.type__current : ""}`}
             >
               {c.name}
             </button>
@@ -78,8 +51,8 @@ const Filters = () => {
           [...categories].map((c: any) =>
             <div key={c.name}>
               <button
-                onClick={() => currentCat===c.name ? setCat("") : setCat(c.name)}
-                className={`${styles.categories__card} ${c.name==currentCat ? styles.type__current : ""}`}
+                onClick={() => currentCat === c.name ? setCat("") : setCat(c.name)}
+                className={`${styles.categories__card} ${c.name === currentCat ? styles.type__current : ""}`}
               >
                 {c.name}
               </button>
@@ -91,4 +64,4 @@ const Filters = () => {
   );
 };
 
-export default Filters;
+export default TopFilters;

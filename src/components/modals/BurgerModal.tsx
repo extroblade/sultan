@@ -16,7 +16,8 @@ const BurgerModal: FC<iModal> = ({show}) => {
   return show ? (
     <div className={styles.mobile}>
       <div className={styles.burger}>
-        <div></div>
+        <div/>
+
         <div className={styles.burger__row}>
           <AddressIcon/>
           <p>
@@ -46,17 +47,14 @@ const BurgerModal: FC<iModal> = ({show}) => {
           <button className={styles.btn__img}>
             <CallIcon/>
           </button>
-          <a className={styles.header__call__item}>Заказать звонок</a>
+          <p className={styles.header__call__item}>Заказать звонок</p>
         </div>
 
-        <div className={styles.hl}></div>
+        <div className={styles.hl}/>
 
-        <h2>
-          Меню сайта:
-        </h2>
+        <h2> Меню сайта: </h2>
 
         <ul className={styles.burger__navs}>
-
           <li className={`${styles.burger__nav} ${styles.admin}`}>
             <Link to={ADMIN_ROUTE}>Админка</Link>
           </li>
@@ -64,12 +62,15 @@ const BurgerModal: FC<iModal> = ({show}) => {
           <li className={styles.burger__nav}>
             <Link to={"#"}>О компании</Link>
           </li>
+
           <li className={styles.burger__nav}>
             <Link to={"#"}>Доставка и оплата</Link>
           </li>
+
           <li className={styles.burger__nav}>
             <Link to={"#"}>Возврат</Link>
           </li>
+
           <li className={styles.burger__nav}>
             <Link to={"#"}>Контакты</Link>
           </li>
@@ -81,9 +82,7 @@ const BurgerModal: FC<iModal> = ({show}) => {
             <DownloadIcon/>
           </button>
         </div>
-
       </div>
-
     </div>
   ):
     <></>

@@ -1,13 +1,11 @@
 import React, {FC, ReactNode, useEffect, useState} from 'react';
-import styles from "./Params.module.css";
+import styles from "./SideFilters.module.css";
 import {ReactComponent as LensIcon} from "../../static/lens.svg";
 import {getItemsFromAdmin} from "../../utils/functions";
 import {ReactComponent as ArrowIcon} from "../../static/small_arrow.svg";
 import {ReactComponent as ArrowOpenIcon} from "../../static/small_arrow_open.svg";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {selectItemData} from "../../store/items/selectors";
-import {updateItems} from "../../store/items/itemsSlice";
-
 
 interface iSort {
   field: string;
@@ -16,7 +14,6 @@ interface iSort {
 }
 
 const FilterByField: FC<iSort> = ({field, getFilters, children}) => {
-  const dispatch = useDispatch()
 
   const sortSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSorted(
@@ -26,19 +23,14 @@ const FilterByField: FC<iSort> = ({field, getFilters, children}) => {
       })]
     )
   }
-  useEffect(()=>{
-    dispatch(updateItems())
-  }, [])
-
 
   // @ts-ignore
   let arr = [...useSelector(selectItemData)[field+"s"]]  //todo : fix
 
-
   const [pressed, setPressed] = useState(false)
   const [sorted, setSorted] = useState([...arr.slice(0, 4)])
 
-  useEffect(()=>{
+  useEffect(() => {
     setSorted( () => [...arr.slice(0, 4)])
   }, [])
 

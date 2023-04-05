@@ -4,11 +4,10 @@ import {ReactComponent as CloseIcon} from "../../static/close.svg";
 import {ReactComponent as HamburgerIcon} from "../../static/hamburger-white.svg";
 import {Link} from "react-router-dom";
 import {CART_ROUTE, CATALOG_ROUTE, SHOP_ROUTE} from "../../utils/consts";
-import logo from "../../static/main-logo.svg";
+import {ReactComponent as Logo} from "../../static/main-logo.svg";
 import {ReactComponent as CatalogIcon} from "../../static/catalog.svg";
 import {ReactComponent as LensIcon} from "../../static/lens.svg";
 import {ReactComponent as CartIcon} from "../../static/cart.svg";
-
 import BurgerModal from "../modals/BurgerModal";
 
 interface iHeader {
@@ -26,7 +25,7 @@ const HeaderMobile: FC<iHeader> = ({amount}) => {
         </button>
 
         <Link to={SHOP_ROUTE} className={styles.main_logo}>
-          <img src={logo} alt="Logo"/>
+          <Logo/>
         </Link>
 
         <div className={styles.cart}>

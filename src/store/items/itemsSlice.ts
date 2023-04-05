@@ -1,8 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {Categories, ItemsSliceState} from './itemsTypes';
-import ItemsType from "../../types/items-type";
-import {getTypes, getItemsFromAdmin} from "../../utils/functions";
-
+import {Categories, ItemsSliceState, ItemsType} from './itemsTypes';
+import {getTypes, getItemsFromAdmin, filterPrice} from "../../utils/functions";
 
 const initialState: ItemsSliceState = {
   items: getItemsFromAdmin(),
@@ -29,12 +27,10 @@ const itemsSlice = createSlice({
       const data = localStorage.getItem('items');
       state.items = [...(data ? JSON.parse(data) : []), action.payload]
       localStorage.setItem("items", JSON.stringify(state.items));
-      state.items = getItemsFromAdmin()
     },
     removeFromLocalStorage(state, action: PayloadAction<string>) {
       state.items = [...getItemsFromAdmin()].filter((obj) => obj.code !== action.payload);
       localStorage.setItem("items", JSON.stringify(state.items));
-      state.items = getItemsFromAdmin()
     },
     setCurrentPage(state, action: PayloadAction<number>) {
       state.currentPage = action.payload;
@@ -43,17 +39,29 @@ const itemsSlice = createSlice({
       state.categories = getTypes()
     },
 
-    sortPriceASC(state) {
-      state.items = state.items.sort((a,b) => a.price - b.price)
-    },
-    sortPriceDESC(state) {
-      state.items = state.items.sort((a,b) => b.price - a.price)
-    },
-    sortTitleASC(state) {
-      state.items = state.items.sort((a,b) => a.name.localeCompare(b.name))
-    },
-    sortTitleDESC(state) {
-      state.items = state.items.sort((a,b) =>  b.name.localeCompare(a.name))
+    sort(state, action) {
+      switch (action.payload){
+        case("Цена (сначала недорогие)"): {
+          state.items = state.items.sort((a,b) => a.price - b.price)
+          break
+        }
+        case("Цена (сначала дорогие)"): {
+          state.items = state.items.sort((a,b) => b.price - a.price)
+          break
+        }
+        case("Название А-Я "): {
+          state.items = state.items.sort((a,b) => a.name.localeCompare(b.name))
+          break
+        }
+        case("Название Я-А"):{
+          state.items = state.items.sort((a,b) =>  b.name.localeCompare(a.name))
+          break
+        }
+        default: {
+          state.items = state.items.sort((a,b) => a.price - b.price)
+          break;
+        }
+      }
     },
 
     sortCat(state){
@@ -68,53 +76,37 @@ const itemsSlice = createSlice({
         state.items = [...getItemsFromAdmin()]
       }
     },
-    sort(state){
-      let minVal=0, maxVal=1000000;
-      if (state.filters.length > 1) {
-        let helpArray: ItemsType[] = [],
-          brandsArray: ItemsType[] = [],
-          sellersArray: ItemsType[] = [];
 
-        [...getItemsFromAdmin()].map(i => {
-          state.filters.map(f => {
-            if(i[f.key] === f.value && f.key === "brand") {
-              brandsArray.push(i)
-            }
-            if(i[f.key] === f.value && f.key === "seller") {
-              sellersArray.push(i)
-            }
-            if(f.key === "price"){
-              minVal = +f.value[0];
-              maxVal = +f.value[1];
-            }
-          })
+    filterItems(state){
+      let temp: ItemsType[] = []
+      let res: ItemsType[] = []
+      if (state.filters.length>1) {
+        [...state.filters].splice(1, state.filters.length-1).forEach(f => {
+          let g = getItemsFromAdmin().filter((item: ItemsType) => item[f.key] === f.value);
+          if (g) temp = [...temp, ...g]
         })
-        if(sellersArray.length && brandsArray.length){
-          sellersArray.map(s => {
-            brandsArray.map(b => {
-              if(s.code === b.code){
-                helpArray.push(b)
-              }
-            })
-          })
-        } else if (sellersArray.length){
-          helpArray = [...sellersArray]
-        } else if (brandsArray.length){
-          helpArray = [...brandsArray]
-        }
-        state.items = [...helpArray].filter(i => i.price>=minVal && i.price<=maxVal)
 
-      } else if (state.filters.length === 1 && state.filters[0].key === "price") {
-        minVal = +state.filters[0].value[0];
-        maxVal = +state.filters[0].value[1];
-        state.items = [...getItemsFromAdmin()].filter(i => i.price >= minVal && i.price <= maxVal)
+        temp.sort((a,b) => a.price-b.price)
+
+        let filtersLength = [...new Set([...state.filters.map(i => i.key)])].length-2
+
+        for(let i=0; i<temp.length; i++){
+          if(temp[i] === temp[i+filtersLength]) {
+            res = [...res, temp[i]]
+          }
+        }
+        state.items = filterPrice(res, state.filters)
+      } else if (state.filters.length === 1) {
+        state.items = filterPrice(getItemsFromAdmin(), state.filters)
       } else {
-        state.items = [...getItemsFromAdmin()]
+        state.items = getItemsFromAdmin()
       }
     },
+
     setFilters(state, action){
-      state.filters = [...action.payload]
+      state.filters = action.payload
     },
+
     setCategories(state, action){
       state.currentCat = action.payload
     },
@@ -122,18 +114,15 @@ const itemsSlice = createSlice({
 });
 export const {
   updateItems,
-  sort,
+  filterItems,
   sortCat,
+  sort,
   setFilters,
   setTypes,
   setCurrentPage,
   setCategories,
   addToLocalStorage,
   removeFromLocalStorage,
-  sortPriceASC,
-  sortPriceDESC,
-  sortTitleASC,
-  sortTitleDESC,
 } = itemsSlice.actions;
 
 export default itemsSlice.reducer;

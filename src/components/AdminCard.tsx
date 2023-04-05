@@ -1,14 +1,13 @@
 import React, {FC, useEffect, useState} from 'react';
 import {addToLocalStorage, removeFromLocalStorage, setTypes} from "../store/items/itemsSlice";
 import {useDispatch, useSelector} from "react-redux";
-import ItemsType from "../types/items-type";
 import {selectItemData} from "../store/items/selectors";
 import {getItemsFromAdmin} from "../utils/functions";
 import {Link} from "react-router-dom";
 import {PRODUCT_ROUTE} from "../utils/consts";
 import {ReactComponent as GrIcon} from "../static/gr.svg";
 import {ReactComponent as LitIcon} from "../static/lit.svg";
-import {Categories} from "../store/items/itemsTypes";
+import {Categories, ItemsType} from "../store/items/itemsTypes";
 import styles from "../pages/Admin/Admin.module.css"
 
 interface IType {

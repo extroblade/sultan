@@ -5,7 +5,13 @@ import Shop from "./pages/Shop";
 import Cart from "./pages/Cart/Cart";
 import Catalog from "./pages/Catalog/Catalog";
 import Admin from "./pages/Admin/Admin";
-import RouteObject from "./types/route-object";
+import React from "react";
+
+export default interface RouteObject {
+  path: string,
+  element: React.ReactNode,
+}
+
 
 export const publicRoutes: RouteObject[] = [
   {path: SHOP_ROUTE, element: <Shop/>},

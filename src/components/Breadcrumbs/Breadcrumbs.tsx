@@ -9,26 +9,25 @@ import {selectItemData} from "../../store/items/selectors";
 import {getItemsFromAdmin} from "../../utils/functions";
 
 const Breadcrumbs = () => {
-
-  let location = useLocation();
-  const code = location.pathname.split('/')[2];
-  const { currentCat } = useSelector(selectItemData);
-  const i = [...getItemsFromAdmin()].find((item) => item.code === code)
+  const location = useLocation();
+  const { currentCat, filters, currentPage } = useSelector(selectItemData);
+  const i = [...getItemsFromAdmin()].find((item) => item.code === location.pathname.split('/')[2])
 
   const getPage = () => {
     switch (location.pathname){
       case "/cart": return "Корзина"
       case "/catalog": return "Каталог"
-      default: return ""
+      case "/admin": return "Админка"
+      default: return "Султан"
     }
   }
 
   useEffect(()=>{
-    (currentCat && location.pathname=='/catalog')
+    (currentCat && location.pathname === '/catalog')
       ? document.title = `${currentCat}`
       : document.title = getPage();
     window.scrollTo(0,0)
-  },[location, currentCat])
+  },[location, currentCat, filters, currentPage])
 
   return (
     <>
@@ -41,7 +40,7 @@ const Breadcrumbs = () => {
         </Link>
       </div>
 
-      {code ?
+      {location.pathname.split('/')[2] ?
         <div className={`${styles.breadcrumbs} ${styles.pc}`}>
           <Link to={SHOP_ROUTE} className={styles.breadcrumb}> Главная </Link>
           <div className={styles.vl}/>
@@ -61,10 +60,7 @@ const Breadcrumbs = () => {
             </Link>
           </div>
       }
-
-
     </>
-
   );
 };
 

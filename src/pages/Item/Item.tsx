@@ -6,7 +6,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {addItem} from "../../store/cart/cartSlice";
 import {selectItemData} from "../../store/items/selectors";
-import ItemsType from "../../types/items-type";
 import Page404 from "../Page404";
 import { ReactComponent as GrIcon } from "../../static/gr.svg";
 import { ReactComponent as CartIcon } from "../../static/cart.svg";
@@ -18,6 +17,7 @@ import { ReactComponent as ArrowOpenIcon } from '../../static/small_arrow_open.s
 import styles from "./Item.module.css"
 import {ReactComponent as LeftArrow} from "../../static/leftarrow.svg";
 import Modal from "../../components/modals/Modal";
+import {ItemsType} from "../../store/items/itemsTypes";
 
 const Item = () => {
 

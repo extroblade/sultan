@@ -1,6 +1,5 @@
 import React, {FC} from 'react';
 import styles from "./CartItem.module.css";
-import {Link} from "react-router-dom";
 import placeholder from "../../static/placeholder.png";
 import {ReactComponent as TrashIcon} from "../../static/delete.svg";
 import {CIType} from "./CartItem";
@@ -14,16 +13,17 @@ const NoItem: FC<CIType> = ({i}) => {
 
   return (
     <div className={styles.cart__item} key={i.code}>
-      <Link to={"#"}  className={styles.cart__img} style={{filter: "blur(5px)", cursor: "default"}}>
+      <p className={styles.cart__img} style={{filter: "blur(5px)", cursor: "default"}}>
         <img src={placeholder} alt="item" style={{width: "160px", height: "160px"}}/>
-      </Link>
+      </p>
+
       <div className={styles.col}>
         <p>{i.code}</p>
-        <Link to={"#"}  style={{cursor: "default"}}>
+        <p style={{cursor: "default"}}>
           <span className={styles.cart__item__name} style={{color: "red"}}>
           Товар недоступен
           </span>
-        </Link>
+        </p>
         <p style={{width:"450px", filter: "blur(5px)", cursor: "default"}}>Товар недоступен</p>
       </div>
 
@@ -35,10 +35,11 @@ const NoItem: FC<CIType> = ({i}) => {
             </div>
           <button disabled className={styles.amount} style={{filter: "blur(5px)", cursor: "default"}}>+</button>
         </div>
+
         <div className={styles.vl}></div>
         <strong style={{filter: "blur(5px)", cursor: "default"}}> 0 &#8376; </strong>
-        <div className={styles.vl}></div>
 
+        <div className={styles.vl}></div>
         <button className={styles.btn__img} onClick={() => remove()}>
           <TrashIcon/>
         </button>

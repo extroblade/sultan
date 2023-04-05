@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import styles from "./Params.module.css";
+import styles from "./SideFilters.module.css";
 
 interface iPrice {
   minValue: number
@@ -23,6 +23,7 @@ const FilterByPrice: FC<iPrice> = ({minValue, maxValue, setMinValue, setMaxValue
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => setMinValue(+event.target.value)}
           min={0}
           max={maxValue}
+          data-testid={"min"}
         />
         <span className={`${styles.price} ${styles.line}`}>-</span>
         <input
@@ -32,6 +33,7 @@ const FilterByPrice: FC<iPrice> = ({minValue, maxValue, setMinValue, setMaxValue
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => setMaxValue(+event.target.value)}
           min={minValue}
           max={1000000}
+          data-testid={"max"}
         />
       </div>
     </div>

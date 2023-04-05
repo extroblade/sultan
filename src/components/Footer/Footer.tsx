@@ -24,10 +24,12 @@ const Footer = () => {
             <DownloadIcon/>
           </button>
         </div>
+
         <p className={styles.long}>
           Компания «Султан» — снабжаем розничные магазины товарами
           "под ключ" в Кокчетаве и Акмолинской области
         </p>
+
         <div className={styles.sub}>
           <p>Подпишись на скидки и акции</p>
           <div className={styles.input}>
@@ -76,7 +78,6 @@ const Footer = () => {
         </div>
       </div>
 
-
       <div className={`${styles.col} ${styles.pc}`}>
         <span className={`${styles.col}`}>
           <h3>Скачать прайс-лист:</h3>
@@ -103,12 +104,14 @@ const Footer = () => {
             <div className={styles.footer__call}>
               <strong className={styles.footer__call__item}>+7 (777) 490-00-91</strong>
               <p className={styles.footer__call__item}>время работы: 9:00-20:00</p>
-              <a className={styles.footer__call__item}>Заказать звонок</a>
+              <p className={styles.footer__call__item}>Заказать звонок</p>
             </div>
+
             <div className={styles.footer__call}>
               <strong className={styles.footer__call__item}>opt.sultan@mail.ru</strong>
               <p className={styles.footer__call__item}>На связи в любое время</p>
             </div>
+
             <div className={styles.logos}>
               <img src={visa} alt="visa"/>
               <img src={mastercard} alt="mc"/>
@@ -117,6 +120,7 @@ const Footer = () => {
 
           <div className={`${styles.col} ${styles.mobile}`}>
             <p>Связь в мессенджерах:</p>
+
             <div className={styles.logos}>
               <img src={whatsup} alt="wu"/>
               <img src={telegram} alt="tg"/>

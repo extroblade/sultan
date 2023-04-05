@@ -2,16 +2,48 @@
 
 .breadcrumbs
   padding: 10px $padding
+  font-size: 1rem
+  display: flex
+  flex-direction: row
+  margin: 20px 0
+  .vl
+    height: 15px
+    margin: 0 13px
+  .breadcrumb
+    font-weight: 300
+    line-height: 120%
+    color: $gray
+  .active
+    color: rgba($gray, 0.5)
   &.mobile
     display: none
-
   &.pc
     display: flex
     flex-direction: row
   @media (max-width: $mobile)
     padding: 10px 10vw
-
+    .breadcrumb
+      display: flex
+      padding: 10px
+      align-items: center
+      span
+        font-weight: 600
+        line-height: 120%
+        margin-left: 10px
+      .arrow
+        display: flex
+        padding: 5px
+        align-items: center
+        justify-content: center
+        border-radius: 50%
+        background-color: rgba($yellow, 0.2)
+        svg
+          width: 10px
+          height: 10px
+          path
+            fill: $gray
     &.pc
       display: none
     &.mobile
       display: inherit
+

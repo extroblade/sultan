@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { selectCart } from '../../store/cart/selectors';
 import CartItem from "../../components/CartItem/CartItem";
@@ -9,17 +9,22 @@ import {getCartFromLS} from "../../utils/functions";
 import styles from "./Cart.module.css";
 import Modal from "../../components/modals/Modal";
 
-const Cart: FC = () => {
+const Cart = () => {
   const dispatch = useDispatch()
   const { totalPrice, cartItems } = useSelector(selectCart);
-  const [ orderedVisible, setOrderedVisible ] = useState(false);
+  const [ modalOpen, setModalOpen ] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     getCartFromLS()
-  },[orderedVisible])
+  },[modalOpen])
+
+  const hide = () => {
+    dispatch(clearItems())
+    setModalOpen(false)
+  }
 
   if (!cartItems.length) return (
-    <div style={{display: "flex", justifyContent:"center", alignItems: "center", flexDirection:"column", height: "51vh"}}>
+    <div style={{display: "flex", justifyContent:"center", alignItems: "center", flexDirection:"column", height: "50vh"}}>
       <p>No items in cart</p>
       <Link to={CATALOG_ROUTE}>Back to catalog</Link>
     </div>
@@ -27,6 +32,7 @@ const Cart: FC = () => {
 
   return (
     <div className={styles.cart}>
+      <div className={styles.hl}/>
 
       {cartItems.map(i =>
         <div key={i.code} className={styles.cart__items}>
@@ -36,18 +42,16 @@ const Cart: FC = () => {
       )}
 
       <div className={styles.buy}>
-        <button
-          className={styles.btn__text}
-          onClick={() => setOrderedVisible(true)
-        }>
+        <button className={styles.btn__text} onClick={() => setModalOpen(true)}>
           Оформить заказ
         </button>
-        <strong> {Math.ceil(totalPrice*10)/10} &#8376; </strong>
+
+        <strong>
+          {Math.ceil(totalPrice*10)/10} &#8376;
+        </strong>
       </div>
-      <Modal show={orderedVisible} onHide={() => {
-        dispatch(clearItems())
-        setOrderedVisible(false)
-      }}>
+
+      <Modal show={modalOpen} onHide={hide}>
         <h2>Спасибо за заказ</h2>
         <p>Наш менеджер свяжется с вами в ближайшее время</p>
       </Modal>

@@ -8,12 +8,12 @@ import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header/>
-      <Breadcrumbs/>
-      <AppRouter/>
-      <Footer/>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Header/>
+        <Breadcrumbs/>
+        <AppRouter/>
+        <Footer/>
+      </BrowserRouter>
   );
 }
 

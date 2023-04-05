@@ -191,53 +191,6 @@ img {
   height: 10px;
 }
 
-.breadcrumbs {
-  display: flex;
-  flex-direction: row;
-  margin: 20px 0;
-}
-.breadcrumbs .vl {
-  height: 15px;
-  margin: 0 13px;
-}
-.breadcrumbs .breadcrumb {
-  font-weight: 300;
-  font-size: 0.8rem;
-  line-height: 120%;
-  color: #3F4E65;
-}
-.breadcrumbs .active {
-  color: rgba(63, 78, 101, 0.5);
-}
-@media (max-width: 950px) {
-  .breadcrumbs .breadcrumb {
-    display: flex;
-    padding: 10px;
-    align-items: center;
-  }
-  .breadcrumbs .breadcrumb span {
-    font-weight: 600;
-    font-size: 1rem;
-    line-height: 120%;
-    margin-left: 10px;
-  }
-  .breadcrumbs .breadcrumb .arrow {
-    display: flex;
-    padding: 5px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background-color: rgba(255, 200, 94, 0.2);
-  }
-  .breadcrumbs .breadcrumb .arrow svg {
-    width: 10px;
-    height: 10px;
-  }
-  .breadcrumbs .breadcrumb .arrow svg path {
-    fill: #3F4E65;
-  }
-}
-
 .vl {
   display: flex;
   margin-top: 7px;
