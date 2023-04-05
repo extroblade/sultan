@@ -25,6 +25,7 @@ const SideFilters = () => {
   useEffect(()=>{
     dispatch(sortCat())
     setMobileOpen(() => false)
+    dispatch(setCategories(currentCat))
   },[currentCat])
 
   useEffect(()=>{

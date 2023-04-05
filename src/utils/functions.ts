@@ -44,7 +44,7 @@ export const calcTotalPrice = (arr: CartItem[]) => {
     const findItem = [...getItemsFromAdmin()].find((item: ItemsType) => {
       return item.code === obj.code
     })
-    return findItem ? sum +=findItem.price * obj.count : sum += 0
+    return findItem ? sum += findItem.price * obj.count : sum
   }, 0);
 };
 

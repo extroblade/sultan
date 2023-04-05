@@ -1,5 +1,5 @@
-import {calcMaxPrice, filterPrice, calcTotalPrice, calcTotalAmount} from "./functions";
-import data from "./test.json"
+import {calcMaxPrice, filterPrice, calcTotalPrice, calcTotalAmount} from "../utils/functions";
+import data from "../utils/test.json"
 import {CartItem} from "../store/cart/types";
 const testCart = [{"code":"4604049097546","count":12},{"code":"4604049097547","count":14}]
 

@@ -3,14 +3,17 @@ import styles from "./SideFilters.module.css";
 import FilterByPrice from "./FilterByPrice";
 import FilterByField from "./FilterByField";
 import {ReactComponent as TrashIcon} from "../../static/delete.svg";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {calcMaxPrice, resetInputs} from "../../utils/functions";
 import {getItemsFromAdmin} from "../../utils/functions";
-import {setCategories, setCurrentPage, setFilters, filterItems} from "../../store/items/itemsSlice";
+import {setCategories, setCurrentPage, setFilters, filterItems, updateItems} from "../../store/items/itemsSlice";
 import {iFilters} from "./SideFilters";
+import {selectItemData} from "../../store/items/selectors";
 
 const AllSorts = () => {
   const dispatch = useDispatch()
+  const { filters, items } = useSelector(selectItemData)
+
   const [minValue, setMinValue] = useState(0)
   const [maxValue, setMaxValue] = useState(calcMaxPrice(getItemsFromAdmin()))
   const [filtersList, setFiltersList] = useState<iFilters[]>([])
@@ -37,7 +40,6 @@ const AllSorts = () => {
   const show = () => {
     dispatch(setFilters([...new Set([...filtersList])] ))
     dispatch(filterItems())
-
     dispatch(setCurrentPage(1))
   }
 
@@ -48,6 +50,14 @@ const AllSorts = () => {
     dispatch(setFilters([] ))
     dispatch(setCategories(""))
   }
+
+  useEffect(()=>{
+    dispatch(filterItems())
+  },[filters])
+
+  useEffect(()=>{
+    dispatch(updateItems)
+  },[items])
 
 
   return (

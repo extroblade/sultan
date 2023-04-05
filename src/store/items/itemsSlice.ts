@@ -27,10 +27,12 @@ const itemsSlice = createSlice({
       const data = localStorage.getItem('items');
       state.items = [...(data ? JSON.parse(data) : []), action.payload]
       localStorage.setItem("items", JSON.stringify(state.items));
+      state.items = getItemsFromAdmin()
     },
     removeFromLocalStorage(state, action: PayloadAction<string>) {
       state.items = [...getItemsFromAdmin()].filter((obj) => obj.code !== action.payload);
       localStorage.setItem("items", JSON.stringify(state.items));
+      state.items = getItemsFromAdmin()
     },
     setCurrentPage(state, action: PayloadAction<number>) {
       state.currentPage = action.payload;
@@ -49,7 +51,7 @@ const itemsSlice = createSlice({
           state.items = state.items.sort((a,b) => b.price - a.price)
           break
         }
-        case("Название А-Я "): {
+        case("Название А-Я"): {
           state.items = state.items.sort((a,b) => a.name.localeCompare(b.name))
           break
         }
@@ -82,19 +84,19 @@ const itemsSlice = createSlice({
       let res: ItemsType[] = []
       if (state.filters.length>1) {
         [...state.filters].splice(1, state.filters.length-1).forEach(f => {
-          let g = getItemsFromAdmin().filter((item: ItemsType) => item[f.key] === f.value);
+          let g = [...getItemsFromAdmin()].filter((item: ItemsType) => item[f.key] === f.value);
           if (g) temp = [...temp, ...g]
         })
+        temp = [...temp].sort((a,b) => a.price-b.price)
 
-        temp.sort((a,b) => a.price-b.price)
-
-        let filtersLength = [...new Set([...state.filters.map(i => i.key)])].length-2
+        let filtersLength = [...new Set([...[...state.filters].map(i => i.key)])].length-2
 
         for(let i=0; i<temp.length; i++){
-          if(temp[i] === temp[i+filtersLength]) {
+          if ( temp[i+filtersLength] && temp[i].code === temp[i+filtersLength].code) {
             res = [...res, temp[i]]
           }
         }
+
         state.items = filterPrice(res, state.filters)
       } else if (state.filters.length === 1) {
         state.items = filterPrice(getItemsFromAdmin(), state.filters)
