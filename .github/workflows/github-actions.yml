@@ -26,5 +26,5 @@ jobs:
         run: npm run build
 
       - name: deploy on gh-pages
-        run: npm deploy
+        run: npm run deploy
 
