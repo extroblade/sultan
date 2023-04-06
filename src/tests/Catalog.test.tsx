@@ -32,7 +32,19 @@ describe('Catalog tests', () => {
 
   afterEach(cleanup)
 
-  it('should return 2 cards', async () => {
+  test('filter by category', async () => {
+    fireEvent.click(screen.getByTestId(/Подарочные наборы/i))
+
+    await (() => {
+      [...data].filter((i: ItemsType) => {
+        return (i.code === "6" || i.code === "7" || i.code === "12") ?
+          expect(screen.findByTestId(i.code)).toBeInTheDocument() :
+          expect(screen.findByTestId(i.code)).not.toBeInTheDocument();
+      })
+    })
+  });
+
+  test('all filters values', async () => {
     fireEvent.input(screen.getByTestId('min'), {
       target: {value: 2}
     })
@@ -49,21 +61,21 @@ describe('Catalog tests', () => {
 
     await (() => {
       [...data].map((i: ItemsType) => {
-        return (i.code==="4604049097547" || i.code === "1") ?
+        return (i.code === "4604049097547" || i.code === "1") ?
           expect(screen.getByTestId(i.code)).toBeInTheDocument() :
           expect(screen.getByTestId(i.code)).not.toBeInTheDocument();
       })
     })
   });
 
-  it('should be', () => {
+  it('should be ', () => {
     expect(screen.queryByText('Цена')).toBeInTheDocument()
     expect(screen.queryByText('Производитель')).toBeInTheDocument()
     expect(screen.queryByText('Бренд')).toBeInTheDocument()
     expect(screen.queryByText('Рейтинг')).not.toBeInTheDocument()
   });
 
-  test('price => value', () => {
+  test('correct value input', () => {
     const val = Math.floor(Math.random() * 1000000);
 
     fireEvent.input(screen.getByTestId('min'), {
@@ -73,7 +85,7 @@ describe('Catalog tests', () => {
     expect(+(screen.getByTestId('min') as HTMLInputElement).value).toEqual(val)
   });
 
-  test('price => -value', () => {
+  test('negative value input', () => {
     const val = Math.floor(Math.random() * (-1000000) - 1);
 
     fireEvent.input(screen.getByTestId('min'), {
@@ -82,7 +94,7 @@ describe('Catalog tests', () => {
     expect(+(screen.getByTestId('min') as HTMLInputElement).value).not.toEqual(val)
   });
 
-  test('price => text', () => {
+  test('text value input', () => {
     const val = 'text'
 
     fireEvent.input(screen.getByTestId('min'), {
@@ -90,4 +102,5 @@ describe('Catalog tests', () => {
     })
     expect(+(screen.getByTestId('min') as HTMLInputElement).value).not.toEqual(val)
   });
+
 });

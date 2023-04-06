@@ -12,13 +12,12 @@ export default interface RouteObject {
   element: React.ReactNode,
 }
 
-
 export const publicRoutes: RouteObject[] = [
   {path: SHOP_ROUTE, element: <Shop/>},
   {path: CATALOG_ROUTE, element: <Catalog/>},
   {path: CART_ROUTE, element: <Cart/>},
   {path: PRODUCT_ROUTE+"/:code", element: <Item/>},
-  {path: "*", element: <Navigate to={CATALOG_ROUTE} replace />} //!!! SHOP_ROUTE
+  {path: "*", element: <Navigate to={SHOP_ROUTE} replace />}
 ]
 
 export const authRoutes: RouteObject[] = [

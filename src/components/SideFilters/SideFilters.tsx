@@ -60,7 +60,7 @@ const SideFilters = () => {
         </button>
       </h4>
 
-      <span className={styles.pc} data-testid={"sort"}>
+      <span className={styles.pc} >
         <AllSorts/>
       </span>
 

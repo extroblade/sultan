@@ -11,6 +11,7 @@ import styles from "./Catalog.module.css"
 
 import {setCurrentPage} from '../../store/items/itemsSlice';
 import {ItemsType} from "../../store/items/itemsTypes";
+import SortBy from "../../components/TopFilters/SortBy";
 
 const Catalog = () => {
   const dispatch = useDispatch()
@@ -22,7 +23,7 @@ const Catalog = () => {
     <div className={styles.catalog}>
       <h2 className={styles.mobile}>Косметика и гигиена</h2>
 
-      <span className={styles.pc}><TopFilters/></span>
+      <span className={styles.pc}><SortBy/></span>
 
       <div className={styles.main__content}>
         <SideFilters/>
