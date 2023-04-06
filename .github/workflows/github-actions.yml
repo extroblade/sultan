@@ -8,20 +8,26 @@ on:
 jobs:
   init:
     runs-on: ubuntu-latest
-steps:
-  - name: ⬇️ Checkout repo
-    uses: actions/checkout@v2
+    strategy:
+      matrix:
+        node-version: [ 18.8 ]
+    steps:
+      - uses: actions/checkout@v3
 
-  - name: ⎔ Setup node
-    uses: actions/setup-node@v1
+      - name: Staring Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
 
-  - name: 📥 Download deps
-    uses: npm-install@v1
-    with:
-      useLockFile: false
+      - name: install modules
+        run: npm install
 
-  - name: 🧪 Run test script
-    run: npm run test
+      - name: build project
+        run: npm run build
 
-  - name: 🏗 Run build script
-    run: npm run build
+      - name: test project
+        run: npm test -- --coverage
+
+      - name: deploy on gh-pages
+        run: npm deploy
+
