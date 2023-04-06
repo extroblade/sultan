@@ -20,7 +20,7 @@ jobs:
       - name: install modules
         run: npm install
       - name: build project
-        run: npm build
+        run: npm run build
       - name: tests
         run: npm test
       - name: deploy on gh-pages
