@@ -29,6 +29,6 @@ export interface ItemsSliceState {
   categories: Categories[]
   currentCat: string
   filters: Filters[];
-  brands: string[];
-  sellers: string[];
+  brands?: string[];
+  sellers?: string[];
 }

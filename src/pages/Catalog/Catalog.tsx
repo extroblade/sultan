@@ -16,7 +16,7 @@ const Catalog = () => {
   const dispatch = useDispatch()
   const { limit, items, currentPage } = useSelector(selectItemData)
 
-  const itemsList: ItemsType[] = items.slice(limit*(currentPage-1), limit*(currentPage))
+  const itemsList: ItemsType[] = [...items].slice(limit*(currentPage-1), limit*(currentPage))
 
   return (
     <div className={styles.catalog}>

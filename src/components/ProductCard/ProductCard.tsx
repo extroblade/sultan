@@ -19,7 +19,7 @@ const ProductCard: FC<IType> = ({i }) => {
   const { categories } = useSelector(selectItemData);
 
   return (
-    <div className={styles.item} key={i.code}>
+    <div className={styles.item} key={i.code} data-testid={i.code}>
       <div className={styles.img__container}>
         <Link to={PRODUCT_ROUTE+'/'+i.code}>
           <img src={i.url} alt="product" className={styles.img}/>

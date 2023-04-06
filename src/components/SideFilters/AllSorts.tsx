@@ -80,7 +80,7 @@ const AllSorts = () => {
       > Бренд </FilterByField>
 
       <div className={styles.btns}>
-        <button className={styles.btn__text} onClick={() => show()}>
+        <button className={styles.btn__text} onClick={() => show()} data-testid={"show"}>
           <span>Показать</span>
         </button>
         <button className={styles.btn__img} onClick={() => reset()}>

@@ -58,6 +58,7 @@ const FilterByField: FC<iSort> = ({field, getFilters, children}) => {
             id={field}
             className={styles.checkbox}
             onChange={getFilters}
+            data-testid={i}
           />{i}
           <span>
             ({[...getItemsFromAdmin()].filter(it => it[field] === i || "all" === i).reduce((a:number) => a+1, 0)})
