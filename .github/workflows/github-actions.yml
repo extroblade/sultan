@@ -21,9 +21,7 @@ jobs:
         run: npm install
       - name: build project
         run: npm run build
-      - name: start
-        run: npm run start
-      - name: tests
-        run: npm test
+      - name: test project
+        run: npm run test
       - name: deploy on gh-pages
         run: npm deploy
