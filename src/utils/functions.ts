@@ -7,7 +7,7 @@ import {ItemsType} from "../store/items/itemsTypes";
 
 export const calcTotalAmount = (arr: any[]): number => arr.reduce((a) => a+1, 0)
 
-export const calcCartAmount = (arr: CartItem[]): number => arr.reduce((a, b: CartItem) => a+=b.count,0)
+export const calcCartAmount = (arr: CartItem[]): number => arr.reduce((a, b: CartItem) => a + b.count,0)
 
 export const calcMaxPrice = (arr: ItemsType[]): number => {
   return [...arr].sort((a,b) => b.price-a.price)[0].price
@@ -44,7 +44,7 @@ export const calcTotalPrice = (arr: CartItem[]) => {
     const findItem = [...getItemsFromAdmin()].find((item: ItemsType) => {
       return item.code === obj.code
     })
-    return findItem ? sum += findItem.price * obj.count : sum
+    return findItem ? sum + findItem.price * obj.count : sum
   }, 0);
 };
 
