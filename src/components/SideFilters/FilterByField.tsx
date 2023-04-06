@@ -44,7 +44,12 @@ const FilterByField: FC<iSort> = ({field, getFilters, children}) => {
       <h4>{children}</h4>
 
       <div className={styles.input}>
-        <input type="text" placeholder={"Поиск..."} onChange={sortSearch}/>
+        <input
+          type="text"
+          placeholder={"Поиск..."}
+          onChange={sortSearch}
+          pattern={"^[0-9]+([0-9]+)?$"}
+        />
         <button type={"submit"} className={``}>
           <LensIcon/>
         </button>
