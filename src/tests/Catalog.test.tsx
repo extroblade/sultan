@@ -7,14 +7,13 @@ import '@testing-library/jest-dom'
 import '@testing-library/jest-dom/extend-expect';
 import {Provider} from "react-redux";
 import {configureStore} from "@reduxjs/toolkit";
-import items from "../store/items/itemsSlice";
 import cart from "../store/cart/cartSlice";
 import App from "../App";
 import {MemoryRouter} from "react-router";
 import {CATALOG_ROUTE} from "../utils/consts";
+import items from "../store/items/itemsSlice";
 import {ItemsType} from "../store/items/itemsTypes";
 import data from '../utils/test.json'
-
 
 describe('Catalog tests', () => {
   global.scrollTo = jest.fn()
@@ -68,14 +67,14 @@ describe('Catalog tests', () => {
     })
   });
 
-  it('should be ', () => {
+  it('should be seen', () => {
     expect(screen.queryByText('Цена')).toBeInTheDocument()
     expect(screen.queryByText('Производитель')).toBeInTheDocument()
     expect(screen.queryByText('Бренд')).toBeInTheDocument()
     expect(screen.queryByText('Рейтинг')).not.toBeInTheDocument()
   });
 
-  test('correct value input', () => {
+  test('price: correct value input', () => {
     const val = Math.floor(Math.random() * 1000000);
 
     fireEvent.input(screen.getByTestId('min'), {
@@ -85,7 +84,7 @@ describe('Catalog tests', () => {
     expect(+(screen.getByTestId('min') as HTMLInputElement).value).toEqual(val)
   });
 
-  test('negative value input', () => {
+  test('price: negative value input', () => {
     const val = Math.floor(Math.random() * (-1000000) - 1);
 
     fireEvent.input(screen.getByTestId('min'), {
@@ -94,7 +93,7 @@ describe('Catalog tests', () => {
     expect(+(screen.getByTestId('min') as HTMLInputElement).value).not.toEqual(val)
   });
 
-  test('text value input', () => {
+  test('price: text value input', () => {
     const val = 'text'
 
     fireEvent.input(screen.getByTestId('min'), {

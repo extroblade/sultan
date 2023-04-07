@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {Categories, ItemsSliceState, ItemsType} from './itemsTypes';
 import {getTypes, getItemsFromAdmin, filterPrice} from "../../utils/functions";
 
-const initialState: ItemsSliceState = {
+const initialState: ItemsSliceState = { //todo: разбить на 2 слайса
   items: getItemsFromAdmin(),
   limit: 15,
   filters: [],
@@ -12,7 +12,6 @@ const initialState: ItemsSliceState = {
   brands: [...[...new Set([...getItemsFromAdmin()].map(i => i.brand))].sort((a,b) => a.localeCompare(b))],
   sellers: [...[...new Set([...getItemsFromAdmin()].map(i => i.seller))].sort((a,b) => a.localeCompare(b))],
 };
-
 
 const itemsSlice = createSlice({
   name: 'items',
@@ -114,6 +113,7 @@ const itemsSlice = createSlice({
     },
   },
 });
+
 export const {
   updateItems,
   filterItems,

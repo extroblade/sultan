@@ -11,7 +11,6 @@ export interface ItemsType {
   price: number,
 }
 
-
 export interface Filters {
   key: keyof ItemsType,
   value: string | []
