@@ -1,22 +1,23 @@
-import React from 'react';
+import React, {FC} from 'react';
 import styles from './Pagination.module.css';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {selectItemData} from "../../store/items/selectors";
 import { ReactComponent as LeftArrow } from '../../static/leftarrow.svg';
 import { ReactComponent as RightArrow } from '../../static/rightarrow.svg';
 import {calcTotalAmount} from "../../utils/functions";
+import {setCurrentPage} from "../../store/items/itemsSlice";
 
-interface IPagination {
-  currentPage: number
-  onChangePage: (page: number) => void
-}
-
-const Pagination: React.FC<IPagination> = ({ currentPage, onChangePage }) => {
-  const { items, limit } = useSelector(selectItemData);
+const Pagination: FC = () => {
+  const { items, limit, currentPage } = useSelector(selectItemData);
+  const dispatch = useDispatch()
 
   const count = Math.ceil(calcTotalAmount(items)/limit)
   const pages = []
   for (let i=0; i < (count>5 ? 5 : count); i++) pages.push(i+1)
+
+  const onChangePage = (page: number) => {
+    dispatch(setCurrentPage(page))
+  }
 
   return (
     <nav className={styles.pages}>

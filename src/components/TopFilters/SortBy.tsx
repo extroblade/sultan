@@ -14,7 +14,7 @@ const SortBy = () => {
         <h2 className={styles.pc}>Косметика и гигиена</h2>
         <div className={styles.sortby}>
           <span className={styles.small}>Сортировка:</span>
-          <select onChange={(event) => changeSort(event)} className={styles.sort}>
+          <select onChange={changeSort} className={styles.sort}>
             <option className={styles.value__list}> Цена (сначала недорогие) </option>
             <option className={styles.value__list}> Цена (сначала дорогие) </option>
             <option className={styles.value__list}> Название А-Я </option>

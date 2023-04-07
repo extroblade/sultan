@@ -17,10 +17,12 @@ const FilterByField: FC<iSort> = ({field, getFilters, children}) => {
 
   const sortSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSorted(
-      [...[...arr].filter((i:string) => {
-        const regex: RegExp = new RegExp(event.target.value, 'gi')
-        return i.match(regex)
-      })]
+      arr.filter((i: string, index: number) => {
+        if (event.target.value) {
+          const regex: RegExp = new RegExp(event.target.value + "[A-Za-z0-9]*", 'gi')
+          return i.match(regex)
+        } else if (index<4) return i
+      })
     )
   }
 
@@ -48,7 +50,6 @@ const FilterByField: FC<iSort> = ({field, getFilters, children}) => {
           type="text"
           placeholder={"Поиск..."}
           onChange={sortSearch}
-          pattern={"^[0-9]+([0-9]+)?$"}
         />
         <button type={"submit"} className={``}>
           <LensIcon/>

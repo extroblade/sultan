@@ -58,12 +58,12 @@ const ProductCard: FC<IType> = ({i }) => {
               <select>
                 {
                   categories.find((c: Categories) => {
-                    return c.itemsCodes.find((item) => item===i.code)===i.code
+                    return c.itemsCodes.find((item) => item===i.code)
                   }) ?
                   categories.filter((c: Categories) => {
-                    return c.itemsCodes.find((item) => item===i.code)===i.code
+                    return c.itemsCodes.find((item) => item===i.code)
                   }).map(f =>
-                    <option key={f.name}>{f.name}</option>
+                    <option key={f.name}> {f.name} </option>
                   ) :
                   <option> Не указан </option>
                 }

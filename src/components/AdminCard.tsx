@@ -110,12 +110,14 @@ const AdminCard: FC<IType> = ({i}) => {
                 <input type="text" value={url} onChange={(event) => setUrl(event.target.value)}/>
               </span>
             </p>
+
             <p>
               Название:
               <span className={styles.item__info}>
                 <input type="text" value={name} onChange={(event) => setName(event.target.value)}/>
               </span>
             </p>
+
             <p>
               Тип:
               <span className={styles.item__info}>

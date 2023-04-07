@@ -24,7 +24,6 @@ const CartItem: FC<CIType> = ({i}) => {
 
   if (!item) return <NoItem i={i}/>
 
-
   return (
     <div className={styles.cart__item} key={i.code}>
       <Link to={PRODUCT_ROUTE+'/'+item.code} className={styles.cart__img}>
