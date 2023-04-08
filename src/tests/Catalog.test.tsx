@@ -67,7 +67,7 @@ describe('Catalog tests', () => {
     })
   });
 
-  it('should be seen', () => {
+  it('should be on page', () => {
     expect(screen.queryByText('Цена')).toBeInTheDocument()
     expect(screen.queryByText('Производитель')).toBeInTheDocument()
     expect(screen.queryByText('Бренд')).toBeInTheDocument()
