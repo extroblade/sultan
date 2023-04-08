@@ -23,7 +23,7 @@ const Cart = () => {
     setModalOpen(false)
   }
 
-  if (!cartItems.length) return (
+  if (!cartItems?.length) return (
     <div style={{display: "flex", justifyContent:"center", alignItems: "center", flexDirection:"column", height: "50vh"}}>
       <p>No items in cart</p>
       <Link to={CATALOG_ROUTE}>Back to catalog</Link>
