@@ -191,6 +191,18 @@ img {
   height: 10px;
 }
 
+select {
+  border: 0;
+  background-color: rgba(255, 200, 94, 0.2);
+}
+select p {
+  color: #3F4E65;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 150%;
+}
+
 .vl {
   display: flex;
   margin-top: 7px;
@@ -254,10 +266,6 @@ img {
 .item .info__container {
   display: flex;
   flex-direction: column;
-}
-.item .info__container select {
-  border: 0;
-  background-color: rgba(255, 200, 94, 0.2);
 }
 .item .info__container p {
   color: #3F4E65;

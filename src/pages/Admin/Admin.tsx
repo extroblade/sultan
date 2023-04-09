@@ -122,7 +122,7 @@ const Admin = () => {
               <input
                 required
                 type="text"
-                placeholder={"weight | any"}
+                placeholder={"Тип: weight | any"}
                 onChange={e => newItem.type = (e.target.value)}
               />
               <input

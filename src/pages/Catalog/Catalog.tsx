@@ -20,11 +20,16 @@ const Catalog = () => {
     <div className={styles.catalog}>
       <h2 className={styles.mobile}>Косметика и гигиена</h2>
 
-      <span className={styles.pc}><SortBy/></span>
+      <span className={styles.pc}>
+        <TopFilters/>
+      </span>
 
       <div className={styles.main__content}>
         <SideFilters/>
-        <span className={styles.mobile}><TopFilters/></span>
+
+        <span className={styles.mobile}>
+          <SortBy/>
+        </span>
 
         <span className={styles.items__container}>
           <div className={styles.items__grid}>
@@ -32,8 +37,8 @@ const Catalog = () => {
                 <ProductCard i={i} key={i.code}/>
               ):
               <div>
-                <p>Нет товаров, соответствующих выбранным фильтрам,</p>
-                <a href={CATALOG_ROUTE}>Вернуться в каталог</a>
+                <p> Нет товаров, соответствующих выбранным фильтрам, </p>
+                <a href={CATALOG_ROUTE}> Вернуться в каталог </a>
               </div>
             }
           </div>

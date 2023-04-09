@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {setCategories, setCurrentPage, sortCat} from "../../store/items/itemsSlice";
+import React, {useEffect} from 'react';
+import {setCategories, sortCat} from "../../store/items/itemsSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {selectItemData} from "../../store/items/selectors";
 
@@ -11,14 +11,10 @@ import SortBy from "./SortBy";
 const TopFilters = () => {
   const dispatch = useDispatch()
   const { categories, currentCat} = useSelector(selectItemData);
-  const [cat, setCat] = useState("")
 
   useEffect(() => {
-    dispatch(setCategories(cat))
     dispatch(sortCat())
-    dispatch(setCurrentPage(1))
-    window.scrollTo(0, 0)
-  },[cat])
+  },[currentCat])
 
 
   return (
@@ -28,7 +24,7 @@ const TopFilters = () => {
         {categories.length > 11 ? [categories.splice(0, 10)].map((c: any) =>
           <div key={c.name} data-testid={c.name}>
             <button
-              onClick={() => setCat(c.name)}
+              onClick={() => dispatch(setCategories(c.name))}
               className={`${styles.categories__card} ${c.name === currentCat ? styles.type__current : ""}`}
             >
               {c.name}
@@ -38,7 +34,7 @@ const TopFilters = () => {
           [...categories].map((c: Categories) =>
             <div key={c.name} data-testid={c.name}>
               <button
-                onClick={() => currentCat === c.name ? setCat("") : setCat(c.name)}
+                onClick={() => currentCat === c.name ? dispatch(setCategories("")) : dispatch(setCategories(c.name))}
                 className={`${styles.categories__card} ${c.name === currentCat ? styles.type__current : ""}`}
               >
                 {c.name}

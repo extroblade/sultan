@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import styles from "./Breadcrumbs.module.css";
 import {Link} from "react-router-dom";
-import {CATALOG_ROUTE, SHOP_ROUTE} from "../../utils/consts";
+import {CATALOG_ROUTE, PRODUCT_ROUTE, SHOP_ROUTE} from "../../utils/consts";
 import {ReactComponent as LeftArrow} from "../../static/leftarrow.svg";
 import {useLocation} from "react-router";
 import {useSelector} from "react-redux";
@@ -12,7 +12,6 @@ const Breadcrumbs = () => {
   const location = useLocation();
   const { currentCat, filters, currentPage } = useSelector(selectItemData);
   const i = [...getItemsFromAdmin()].find((item) => item.code === location.pathname.split('/')[2])
-
   const getPage = () => {
     switch (location.pathname){
       case "/cart": return "Корзина"
@@ -29,29 +28,32 @@ const Breadcrumbs = () => {
     window.scrollTo(0,0)
   },[location, currentCat, filters, currentPage])
 
+  console.log(location)
   return (
     <>
-      <div className={`${styles.breadcrumbs} ${styles.mobile}`}>
-        <Link to={SHOP_ROUTE} className={styles.breadcrumb}>
-          <div className={styles.arrow}>
-            <LeftArrow/>
-          </div>
-          <span>Назад</span>
-        </Link>
-      </div>
-
       {location.pathname.split('/')[2] ?
-        <div className={`${styles.breadcrumbs} ${styles.pc}`}>
-          <Link to={SHOP_ROUTE} className={styles.breadcrumb}> Главная </Link>
-          <div className={styles.vl}/>
-          <Link to={CATALOG_ROUTE} className={styles.breadcrumb}> Каталог </Link>
-          <div className={styles.vl}/>
-          <Link to={CATALOG_ROUTE} className={`${styles.breadcrumb} ${styles.active}`}>
-            {i.name[0].toUpperCase()}{i.name.substring(1, i.name.length)}
-          </Link>
-        </div>
+        <>
+          <div className={`${styles.breadcrumbs} ${styles.pc}`}>
+            <Link to={SHOP_ROUTE} className={styles.breadcrumb}> Главная </Link>
+            <div className={styles.vl}/>
+            <Link to={CATALOG_ROUTE} className={styles.breadcrumb}> Каталог </Link>
+            <div className={styles.vl}/>
+            <Link to={PRODUCT_ROUTE+i.code} className={`${styles.breadcrumb} ${styles.active}`}>
+              {i.name[0].toUpperCase()}{i.name.substring(1, i.name.length)}
+            </Link>
+          </div>
+          <div className={`${styles.breadcrumbs} ${styles.mobile}`}>
+            <Link to={CATALOG_ROUTE} className={styles.breadcrumb}>
+              <div className={styles.arrow}>
+                <LeftArrow/>
+              </div>
+              <span>Назад</span>
+            </Link>
+          </div>
+        </>
         :
         location.pathname!=='/' &&
+        <>
           <div className={`${styles.breadcrumbs} ${styles.pc}`}>
             <Link to={SHOP_ROUTE} className={styles.breadcrumb}> Главная </Link>
             <div className={styles.vl}/>
@@ -59,6 +61,16 @@ const Breadcrumbs = () => {
               {`${ getPage()}`}
             </Link>
           </div>
+          <div className={`${styles.breadcrumbs} ${styles.mobile}`}>
+            <Link to={SHOP_ROUTE} className={styles.breadcrumb}>
+              <div className={styles.arrow}>
+                <LeftArrow/>
+              </div>
+              <span>Назад</span>
+            </Link>
+          </div>
+        </>
+
       }
     </>
   );

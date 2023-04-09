@@ -9,6 +9,7 @@ import {ReactComponent as GrIcon} from "../static/gr.svg";
 import {ReactComponent as LitIcon} from "../static/lit.svg";
 import {Categories, ItemsType} from "../store/items/itemsTypes";
 import styles from "../pages/Admin/Admin.module.css"
+import TypeSelect from "./TypeSelect";
 
 interface IType {
   i: ItemsType
@@ -210,23 +211,7 @@ const AdminCard: FC<IType> = ({i}) => {
                 </span>
               </p>
 
-              <p>
-                Тип ухода: <span>
-                  <select>
-                    {
-                      categories.find((c: Categories) => {
-                        return c.itemsCodes.find((item: string) => item === i.code) === i.code
-                      }) ?
-                      categories.filter((c: Categories) => {
-                        return c.itemsCodes.find((item: string) => item === i.code) === i.code
-                      }).map(f =>
-                        <option key={f.name}> {f.name} </option>
-                      ) :
-                      <option>Не указан </option>
-                    }
-                  </select>
-                </span>
-              </p>
+              <TypeSelect i={i}/>
             </div>
 
           </div>

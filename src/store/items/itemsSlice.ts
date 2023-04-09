@@ -58,10 +58,8 @@ const itemsSlice = createSlice({
           state.items = state.items.sort((a,b) =>  b.name.localeCompare(a.name))
           break
         }
-        default: {
-          state.items = state.items.sort((a,b) => a.price - b.price)
-          break;
-        }
+        default: state.items = state.items.sort((a,b) => a.price - b.price)
+
       }
     },
 
@@ -71,7 +69,7 @@ const itemsSlice = createSlice({
           return item.name === state.currentCat
         })
         state.items = [...getItemsFromAdmin()].filter((i: ItemsType) => {
-          return i.code === (findItem ? findItem.itemsCodes.find(item => item === i.code) : "")
+          return i.code === (findItem ? findItem.itemsCodes.find(item => item === i.code) : null)
         })
       } else {
         state.items = [...getItemsFromAdmin()]
@@ -102,14 +100,17 @@ const itemsSlice = createSlice({
       } else {
         state.items = getItemsFromAdmin()
       }
+      state.currentPage = 1
     },
 
     setFilters(state, action){
       state.filters = action.payload
+      state.currentPage = 1
     },
 
     setCategories(state, action){
       state.currentCat = action.payload
+      state.currentPage = 1
     },
   },
 });

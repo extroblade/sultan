@@ -12,7 +12,7 @@ import {selectItemData} from "../../store/items/selectors";
 
 const AllSorts = () => {
   const dispatch = useDispatch()
-  const { filters, items } = useSelector(selectItemData)
+  const { items } = useSelector(selectItemData)
 
   const [minValue, setMinValue] = useState(0)
   const [maxValue, setMaxValue] = useState(calcMaxPrice(getItemsFromAdmin()))
@@ -28,7 +28,7 @@ const AllSorts = () => {
   },[minValue, maxValue])
 
   const getFilters = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if(event.target.checked){
+    if (event.target.checked) {
       setFiltersList(() => [...filtersList, {key: event.target.id, value: event.target.name}])
     } else if (filtersList.length) {
       setFiltersList((f) => f.filter((i) => {
@@ -49,11 +49,8 @@ const AllSorts = () => {
     setMaxValue(calcMaxPrice(getItemsFromAdmin()))
     dispatch(setFilters([] ))
     dispatch(setCategories(""))
-  }
-
-  useEffect(()=>{
     dispatch(filterItems())
-  },[filters])
+  }
 
   useEffect(()=>{
     dispatch(updateItems)

@@ -6,9 +6,9 @@ import { ReactComponent as LitIcon } from '../../static/lit.svg';
 import { ReactComponent as CartIcon } from "../../static/cart.svg";
 import styles from './ProductCard.module.css'
 import {addItem} from "../../store/cart/cartSlice";
-import {useDispatch, useSelector} from 'react-redux';
-import {selectItemData} from "../../store/items/selectors";
-import {Categories, ItemsType} from "../../store/items/itemsTypes";
+import {useDispatch} from 'react-redux';
+import {ItemsType} from "../../store/items/itemsTypes";
+import TypeSelect from "../TypeSelect";
 
 interface IType {
   i: ItemsType
@@ -16,7 +16,6 @@ interface IType {
 
 const ProductCard: FC<IType> = ({i }) => {
   const dispatch = useDispatch();
-  const { categories } = useSelector(selectItemData);
 
   return (
     <div className={styles.item} key={i.code} data-testid={i.code}>
@@ -53,23 +52,7 @@ const ProductCard: FC<IType> = ({i }) => {
             </span>
           </p>
 
-          <p>
-            Тип ухода: <span>
-              <select>
-                {
-                  categories.find((c: Categories) => {
-                    return c.itemsCodes.find((item) => item===i.code)
-                  }) ?
-                  categories.filter((c: Categories) => {
-                    return c.itemsCodes.find((item) => item===i.code)
-                  }).map(f =>
-                    <option key={f.name}> {f.name} </option>
-                  ) :
-                  <option> Не указан </option>
-                }
-              </select>
-            </span>
-          </p>
+          <TypeSelect i={i}/>
         </div>
       </div>
       <div className={styles.bottom}>

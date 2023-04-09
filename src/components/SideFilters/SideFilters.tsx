@@ -1,16 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {selectItemData} from "../../store/items/selectors";
-import {setCategories, sortCat} from '../../store/items/itemsSlice';
-
 import styles from './SideFilters.module.css'
-
 import {ReactComponent as ArrowUpIcon} from "../../static/arrow_up.svg";
 import {ReactComponent as ArrowDownIcon} from "../../static/arrow_down.svg";
-
-import {Categories} from "../../store/items/itemsTypes";
 import AllSorts from "./AllSorts";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
+import FilterByCategory from "./FilterByCategory";
 
 export interface iFilters {
   key: string;
@@ -18,15 +14,8 @@ export interface iFilters {
 }
 
 const SideFilters = () => {
-  const { filters, categories, currentCat } = useSelector(selectItemData);
-  const dispatch = useDispatch()
+  const { filters } = useSelector(selectItemData);
   const [mobileOpen, setMobileOpen] = useState(false)
-
-  useEffect(()=>{
-    dispatch(sortCat())
-    setMobileOpen(() => false)
-    dispatch(setCategories(currentCat))
-  },[currentCat])
 
   useEffect(()=>{
     setMobileOpen(() => false)
@@ -64,19 +53,7 @@ const SideFilters = () => {
         <AllSorts/>
       </span>
 
-      <div className={styles.categories}>
-        {categories.map((c: Categories) =>
-          <div className={styles.categories__btns} key={c.name}>
-            <div className={`${styles.hl} ${styles.pc}`}/>
-            <button
-              onClick={() => currentCat === c.name ? dispatch(setCategories("")) : dispatch(setCategories(c.name))}
-              className={c.name===currentCat ? styles.type__current : styles.type}
-            >
-              {c.name.toUpperCase()}
-            </button>
-          </div>
-        )}
-      </div>
+      <FilterByCategory/>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router';
-import {CART_ROUTE, CATALOG_ROUTE} from '../../utils/consts';
+import {CART_ROUTE} from '../../utils/consts';
 import {useDispatch, useSelector} from "react-redux";
 
 import {Link} from "react-router-dom";
@@ -12,17 +12,13 @@ import { ReactComponent as CartIcon } from "../../static/cart.svg";
 import { ReactComponent as LitIcon } from '../../static/lit.svg';
 import { ReactComponent as ShareIcon } from '../../static/share.svg';
 import { ReactComponent as DownloadIcon } from '../../static/download.svg';
-import { ReactComponent as ArrowIcon } from '../../static/small_arrow.svg';
-import { ReactComponent as ArrowOpenIcon } from '../../static/small_arrow_open.svg';
 import styles from "./Item.module.css"
-import {ReactComponent as LeftArrow} from "../../static/leftarrow.svg";
 import Modal from "../../components/modals/Modal";
 import {ItemsType} from "../../store/items/itemsTypes";
+import Chars from "../../components/ItemComponents/Chars";
+import Descriptions from "../../components/ItemComponents/Descriptions";
 
 const Item = () => {
-
-  const [descActive, setDescActive] = useState(true)
-  const [charActive, setCharActive] = useState(true)
   const {code} = useParams()
   const {items} = useSelector(selectItemData)
   const dispatch = useDispatch()
@@ -52,17 +48,6 @@ const Item = () => {
 
   return (
     <div className={styles.item} onClick={() => setAddToCartVisible(false)}>
-      <div className={`${styles.breadcrumbs} ${styles.mobile}`}>
-        <Link to={CATALOG_ROUTE} className={styles.breadcrumb}>
-          <div className={styles.arrow}>
-            <LeftArrow/>
-          </div>
-          <span>
-            Назад
-          </span>
-        </Link>
-      </div>
-
       <div className={`${styles.row} ${styles.item__page}`}>
         <div className={styles.col}>
           <div className={styles.item__img}>
@@ -123,39 +108,9 @@ const Item = () => {
               <p>Штрихкод: <span className={styles.item__info}>{i.code}</span></p>
             </div>
 
-            <button onClick={() => setDescActive(() => !descActive)} className={styles.open__button}>
-              Описание {descActive ? <ArrowOpenIcon/> : <ArrowIcon/>}
-            </button>
-            <p className={styles.desc}>
-              {!descActive && i.desc}
-            </p>
+            <Descriptions i={i}/>
             <div className={styles.hl}></div>
-            <button  onClick={() => setCharActive(() => !charActive)}  className={styles.open__button}>
-              Характеристики {charActive ? <ArrowOpenIcon/> : <ArrowIcon/>}
-            </button>
-            {!charActive && (
-              <div className={styles.info__container}>
-                <p>
-                  Назначение: <span className={styles.item__info}>{i.seller}</span>
-                </p>
-                <p>
-                  Тип: <span className={styles.item__info}>{i.type==="weight" ? "Вес" : "Объем"}</span>
-                </p>
-                <p>
-                  Производитель: <span className={styles.item__info}>{i.seller}</span>
-                </p>
-                <p>
-                  Бренд: <span className={styles.item__info}>{i.brand}</span>
-                </p>
-                <p>
-                  Артикул: <span className={styles.item__info}>{i.code.slice(0, 5)}</span>
-                </p>
-                {i.type === "weight" ?
-                  (<p> Вес: <span className={styles.item__info}> {i.size} г</span></p>) :
-                  (<p> Объем: <span className={styles.item__info}> {i.size} мл</span></p>)
-                }
-              </div>
-            )}
+            <Chars i={i}/>
           </div>
         </div>
       </div>

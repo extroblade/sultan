@@ -193,6 +193,18 @@ img {
   height: 10px;
 }
 
+select {
+  border: 0;
+  background-color: rgba(255, 200, 94, 0.2);
+}
+select p {
+  color: #3F4E65;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 150%;
+}
+
 .vl {
   display: flex;
   margin-top: 7px;
@@ -295,6 +307,9 @@ img {
   }
   .filters .categories__row {
     display: none;
+  }
+  .filters .sortby {
+    flex-wrap: wrap;
   }
 }
 
