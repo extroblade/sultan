@@ -28,7 +28,6 @@ const Breadcrumbs = () => {
     window.scrollTo(0,0)
   },[location, currentCat, filters, currentPage])
 
-  console.log(location)
   return (
     <>
       {location.pathname.split('/')[2] ?
