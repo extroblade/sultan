@@ -1,0 +1,3332 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cart snapshots should be as in snapshot 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="cart__item"
+      >
+        <a
+          class="cart__img"
+          href="/product/1"
+        >
+          <img
+            alt="item"
+            src="https://ir.ozone.ru/s3/multimedia-a/c1000/6367218622.jpg"
+          />
+        </a>
+        <div
+          class="col"
+        >
+          <p
+            class="size"
+          >
+             
+            <svg>
+              gr.svg
+            </svg>
+             
+            3321
+             г 
+          </p>
+          <a
+            href="/product/1"
+          >
+            <span
+              class="cart__item__name"
+            >
+              Бренд1
+               
+              Экологичное туалетное мыло. Литсея ...
+            </span>
+          </a>
+          <p
+            class="desc"
+          >
+            description
+          </p>
+        </div>
+        <span
+          class="cart__btns"
+        >
+          <div
+            class="cart__item__price"
+          >
+            <button
+              class="amount"
+            >
+               - 
+            </button>
+            <div
+              class="amount__value"
+              data-testid="amount1"
+            >
+              2
+            </div>
+            <button
+              class="amount"
+              data-testid="plus1"
+            >
+               + 
+            </button>
+          </div>
+          <div
+            class="vl"
+          />
+          <strong>
+             
+            8
+             ₸ 
+          </strong>
+          <div
+            class="vl"
+          />
+          <button
+            class="btn__img"
+          >
+            <svg>
+              delete.svg
+            </svg>
+          </button>
+        </span>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="cart__item"
+    >
+      <a
+        class="cart__img"
+        href="/product/1"
+      >
+        <img
+          alt="item"
+          src="https://ir.ozone.ru/s3/multimedia-a/c1000/6367218622.jpg"
+        />
+      </a>
+      <div
+        class="col"
+      >
+        <p
+          class="size"
+        >
+           
+          <svg>
+            gr.svg
+          </svg>
+           
+          3321
+           г 
+        </p>
+        <a
+          href="/product/1"
+        >
+          <span
+            class="cart__item__name"
+          >
+            Бренд1
+             
+            Экологичное туалетное мыло. Литсея ...
+          </span>
+        </a>
+        <p
+          class="desc"
+        >
+          description
+        </p>
+      </div>
+      <span
+        class="cart__btns"
+      >
+        <div
+          class="cart__item__price"
+        >
+          <button
+            class="amount"
+          >
+             - 
+          </button>
+          <div
+            class="amount__value"
+            data-testid="amount1"
+          >
+            2
+          </div>
+          <button
+            class="amount"
+            data-testid="plus1"
+          >
+             + 
+          </button>
+        </div>
+        <div
+          class="vl"
+        />
+        <strong>
+           
+          8
+           ₸ 
+        </strong>
+        <div
+          class="vl"
+        />
+        <button
+          class="btn__img"
+        >
+          <svg>
+            delete.svg
+          </svg>
+        </button>
+      </span>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Cart snapshots should be empty 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <header
+        class="header"
+      >
+        <div
+          class="header__mobile"
+          style="overflow-y: unset;"
+        >
+          <nav
+            class="nav"
+          >
+            <button
+              class="btn__img"
+            >
+              <svg>
+                hamburger-white.svg
+              </svg>
+            </button>
+            <a
+              class="main_logo"
+              href="/"
+            >
+              <svg>
+                main-logo.svg
+              </svg>
+            </a>
+            <div
+              class="cart"
+            >
+              <a
+                class="btn__cart"
+                href="/cart"
+              >
+                <svg>
+                  cart.svg
+                </svg>
+                <p
+                  class="btn__indicator"
+                >
+                  0
+                </p>
+              </a>
+            </div>
+          </nav>
+          <div
+            class="bottom"
+          >
+            <div
+              class="mobile__btn"
+            >
+              <a
+                class="mobile__link"
+                href="/catalog"
+              >
+                <svg
+                  class="mobile__img"
+                >
+                  catalog.svg
+                </svg>
+                <p>
+                  Каталог
+                </p>
+              </a>
+            </div>
+            <div
+              class="mobile vl"
+            />
+            <div
+              class="mobile__btn"
+            >
+              <a
+                class="mobile__link"
+                href="/cart"
+              >
+                <svg
+                  class="mobile__img"
+                >
+                  lens.svg
+                </svg>
+                <p>
+                  Поиск
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="header__pc"
+        >
+          <div
+            class="head"
+          >
+            <div
+              class="contact"
+            >
+              <div
+                class="contact__container"
+              >
+                <svg>
+                  address.svg
+                </svg>
+                <p>
+                  <strong>
+                    г.Кокчетав, ул.Ж. Ташенова 129Б
+                  </strong>
+                  <br />
+                  (Рынок Восточный)
+                </p>
+              </div>
+              <div
+                class="vl"
+              />
+              <div
+                class="contact__container"
+              >
+                <svg>
+                  email.svg
+                </svg>
+                <p>
+                  <strong>
+                    opt.sultan@mail.ru
+                  </strong>
+                  <br />
+                  На связи в любое время
+                </p>
+              </div>
+            </div>
+            <ul
+              class="navigation"
+            >
+              <li
+                class="navigation__item admin"
+              >
+                <a
+                  href="/admin"
+                >
+                  Админка
+                </a>
+              </li>
+              <li
+                class="navigation__item"
+              >
+                <a
+                  href="/cart"
+                >
+                  О компании
+                </a>
+              </li>
+              <div
+                class="vl"
+              />
+              <li
+                class="navigation__item"
+              >
+                <a
+                  href="/cart"
+                >
+                  Доставка и оплата
+                </a>
+              </li>
+              <div
+                class="vl"
+              />
+              <li
+                class="navigation__item"
+              >
+                <a
+                  href="/cart"
+                >
+                  Возврат
+                </a>
+              </li>
+              <div
+                class="vl"
+              />
+              <li
+                class="navigation__item"
+              >
+                <a
+                  href="/cart"
+                >
+                  Контакты
+                </a>
+              </li>
+            </ul>
+          </div>
+          <nav
+            class="nav"
+          >
+            <a
+              class="main_logo"
+              href="/"
+            >
+              <svg>
+                main-logo.svg
+              </svg>
+            </a>
+            <div
+              class="col"
+            >
+              <a
+                class="btn__text"
+                href="/catalog"
+              >
+                <span>
+                  Каталог
+                </span>
+                <svg>
+                  catalog.svg
+                </svg>
+              </a>
+            </div>
+            <div
+              class="col input"
+            >
+              <input
+                placeholder="Поиск..."
+                type="search"
+              />
+              <button
+                class="btn btn__img"
+                type="submit"
+              >
+                <svg>
+                  lens.svg
+                </svg>
+              </button>
+            </div>
+            <div
+              class="call"
+            >
+              <strong
+                class="header__call__item"
+              >
+                 +7 (777) 490-00-91 
+              </strong>
+              <p
+                class="header__call__item"
+              >
+                 время работы: 9:00-20:00 
+              </p>
+              <p
+                class="header__call__item"
+              >
+                 Заказать звонок 
+              </p>
+            </div>
+            <div
+              class="col nav__img"
+            >
+              <img
+                alt="consultant"
+                src="consultant.png"
+              />
+            </div>
+            <div
+              class="col"
+            >
+              <a
+                class="btn__text"
+                href="/cart"
+              >
+                <span>
+                  Прайс-лист
+                </span>
+                <svg>
+                  download.svg
+                </svg>
+              </a>
+            </div>
+            <div
+              class="cart"
+            >
+              <a
+                class="btn__cart"
+                href="/cart"
+              >
+                <svg>
+                  cart.svg
+                </svg>
+                <p
+                  class="btn__indicator"
+                >
+                  0
+                </p>
+              </a>
+              <div
+                class="col"
+              >
+                <a
+                  href="/cart"
+                >
+                  Корзина
+                </a>
+                <strong>
+                   
+                  0
+                   ₸ 
+                </strong>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <div
+        class="breadcrumbs mobile"
+      >
+        <a
+          class="breadcrumb"
+          href="/"
+        >
+          <div
+            class="arrow"
+          >
+            <svg>
+              leftarrow.svg
+            </svg>
+          </div>
+          <span>
+            Назад
+          </span>
+        </a>
+      </div>
+      <div
+        class="breadcrumbs pc"
+      >
+        <a
+          class="breadcrumb"
+          href="/"
+        >
+           Главная 
+        </a>
+        <div
+          class="vl"
+        />
+        <a
+          class="breadcrumb active"
+          href="/cart"
+        >
+          Корзина
+        </a>
+      </div>
+      <div
+        style="display: flex; justify-content: center; align-items: center; flex-direction: column; height: 50vh;"
+      >
+        <p>
+          No items in cart
+        </p>
+        <a
+          href="/catalog"
+        >
+          Back to catalog
+        </a>
+      </div>
+      <footer
+        class="footer"
+      >
+        <div
+          class="col"
+        >
+          <div
+            class="footer__logo"
+          >
+            <img
+              alt="logo"
+              class="logo"
+              src="main-logo-white.svg"
+            />
+            <button
+              class="btn__text mobile"
+            >
+              <span>
+                Прайс-лист
+              </span>
+              <svg>
+                download.svg
+              </svg>
+            </button>
+          </div>
+          <p
+            class="long"
+          >
+            Компания «Султан» — снабжаем розничные магазины товарами "под ключ" в Кокчетаве и Акмолинской области
+          </p>
+          <div
+            class="sub"
+          >
+            <p>
+              Подпишись на скидки и акции
+            </p>
+            <div
+              class="input"
+            >
+              <input
+                placeholder="Введите ваш E-mail"
+                type="text"
+              />
+              <button
+                class="btn__img"
+                type="submit"
+              >
+                <svg>
+                  right-wing.svg
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="middle"
+        >
+          <div
+            class="col"
+          >
+            <h3>
+              Меню сайта:
+            </h3>
+            <a
+              class="link"
+              href="/cart"
+            >
+              О компании
+            </a>
+            <a
+              class="link"
+              href="/cart"
+            >
+              Доставка и оплата
+            </a>
+            <a
+              class="link"
+              href="/cart"
+            >
+              Возврат
+            </a>
+            <a
+              class="link"
+              href="/cart"
+            >
+              Контакты
+            </a>
+          </div>
+          <div
+            class="col"
+          >
+            <h3>
+              Категории:
+            </h3>
+            <a
+              class="link"
+              href="/cart"
+            >
+              Бытовая химия
+            </a>
+            <a
+              class="link"
+              href="/cart"
+            >
+              Косметика и гигиена
+            </a>
+            <a
+              class="link"
+              href="/cart"
+            >
+              Товары для дома
+            </a>
+            <a
+              class="link"
+              href="/cart"
+            >
+              Товары для детей и мам
+            </a>
+            <a
+              class="link"
+              href="/cart"
+            >
+              Посуда
+            </a>
+          </div>
+        </div>
+        <div
+          class="col pc"
+        >
+          <span
+            class="col"
+          >
+            <h3>
+              Скачать прайс-лист:
+            </h3>
+            <button
+              class="btn__text"
+            >
+              <span>
+                Прайс-лист
+              </span>
+              <svg>
+                download.svg
+              </svg>
+            </button>
+          </span>
+          <div
+            class="col"
+          >
+            <p>
+              Связь в мессенджерах:
+            </p>
+            <div
+              class="logos"
+            >
+              <img
+                alt="wu"
+                src="whatsup.png"
+              />
+              <img
+                alt="tg"
+                src="telegram.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="col"
+        >
+          <h3>
+            Контакты:
+          </h3>
+          <div
+            class="footer__calls"
+          >
+            <div>
+              <div
+                class="footer__call"
+              >
+                <strong
+                  class="footer__call__item"
+                >
+                  +7 (777) 490-00-91
+                </strong>
+                <p
+                  class="footer__call__item"
+                >
+                  время работы: 9:00-20:00
+                </p>
+                <p
+                  class="footer__call__item"
+                >
+                  Заказать звонок
+                </p>
+              </div>
+              <div
+                class="footer__call"
+              >
+                <strong
+                  class="footer__call__item"
+                >
+                  opt.sultan@mail.ru
+                </strong>
+                <p
+                  class="footer__call__item"
+                >
+                  На связи в любое время
+                </p>
+              </div>
+              <div
+                class="logos"
+              >
+                <img
+                  alt="visa"
+                  src="visa.png"
+                />
+                <img
+                  alt="mc"
+                  src="mastercard.png"
+                />
+              </div>
+            </div>
+            <div
+              class="col mobile"
+            >
+              <p>
+                Связь в мессенджерах:
+              </p>
+              <div
+                class="logos"
+              >
+                <img
+                  alt="wu"
+                  src="whatsup.png"
+                />
+                <img
+                  alt="tg"
+                  src="telegram.png"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>,
+  "container": <div>
+    <header
+      class="header"
+    >
+      <div
+        class="header__mobile"
+        style="overflow-y: unset;"
+      >
+        <nav
+          class="nav"
+        >
+          <button
+            class="btn__img"
+          >
+            <svg>
+              hamburger-white.svg
+            </svg>
+          </button>
+          <a
+            class="main_logo"
+            href="/"
+          >
+            <svg>
+              main-logo.svg
+            </svg>
+          </a>
+          <div
+            class="cart"
+          >
+            <a
+              class="btn__cart"
+              href="/cart"
+            >
+              <svg>
+                cart.svg
+              </svg>
+              <p
+                class="btn__indicator"
+              >
+                0
+              </p>
+            </a>
+          </div>
+        </nav>
+        <div
+          class="bottom"
+        >
+          <div
+            class="mobile__btn"
+          >
+            <a
+              class="mobile__link"
+              href="/catalog"
+            >
+              <svg
+                class="mobile__img"
+              >
+                catalog.svg
+              </svg>
+              <p>
+                Каталог
+              </p>
+            </a>
+          </div>
+          <div
+            class="mobile vl"
+          />
+          <div
+            class="mobile__btn"
+          >
+            <a
+              class="mobile__link"
+              href="/cart"
+            >
+              <svg
+                class="mobile__img"
+              >
+                lens.svg
+              </svg>
+              <p>
+                Поиск
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="header__pc"
+      >
+        <div
+          class="head"
+        >
+          <div
+            class="contact"
+          >
+            <div
+              class="contact__container"
+            >
+              <svg>
+                address.svg
+              </svg>
+              <p>
+                <strong>
+                  г.Кокчетав, ул.Ж. Ташенова 129Б
+                </strong>
+                <br />
+                (Рынок Восточный)
+              </p>
+            </div>
+            <div
+              class="vl"
+            />
+            <div
+              class="contact__container"
+            >
+              <svg>
+                email.svg
+              </svg>
+              <p>
+                <strong>
+                  opt.sultan@mail.ru
+                </strong>
+                <br />
+                На связи в любое время
+              </p>
+            </div>
+          </div>
+          <ul
+            class="navigation"
+          >
+            <li
+              class="navigation__item admin"
+            >
+              <a
+                href="/admin"
+              >
+                Админка
+              </a>
+            </li>
+            <li
+              class="navigation__item"
+            >
+              <a
+                href="/cart"
+              >
+                О компании
+              </a>
+            </li>
+            <div
+              class="vl"
+            />
+            <li
+              class="navigation__item"
+            >
+              <a
+                href="/cart"
+              >
+                Доставка и оплата
+              </a>
+            </li>
+            <div
+              class="vl"
+            />
+            <li
+              class="navigation__item"
+            >
+              <a
+                href="/cart"
+              >
+                Возврат
+              </a>
+            </li>
+            <div
+              class="vl"
+            />
+            <li
+              class="navigation__item"
+            >
+              <a
+                href="/cart"
+              >
+                Контакты
+              </a>
+            </li>
+          </ul>
+        </div>
+        <nav
+          class="nav"
+        >
+          <a
+            class="main_logo"
+            href="/"
+          >
+            <svg>
+              main-logo.svg
+            </svg>
+          </a>
+          <div
+            class="col"
+          >
+            <a
+              class="btn__text"
+              href="/catalog"
+            >
+              <span>
+                Каталог
+              </span>
+              <svg>
+                catalog.svg
+              </svg>
+            </a>
+          </div>
+          <div
+            class="col input"
+          >
+            <input
+              placeholder="Поиск..."
+              type="search"
+            />
+            <button
+              class="btn btn__img"
+              type="submit"
+            >
+              <svg>
+                lens.svg
+              </svg>
+            </button>
+          </div>
+          <div
+            class="call"
+          >
+            <strong
+              class="header__call__item"
+            >
+               +7 (777) 490-00-91 
+            </strong>
+            <p
+              class="header__call__item"
+            >
+               время работы: 9:00-20:00 
+            </p>
+            <p
+              class="header__call__item"
+            >
+               Заказать звонок 
+            </p>
+          </div>
+          <div
+            class="col nav__img"
+          >
+            <img
+              alt="consultant"
+              src="consultant.png"
+            />
+          </div>
+          <div
+            class="col"
+          >
+            <a
+              class="btn__text"
+              href="/cart"
+            >
+              <span>
+                Прайс-лист
+              </span>
+              <svg>
+                download.svg
+              </svg>
+            </a>
+          </div>
+          <div
+            class="cart"
+          >
+            <a
+              class="btn__cart"
+              href="/cart"
+            >
+              <svg>
+                cart.svg
+              </svg>
+              <p
+                class="btn__indicator"
+              >
+                0
+              </p>
+            </a>
+            <div
+              class="col"
+            >
+              <a
+                href="/cart"
+              >
+                Корзина
+              </a>
+              <strong>
+                 
+                0
+                 ₸ 
+              </strong>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <div
+      class="breadcrumbs mobile"
+    >
+      <a
+        class="breadcrumb"
+        href="/"
+      >
+        <div
+          class="arrow"
+        >
+          <svg>
+            leftarrow.svg
+          </svg>
+        </div>
+        <span>
+          Назад
+        </span>
+      </a>
+    </div>
+    <div
+      class="breadcrumbs pc"
+    >
+      <a
+        class="breadcrumb"
+        href="/"
+      >
+         Главная 
+      </a>
+      <div
+        class="vl"
+      />
+      <a
+        class="breadcrumb active"
+        href="/cart"
+      >
+        Корзина
+      </a>
+    </div>
+    <div
+      style="display: flex; justify-content: center; align-items: center; flex-direction: column; height: 50vh;"
+    >
+      <p>
+        No items in cart
+      </p>
+      <a
+        href="/catalog"
+      >
+        Back to catalog
+      </a>
+    </div>
+    <footer
+      class="footer"
+    >
+      <div
+        class="col"
+      >
+        <div
+          class="footer__logo"
+        >
+          <img
+            alt="logo"
+            class="logo"
+            src="main-logo-white.svg"
+          />
+          <button
+            class="btn__text mobile"
+          >
+            <span>
+              Прайс-лист
+            </span>
+            <svg>
+              download.svg
+            </svg>
+          </button>
+        </div>
+        <p
+          class="long"
+        >
+          Компания «Султан» — снабжаем розничные магазины товарами "под ключ" в Кокчетаве и Акмолинской области
+        </p>
+        <div
+          class="sub"
+        >
+          <p>
+            Подпишись на скидки и акции
+          </p>
+          <div
+            class="input"
+          >
+            <input
+              placeholder="Введите ваш E-mail"
+              type="text"
+            />
+            <button
+              class="btn__img"
+              type="submit"
+            >
+              <svg>
+                right-wing.svg
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="middle"
+      >
+        <div
+          class="col"
+        >
+          <h3>
+            Меню сайта:
+          </h3>
+          <a
+            class="link"
+            href="/cart"
+          >
+            О компании
+          </a>
+          <a
+            class="link"
+            href="/cart"
+          >
+            Доставка и оплата
+          </a>
+          <a
+            class="link"
+            href="/cart"
+          >
+            Возврат
+          </a>
+          <a
+            class="link"
+            href="/cart"
+          >
+            Контакты
+          </a>
+        </div>
+        <div
+          class="col"
+        >
+          <h3>
+            Категории:
+          </h3>
+          <a
+            class="link"
+            href="/cart"
+          >
+            Бытовая химия
+          </a>
+          <a
+            class="link"
+            href="/cart"
+          >
+            Косметика и гигиена
+          </a>
+          <a
+            class="link"
+            href="/cart"
+          >
+            Товары для дома
+          </a>
+          <a
+            class="link"
+            href="/cart"
+          >
+            Товары для детей и мам
+          </a>
+          <a
+            class="link"
+            href="/cart"
+          >
+            Посуда
+          </a>
+        </div>
+      </div>
+      <div
+        class="col pc"
+      >
+        <span
+          class="col"
+        >
+          <h3>
+            Скачать прайс-лист:
+          </h3>
+          <button
+            class="btn__text"
+          >
+            <span>
+              Прайс-лист
+            </span>
+            <svg>
+              download.svg
+            </svg>
+          </button>
+        </span>
+        <div
+          class="col"
+        >
+          <p>
+            Связь в мессенджерах:
+          </p>
+          <div
+            class="logos"
+          >
+            <img
+              alt="wu"
+              src="whatsup.png"
+            />
+            <img
+              alt="tg"
+              src="telegram.png"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="col"
+      >
+        <h3>
+          Контакты:
+        </h3>
+        <div
+          class="footer__calls"
+        >
+          <div>
+            <div
+              class="footer__call"
+            >
+              <strong
+                class="footer__call__item"
+              >
+                +7 (777) 490-00-91
+              </strong>
+              <p
+                class="footer__call__item"
+              >
+                время работы: 9:00-20:00
+              </p>
+              <p
+                class="footer__call__item"
+              >
+                Заказать звонок
+              </p>
+            </div>
+            <div
+              class="footer__call"
+            >
+              <strong
+                class="footer__call__item"
+              >
+                opt.sultan@mail.ru
+              </strong>
+              <p
+                class="footer__call__item"
+              >
+                На связи в любое время
+              </p>
+            </div>
+            <div
+              class="logos"
+            >
+              <img
+                alt="visa"
+                src="visa.png"
+              />
+              <img
+                alt="mc"
+                src="mastercard.png"
+              />
+            </div>
+          </div>
+          <div
+            class="col mobile"
+          >
+            <p>
+              Связь в мессенджерах:
+            </p>
+            <div
+              class="logos"
+            >
+              <img
+                alt="wu"
+                src="whatsup.png"
+              />
+              <img
+                alt="tg"
+                src="telegram.png"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Cart snapshots should not be empty 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <header
+        class="header"
+      >
+        <div
+          class="header__mobile"
+          style="overflow-y: unset;"
+        >
+          <nav
+            class="nav"
+          >
+            <button
+              class="btn__img"
+            >
+              <svg>
+                hamburger-white.svg
+              </svg>
+            </button>
+            <a
+              class="main_logo"
+              href="/"
+            >
+              <svg>
+                main-logo.svg
+              </svg>
+            </a>
+            <div
+              class="cart"
+            >
+              <a
+                class="btn__cart"
+                href="/cart"
+              >
+                <svg>
+                  cart.svg
+                </svg>
+                <p
+                  class="btn__indicator"
+                >
+                  7
+                </p>
+              </a>
+            </div>
+          </nav>
+          <div
+            class="bottom"
+          >
+            <div
+              class="mobile__btn"
+            >
+              <a
+                class="mobile__link"
+                href="/catalog"
+              >
+                <svg
+                  class="mobile__img"
+                >
+                  catalog.svg
+                </svg>
+                <p>
+                  Каталог
+                </p>
+              </a>
+            </div>
+            <div
+              class="mobile vl"
+            />
+            <div
+              class="mobile__btn"
+            >
+              <a
+                class="mobile__link"
+                href="/cart"
+              >
+                <svg
+                  class="mobile__img"
+                >
+                  lens.svg
+                </svg>
+                <p>
+                  Поиск
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="header__pc"
+        >
+          <div
+            class="head"
+          >
+            <div
+              class="contact"
+            >
+              <div
+                class="contact__container"
+              >
+                <svg>
+                  address.svg
+                </svg>
+                <p>
+                  <strong>
+                    г.Кокчетав, ул.Ж. Ташенова 129Б
+                  </strong>
+                  <br />
+                  (Рынок Восточный)
+                </p>
+              </div>
+              <div
+                class="vl"
+              />
+              <div
+                class="contact__container"
+              >
+                <svg>
+                  email.svg
+                </svg>
+                <p>
+                  <strong>
+                    opt.sultan@mail.ru
+                  </strong>
+                  <br />
+                  На связи в любое время
+                </p>
+              </div>
+            </div>
+            <ul
+              class="navigation"
+            >
+              <li
+                class="navigation__item admin"
+              >
+                <a
+                  href="/admin"
+                >
+                  Админка
+                </a>
+              </li>
+              <li
+                class="navigation__item"
+              >
+                <a
+                  href="/cart"
+                >
+                  О компании
+                </a>
+              </li>
+              <div
+                class="vl"
+              />
+              <li
+                class="navigation__item"
+              >
+                <a
+                  href="/cart"
+                >
+                  Доставка и оплата
+                </a>
+              </li>
+              <div
+                class="vl"
+              />
+              <li
+                class="navigation__item"
+              >
+                <a
+                  href="/cart"
+                >
+                  Возврат
+                </a>
+              </li>
+              <div
+                class="vl"
+              />
+              <li
+                class="navigation__item"
+              >
+                <a
+                  href="/cart"
+                >
+                  Контакты
+                </a>
+              </li>
+            </ul>
+          </div>
+          <nav
+            class="nav"
+          >
+            <a
+              class="main_logo"
+              href="/"
+            >
+              <svg>
+                main-logo.svg
+              </svg>
+            </a>
+            <div
+              class="col"
+            >
+              <a
+                class="btn__text"
+                href="/catalog"
+              >
+                <span>
+                  Каталог
+                </span>
+                <svg>
+                  catalog.svg
+                </svg>
+              </a>
+            </div>
+            <div
+              class="col input"
+            >
+              <input
+                placeholder="Поиск..."
+                type="search"
+              />
+              <button
+                class="btn btn__img"
+                type="submit"
+              >
+                <svg>
+                  lens.svg
+                </svg>
+              </button>
+            </div>
+            <div
+              class="call"
+            >
+              <strong
+                class="header__call__item"
+              >
+                 +7 (777) 490-00-91 
+              </strong>
+              <p
+                class="header__call__item"
+              >
+                 время работы: 9:00-20:00 
+              </p>
+              <p
+                class="header__call__item"
+              >
+                 Заказать звонок 
+              </p>
+            </div>
+            <div
+              class="col nav__img"
+            >
+              <img
+                alt="consultant"
+                src="consultant.png"
+              />
+            </div>
+            <div
+              class="col"
+            >
+              <a
+                class="btn__text"
+                href="/cart"
+              >
+                <span>
+                  Прайс-лист
+                </span>
+                <svg>
+                  download.svg
+                </svg>
+              </a>
+            </div>
+            <div
+              class="cart"
+            >
+              <a
+                class="btn__cart"
+                href="/cart"
+              >
+                <svg>
+                  cart.svg
+                </svg>
+                <p
+                  class="btn__indicator"
+                >
+                  7
+                </p>
+              </a>
+              <div
+                class="col"
+              >
+                <a
+                  href="/cart"
+                >
+                  Корзина
+                </a>
+                <strong>
+                   
+                  18
+                   ₸ 
+                </strong>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <div
+        class="breadcrumbs mobile"
+      >
+        <a
+          class="breadcrumb"
+          href="/"
+        >
+          <div
+            class="arrow"
+          >
+            <svg>
+              leftarrow.svg
+            </svg>
+          </div>
+          <span>
+            Назад
+          </span>
+        </a>
+      </div>
+      <div
+        class="breadcrumbs pc"
+      >
+        <a
+          class="breadcrumb"
+          href="/"
+        >
+           Главная 
+        </a>
+        <div
+          class="vl"
+        />
+        <a
+          class="breadcrumb active"
+          href="/cart"
+        >
+          Корзина
+        </a>
+      </div>
+      <div
+        class="cart"
+      >
+        <div
+          class="hl"
+        />
+        <div
+          class="cart__items"
+        >
+          <div
+            class="cart__item"
+          >
+            <a
+              class="cart__img"
+              href="/product/4604049097546"
+            >
+              <img
+                alt="item"
+                src="https://avatars.mds.yandex.net/get-mpic/4721581/img_id7739073593422149788.jpeg/orig"
+              />
+            </a>
+            <div
+              class="col"
+            >
+              <p
+                class="size"
+              >
+                 
+                <svg>
+                  lit.svg
+                </svg>
+                 
+                1
+                 мл 
+              </p>
+              <a
+                href="/product/4604049097546"
+              >
+                <span
+                  class="cart__item__name"
+                >
+                  Бренд1
+                   
+                  средство для мытья посуды Crystal
+                </span>
+              </a>
+              <p
+                class="desc"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id mauris ut purus venenatis laoreet. Donec hendrerit urna dapibus pulvinar fermentum. ...
+              </p>
+            </div>
+            <span
+              class="cart__btns"
+            >
+              <div
+                class="cart__item__price"
+              >
+                <button
+                  class="amount"
+                >
+                   - 
+                </button>
+                <div
+                  class="amount__value"
+                  data-testid="amount4604049097546"
+                >
+                  1
+                </div>
+                <button
+                  class="amount"
+                  data-testid="plus4604049097546"
+                >
+                   + 
+                </button>
+              </div>
+              <div
+                class="vl"
+              />
+              <strong>
+                 
+                1
+                 ₸ 
+              </strong>
+              <div
+                class="vl"
+              />
+              <button
+                class="btn__img"
+              >
+                <svg>
+                  delete.svg
+                </svg>
+              </button>
+            </span>
+          </div>
+          <div
+            class="hl"
+          />
+        </div>
+        <div
+          class="cart__items"
+        >
+          <div
+            class="cart__item"
+          >
+            <a
+              class="cart__img"
+              href="/product/4604049097547"
+            >
+              <img
+                alt="item"
+                src="https://cdn.100sp.ru/pictures/135643946"
+              />
+            </a>
+            <div
+              class="col"
+            >
+              <p
+                class="size"
+              >
+                 
+                <svg>
+                  gr.svg
+                </svg>
+                 
+                2000
+                 г 
+              </p>
+              <a
+                href="/product/4604049097547"
+              >
+                <span
+                  class="cart__item__name"
+                >
+                  Бренд1
+                   
+                  Автмат Гель СМС жидкое в растворимы...
+                </span>
+              </a>
+              <p
+                class="desc"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id mauris ut purus venenatis laoreet. Donec hendrerit urna dapibus pulvinar fermentum. ...
+              </p>
+            </div>
+            <span
+              class="cart__btns"
+            >
+              <div
+                class="cart__item__price"
+              >
+                <button
+                  class="amount"
+                >
+                   - 
+                </button>
+                <div
+                  class="amount__value"
+                  data-testid="amount4604049097547"
+                >
+                  1
+                </div>
+                <button
+                  class="amount"
+                  data-testid="plus4604049097547"
+                >
+                   + 
+                </button>
+              </div>
+              <div
+                class="vl"
+              />
+              <strong>
+                 
+                2
+                 ₸ 
+              </strong>
+              <div
+                class="vl"
+              />
+              <button
+                class="btn__img"
+              >
+                <svg>
+                  delete.svg
+                </svg>
+              </button>
+            </span>
+          </div>
+          <div
+            class="hl"
+          />
+        </div>
+        <div
+          class="cart__items"
+        >
+          <div
+            class="cart__item"
+          >
+            <a
+              class="cart__img"
+              href="/product/4604049097548"
+            >
+              <img
+                alt="item"
+                src="https://storum.ru/image/cache/products/253253-800x800.png"
+              />
+            </a>
+            <div
+              class="col"
+            >
+              <p
+                class="size"
+              >
+                 
+                <svg>
+                  gr.svg
+                </svg>
+                 
+                3321
+                 г 
+              </p>
+              <a
+                href="/product/4604049097548"
+              >
+                <span
+                  class="cart__item__name"
+                >
+                  Бренд1
+                   
+                  Порошок стиральный Автомат 100 пяте...
+                </span>
+              </a>
+              <p
+                class="desc"
+              >
+                description
+              </p>
+            </div>
+            <span
+              class="cart__btns"
+            >
+              <div
+                class="cart__item__price"
+              >
+                <button
+                  class="amount"
+                >
+                   - 
+                </button>
+                <div
+                  class="amount__value"
+                  data-testid="amount4604049097548"
+                >
+                  5
+                </div>
+                <button
+                  class="amount"
+                  data-testid="plus4604049097548"
+                >
+                   + 
+                </button>
+              </div>
+              <div
+                class="vl"
+              />
+              <strong>
+                 
+                15
+                 ₸ 
+              </strong>
+              <div
+                class="vl"
+              />
+              <button
+                class="btn__img"
+              >
+                <svg>
+                  delete.svg
+                </svg>
+              </button>
+            </span>
+          </div>
+          <div
+            class="hl"
+          />
+        </div>
+        <div
+          class="buy"
+        >
+          <button
+            class="btn__text"
+          >
+            Оформить заказ
+          </button>
+          <strong>
+            18
+             ₸
+          </strong>
+        </div>
+      </div>
+      <footer
+        class="footer"
+      >
+        <div
+          class="col"
+        >
+          <div
+            class="footer__logo"
+          >
+            <img
+              alt="logo"
+              class="logo"
+              src="main-logo-white.svg"
+            />
+            <button
+              class="btn__text mobile"
+            >
+              <span>
+                Прайс-лист
+              </span>
+              <svg>
+                download.svg
+              </svg>
+            </button>
+          </div>
+          <p
+            class="long"
+          >
+            Компания «Султан» — снабжаем розничные магазины товарами "под ключ" в Кокчетаве и Акмолинской области
+          </p>
+          <div
+            class="sub"
+          >
+            <p>
+              Подпишись на скидки и акции
+            </p>
+            <div
+              class="input"
+            >
+              <input
+                placeholder="Введите ваш E-mail"
+                type="text"
+              />
+              <button
+                class="btn__img"
+                type="submit"
+              >
+                <svg>
+                  right-wing.svg
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="middle"
+        >
+          <div
+            class="col"
+          >
+            <h3>
+              Меню сайта:
+            </h3>
+            <a
+              class="link"
+              href="/cart"
+            >
+              О компании
+            </a>
+            <a
+              class="link"
+              href="/cart"
+            >
+              Доставка и оплата
+            </a>
+            <a
+              class="link"
+              href="/cart"
+            >
+              Возврат
+            </a>
+            <a
+              class="link"
+              href="/cart"
+            >
+              Контакты
+            </a>
+          </div>
+          <div
+            class="col"
+          >
+            <h3>
+              Категории:
+            </h3>
+            <a
+              class="link"
+              href="/cart"
+            >
+              Бытовая химия
+            </a>
+            <a
+              class="link"
+              href="/cart"
+            >
+              Косметика и гигиена
+            </a>
+            <a
+              class="link"
+              href="/cart"
+            >
+              Товары для дома
+            </a>
+            <a
+              class="link"
+              href="/cart"
+            >
+              Товары для детей и мам
+            </a>
+            <a
+              class="link"
+              href="/cart"
+            >
+              Посуда
+            </a>
+          </div>
+        </div>
+        <div
+          class="col pc"
+        >
+          <span
+            class="col"
+          >
+            <h3>
+              Скачать прайс-лист:
+            </h3>
+            <button
+              class="btn__text"
+            >
+              <span>
+                Прайс-лист
+              </span>
+              <svg>
+                download.svg
+              </svg>
+            </button>
+          </span>
+          <div
+            class="col"
+          >
+            <p>
+              Связь в мессенджерах:
+            </p>
+            <div
+              class="logos"
+            >
+              <img
+                alt="wu"
+                src="whatsup.png"
+              />
+              <img
+                alt="tg"
+                src="telegram.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="col"
+        >
+          <h3>
+            Контакты:
+          </h3>
+          <div
+            class="footer__calls"
+          >
+            <div>
+              <div
+                class="footer__call"
+              >
+                <strong
+                  class="footer__call__item"
+                >
+                  +7 (777) 490-00-91
+                </strong>
+                <p
+                  class="footer__call__item"
+                >
+                  время работы: 9:00-20:00
+                </p>
+                <p
+                  class="footer__call__item"
+                >
+                  Заказать звонок
+                </p>
+              </div>
+              <div
+                class="footer__call"
+              >
+                <strong
+                  class="footer__call__item"
+                >
+                  opt.sultan@mail.ru
+                </strong>
+                <p
+                  class="footer__call__item"
+                >
+                  На связи в любое время
+                </p>
+              </div>
+              <div
+                class="logos"
+              >
+                <img
+                  alt="visa"
+                  src="visa.png"
+                />
+                <img
+                  alt="mc"
+                  src="mastercard.png"
+                />
+              </div>
+            </div>
+            <div
+              class="col mobile"
+            >
+              <p>
+                Связь в мессенджерах:
+              </p>
+              <div
+                class="logos"
+              >
+                <img
+                  alt="wu"
+                  src="whatsup.png"
+                />
+                <img
+                  alt="tg"
+                  src="telegram.png"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>,
+  "container": <div>
+    <header
+      class="header"
+    >
+      <div
+        class="header__mobile"
+        style="overflow-y: unset;"
+      >
+        <nav
+          class="nav"
+        >
+          <button
+            class="btn__img"
+          >
+            <svg>
+              hamburger-white.svg
+            </svg>
+          </button>
+          <a
+            class="main_logo"
+            href="/"
+          >
+            <svg>
+              main-logo.svg
+            </svg>
+          </a>
+          <div
+            class="cart"
+          >
+            <a
+              class="btn__cart"
+              href="/cart"
+            >
+              <svg>
+                cart.svg
+              </svg>
+              <p
+                class="btn__indicator"
+              >
+                7
+              </p>
+            </a>
+          </div>
+        </nav>
+        <div
+          class="bottom"
+        >
+          <div
+            class="mobile__btn"
+          >
+            <a
+              class="mobile__link"
+              href="/catalog"
+            >
+              <svg
+                class="mobile__img"
+              >
+                catalog.svg
+              </svg>
+              <p>
+                Каталог
+              </p>
+            </a>
+          </div>
+          <div
+            class="mobile vl"
+          />
+          <div
+            class="mobile__btn"
+          >
+            <a
+              class="mobile__link"
+              href="/cart"
+            >
+              <svg
+                class="mobile__img"
+              >
+                lens.svg
+              </svg>
+              <p>
+                Поиск
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="header__pc"
+      >
+        <div
+          class="head"
+        >
+          <div
+            class="contact"
+          >
+            <div
+              class="contact__container"
+            >
+              <svg>
+                address.svg
+              </svg>
+              <p>
+                <strong>
+                  г.Кокчетав, ул.Ж. Ташенова 129Б
+                </strong>
+                <br />
+                (Рынок Восточный)
+              </p>
+            </div>
+            <div
+              class="vl"
+            />
+            <div
+              class="contact__container"
+            >
+              <svg>
+                email.svg
+              </svg>
+              <p>
+                <strong>
+                  opt.sultan@mail.ru
+                </strong>
+                <br />
+                На связи в любое время
+              </p>
+            </div>
+          </div>
+          <ul
+            class="navigation"
+          >
+            <li
+              class="navigation__item admin"
+            >
+              <a
+                href="/admin"
+              >
+                Админка
+              </a>
+            </li>
+            <li
+              class="navigation__item"
+            >
+              <a
+                href="/cart"
+              >
+                О компании
+              </a>
+            </li>
+            <div
+              class="vl"
+            />
+            <li
+              class="navigation__item"
+            >
+              <a
+                href="/cart"
+              >
+                Доставка и оплата
+              </a>
+            </li>
+            <div
+              class="vl"
+            />
+            <li
+              class="navigation__item"
+            >
+              <a
+                href="/cart"
+              >
+                Возврат
+              </a>
+            </li>
+            <div
+              class="vl"
+            />
+            <li
+              class="navigation__item"
+            >
+              <a
+                href="/cart"
+              >
+                Контакты
+              </a>
+            </li>
+          </ul>
+        </div>
+        <nav
+          class="nav"
+        >
+          <a
+            class="main_logo"
+            href="/"
+          >
+            <svg>
+              main-logo.svg
+            </svg>
+          </a>
+          <div
+            class="col"
+          >
+            <a
+              class="btn__text"
+              href="/catalog"
+            >
+              <span>
+                Каталог
+              </span>
+              <svg>
+                catalog.svg
+              </svg>
+            </a>
+          </div>
+          <div
+            class="col input"
+          >
+            <input
+              placeholder="Поиск..."
+              type="search"
+            />
+            <button
+              class="btn btn__img"
+              type="submit"
+            >
+              <svg>
+                lens.svg
+              </svg>
+            </button>
+          </div>
+          <div
+            class="call"
+          >
+            <strong
+              class="header__call__item"
+            >
+               +7 (777) 490-00-91 
+            </strong>
+            <p
+              class="header__call__item"
+            >
+               время работы: 9:00-20:00 
+            </p>
+            <p
+              class="header__call__item"
+            >
+               Заказать звонок 
+            </p>
+          </div>
+          <div
+            class="col nav__img"
+          >
+            <img
+              alt="consultant"
+              src="consultant.png"
+            />
+          </div>
+          <div
+            class="col"
+          >
+            <a
+              class="btn__text"
+              href="/cart"
+            >
+              <span>
+                Прайс-лист
+              </span>
+              <svg>
+                download.svg
+              </svg>
+            </a>
+          </div>
+          <div
+            class="cart"
+          >
+            <a
+              class="btn__cart"
+              href="/cart"
+            >
+              <svg>
+                cart.svg
+              </svg>
+              <p
+                class="btn__indicator"
+              >
+                7
+              </p>
+            </a>
+            <div
+              class="col"
+            >
+              <a
+                href="/cart"
+              >
+                Корзина
+              </a>
+              <strong>
+                 
+                18
+                 ₸ 
+              </strong>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <div
+      class="breadcrumbs mobile"
+    >
+      <a
+        class="breadcrumb"
+        href="/"
+      >
+        <div
+          class="arrow"
+        >
+          <svg>
+            leftarrow.svg
+          </svg>
+        </div>
+        <span>
+          Назад
+        </span>
+      </a>
+    </div>
+    <div
+      class="breadcrumbs pc"
+    >
+      <a
+        class="breadcrumb"
+        href="/"
+      >
+         Главная 
+      </a>
+      <div
+        class="vl"
+      />
+      <a
+        class="breadcrumb active"
+        href="/cart"
+      >
+        Корзина
+      </a>
+    </div>
+    <div
+      class="cart"
+    >
+      <div
+        class="hl"
+      />
+      <div
+        class="cart__items"
+      >
+        <div
+          class="cart__item"
+        >
+          <a
+            class="cart__img"
+            href="/product/4604049097546"
+          >
+            <img
+              alt="item"
+              src="https://avatars.mds.yandex.net/get-mpic/4721581/img_id7739073593422149788.jpeg/orig"
+            />
+          </a>
+          <div
+            class="col"
+          >
+            <p
+              class="size"
+            >
+               
+              <svg>
+                lit.svg
+              </svg>
+               
+              1
+               мл 
+            </p>
+            <a
+              href="/product/4604049097546"
+            >
+              <span
+                class="cart__item__name"
+              >
+                Бренд1
+                 
+                средство для мытья посуды Crystal
+              </span>
+            </a>
+            <p
+              class="desc"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id mauris ut purus venenatis laoreet. Donec hendrerit urna dapibus pulvinar fermentum. ...
+            </p>
+          </div>
+          <span
+            class="cart__btns"
+          >
+            <div
+              class="cart__item__price"
+            >
+              <button
+                class="amount"
+              >
+                 - 
+              </button>
+              <div
+                class="amount__value"
+                data-testid="amount4604049097546"
+              >
+                1
+              </div>
+              <button
+                class="amount"
+                data-testid="plus4604049097546"
+              >
+                 + 
+              </button>
+            </div>
+            <div
+              class="vl"
+            />
+            <strong>
+               
+              1
+               ₸ 
+            </strong>
+            <div
+              class="vl"
+            />
+            <button
+              class="btn__img"
+            >
+              <svg>
+                delete.svg
+              </svg>
+            </button>
+          </span>
+        </div>
+        <div
+          class="hl"
+        />
+      </div>
+      <div
+        class="cart__items"
+      >
+        <div
+          class="cart__item"
+        >
+          <a
+            class="cart__img"
+            href="/product/4604049097547"
+          >
+            <img
+              alt="item"
+              src="https://cdn.100sp.ru/pictures/135643946"
+            />
+          </a>
+          <div
+            class="col"
+          >
+            <p
+              class="size"
+            >
+               
+              <svg>
+                gr.svg
+              </svg>
+               
+              2000
+               г 
+            </p>
+            <a
+              href="/product/4604049097547"
+            >
+              <span
+                class="cart__item__name"
+              >
+                Бренд1
+                 
+                Автмат Гель СМС жидкое в растворимы...
+              </span>
+            </a>
+            <p
+              class="desc"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id mauris ut purus venenatis laoreet. Donec hendrerit urna dapibus pulvinar fermentum. ...
+            </p>
+          </div>
+          <span
+            class="cart__btns"
+          >
+            <div
+              class="cart__item__price"
+            >
+              <button
+                class="amount"
+              >
+                 - 
+              </button>
+              <div
+                class="amount__value"
+                data-testid="amount4604049097547"
+              >
+                1
+              </div>
+              <button
+                class="amount"
+                data-testid="plus4604049097547"
+              >
+                 + 
+              </button>
+            </div>
+            <div
+              class="vl"
+            />
+            <strong>
+               
+              2
+               ₸ 
+            </strong>
+            <div
+              class="vl"
+            />
+            <button
+              class="btn__img"
+            >
+              <svg>
+                delete.svg
+              </svg>
+            </button>
+          </span>
+        </div>
+        <div
+          class="hl"
+        />
+      </div>
+      <div
+        class="cart__items"
+      >
+        <div
+          class="cart__item"
+        >
+          <a
+            class="cart__img"
+            href="/product/4604049097548"
+          >
+            <img
+              alt="item"
+              src="https://storum.ru/image/cache/products/253253-800x800.png"
+            />
+          </a>
+          <div
+            class="col"
+          >
+            <p
+              class="size"
+            >
+               
+              <svg>
+                gr.svg
+              </svg>
+               
+              3321
+               г 
+            </p>
+            <a
+              href="/product/4604049097548"
+            >
+              <span
+                class="cart__item__name"
+              >
+                Бренд1
+                 
+                Порошок стиральный Автомат 100 пяте...
+              </span>
+            </a>
+            <p
+              class="desc"
+            >
+              description
+            </p>
+          </div>
+          <span
+            class="cart__btns"
+          >
+            <div
+              class="cart__item__price"
+            >
+              <button
+                class="amount"
+              >
+                 - 
+              </button>
+              <div
+                class="amount__value"
+                data-testid="amount4604049097548"
+              >
+                5
+              </div>
+              <button
+                class="amount"
+                data-testid="plus4604049097548"
+              >
+                 + 
+              </button>
+            </div>
+            <div
+              class="vl"
+            />
+            <strong>
+               
+              15
+               ₸ 
+            </strong>
+            <div
+              class="vl"
+            />
+            <button
+              class="btn__img"
+            >
+              <svg>
+                delete.svg
+              </svg>
+            </button>
+          </span>
+        </div>
+        <div
+          class="hl"
+        />
+      </div>
+      <div
+        class="buy"
+      >
+        <button
+          class="btn__text"
+        >
+          Оформить заказ
+        </button>
+        <strong>
+          18
+           ₸
+        </strong>
+      </div>
+    </div>
+    <footer
+      class="footer"
+    >
+      <div
+        class="col"
+      >
+        <div
+          class="footer__logo"
+        >
+          <img
+            alt="logo"
+            class="logo"
+            src="main-logo-white.svg"
+          />
+          <button
+            class="btn__text mobile"
+          >
+            <span>
+              Прайс-лист
+            </span>
+            <svg>
+              download.svg
+            </svg>
+          </button>
+        </div>
+        <p
+          class="long"
+        >
+          Компания «Султан» — снабжаем розничные магазины товарами "под ключ" в Кокчетаве и Акмолинской области
+        </p>
+        <div
+          class="sub"
+        >
+          <p>
+            Подпишись на скидки и акции
+          </p>
+          <div
+            class="input"
+          >
+            <input
+              placeholder="Введите ваш E-mail"
+              type="text"
+            />
+            <button
+              class="btn__img"
+              type="submit"
+            >
+              <svg>
+                right-wing.svg
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="middle"
+      >
+        <div
+          class="col"
+        >
+          <h3>
+            Меню сайта:
+          </h3>
+          <a
+            class="link"
+            href="/cart"
+          >
+            О компании
+          </a>
+          <a
+            class="link"
+            href="/cart"
+          >
+            Доставка и оплата
+          </a>
+          <a
+            class="link"
+            href="/cart"
+          >
+            Возврат
+          </a>
+          <a
+            class="link"
+            href="/cart"
+          >
+            Контакты
+          </a>
+        </div>
+        <div
+          class="col"
+        >
+          <h3>
+            Категории:
+          </h3>
+          <a
+            class="link"
+            href="/cart"
+          >
+            Бытовая химия
+          </a>
+          <a
+            class="link"
+            href="/cart"
+          >
+            Косметика и гигиена
+          </a>
+          <a
+            class="link"
+            href="/cart"
+          >
+            Товары для дома
+          </a>
+          <a
+            class="link"
+            href="/cart"
+          >
+            Товары для детей и мам
+          </a>
+          <a
+            class="link"
+            href="/cart"
+          >
+            Посуда
+          </a>
+        </div>
+      </div>
+      <div
+        class="col pc"
+      >
+        <span
+          class="col"
+        >
+          <h3>
+            Скачать прайс-лист:
+          </h3>
+          <button
+            class="btn__text"
+          >
+            <span>
+              Прайс-лист
+            </span>
+            <svg>
+              download.svg
+            </svg>
+          </button>
+        </span>
+        <div
+          class="col"
+        >
+          <p>
+            Связь в мессенджерах:
+          </p>
+          <div
+            class="logos"
+          >
+            <img
+              alt="wu"
+              src="whatsup.png"
+            />
+            <img
+              alt="tg"
+              src="telegram.png"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="col"
+      >
+        <h3>
+          Контакты:
+        </h3>
+        <div
+          class="footer__calls"
+        >
+          <div>
+            <div
+              class="footer__call"
+            >
+              <strong
+                class="footer__call__item"
+              >
+                +7 (777) 490-00-91
+              </strong>
+              <p
+                class="footer__call__item"
+              >
+                время работы: 9:00-20:00
+              </p>
+              <p
+                class="footer__call__item"
+              >
+                Заказать звонок
+              </p>
+            </div>
+            <div
+              class="footer__call"
+            >
+              <strong
+                class="footer__call__item"
+              >
+                opt.sultan@mail.ru
+              </strong>
+              <p
+                class="footer__call__item"
+              >
+                На связи в любое время
+              </p>
+            </div>
+            <div
+              class="logos"
+            >
+              <img
+                alt="visa"
+                src="visa.png"
+              />
+              <img
+                alt="mc"
+                src="mastercard.png"
+              />
+            </div>
+          </div>
+          <div
+            class="col mobile"
+          >
+            <p>
+              Связь в мессенджерах:
+            </p>
+            <div
+              class="logos"
+            >
+              <img
+                alt="wu"
+                src="whatsup.png"
+              />
+              <img
+                alt="tg"
+                src="telegram.png"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

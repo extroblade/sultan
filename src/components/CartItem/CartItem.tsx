@@ -59,13 +59,14 @@ const CartItem: FC<CIType> = ({i}) => {
             className={styles.amount}
           > - </button>
 
-          <div className={styles.amount__value}>
+          <div className={styles.amount__value} data-testid={'amount'+i.code}>
             {i.count}
           </div>
 
           <button
             onClick={() => dispatch(addItem({...i, count: 1}))}
             className={styles.amount}
+            data-testid={"plus"+i.code}
           > + </button>
         </div>
 

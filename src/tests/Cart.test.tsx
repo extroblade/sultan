@@ -1,17 +1,14 @@
-import * as reduxHooks from "react-redux"
-import { MemoryRouter } from "react-router";
+import * as reduxHooks from "react-redux";
+import {cleanup, render, screen} from "@testing-library/react";
+import {MemoryRouter} from "react-router";
+import {CART_ROUTE} from "../utils/consts";
 import App from "../App";
-import {CART_ROUTE, CATALOG_ROUTE} from "../utils/consts";
-import {render} from "@testing-library/react";
-import CartItem from "../components/CartItem/CartItem";
-
 jest.mock('react-redux')
 
-describe('Cart', () => {
+describe('asd', () => {
   global.scrollTo = jest.fn()
 
-  it('should not be empty', () => {
-
+  beforeEach(() => {
     const testCart = {
       "cartItems": [
         {"code":"4604049097546","count":1},
@@ -22,41 +19,18 @@ describe('Cart', () => {
     }
 
     jest.spyOn(reduxHooks, 'useSelector').mockReturnValue(testCart)
-    const component = render(
+
+    render(
       <MemoryRouter initialEntries={[CART_ROUTE]}>
         <App/>
       </MemoryRouter>
     )
-
-    expect(component).toMatchSnapshot();
   })
 
-  it('should be empty', () => {
+  afterEach(cleanup)
 
-    const testCart = {"cartItems":[],"totalPrice":0}
-
-    jest.spyOn(reduxHooks, 'useSelector').mockReturnValue(testCart)
-    const component = render(
-      <MemoryRouter initialEntries={[CART_ROUTE]}>
-        <App/>
-      </MemoryRouter>
-    )
-
-    expect(component).toMatchSnapshot();
+  it("should return correct value", async () => {
+    expect(screen.getByTestId("amount"+"4604049097546").innerHTML).toBe("1")
   })
 
-  it('should be as in snapshot', () => {
-
-    const testItem = { "count": 2, "code": "1" }
-
-    jest.spyOn(reduxHooks, 'useSelector').mockReturnValue(testItem)
-    const component = render(
-      <MemoryRouter initialEntries={[CART_ROUTE]}>
-        <CartItem i={testItem}/>
-      </MemoryRouter>
-
-    )
-
-    expect(component).toMatchSnapshot();
-  })
-})
+});
