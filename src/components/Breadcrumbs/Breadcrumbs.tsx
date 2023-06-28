@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import styles from './Breadcrumbs.module.sass';
+import styles from './Breadcrumbs.module.css';
 import {Link} from 'react-router-dom';
 import {CATALOG_ROUTE, PRODUCT_ROUTE, SHOP_ROUTE} from '../../utils/consts';
 import {ReactComponent as LeftArrow} from '../../static/leftarrow.svg';

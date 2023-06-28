@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {addItem, minusItem, removeItem} from '../../store/cart/cartSlice';
 import {CartItem as CartItemType} from '../../store/cart/types';
 import {PRODUCT_ROUTE} from '../../utils/consts';
-import styles from './CartItem.module.sass';
+import styles from './CartItem.module.css';
 import {ReactComponent as GrIcon} from '../../static/gr.svg';
 import {ReactComponent as LitIcon} from '../../static/lit.svg';
 import {ReactComponent as TrashIcon} from '../../static/delete.svg';

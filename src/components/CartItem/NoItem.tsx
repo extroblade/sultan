@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import styles from './CartItem.module.sass';
+import styles from './CartItem.module.css';
 import placeholder from '../../static/placeholder.png';
 import {ReactComponent as TrashIcon} from '../../static/delete.svg';
 import {CIType} from './CartItem';
