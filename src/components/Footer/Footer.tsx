@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './Footer.module.css'
 import {Link} from "react-router-dom";
 
-
 import telegram from '../../static/telegram.png'
 import whatsup from '../../static/whatsup.png'
 import visa from '../../static/visa.png'
@@ -128,9 +127,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
-
-
     </footer>
   );
 };

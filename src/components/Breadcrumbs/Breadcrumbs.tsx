@@ -21,7 +21,7 @@ const Breadcrumbs = () => {
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     (currentCat && location.pathname === '/catalog')
       ? document.title = `${currentCat}`
       : document.title = getPage();
