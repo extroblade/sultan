@@ -1,37 +1,39 @@
 import React, {FC} from 'react';
 import styles from './Pagination.module.css';
-import {useDispatch, useSelector} from "react-redux";
-import {selectItemData} from "../../store/items/selectors";
-import { ReactComponent as LeftArrow } from '../../static/leftarrow.svg';
-import { ReactComponent as RightArrow } from '../../static/rightarrow.svg';
-import {calcTotalAmount} from "../../utils/functions";
-import {setCurrentPage} from "../../store/items/itemsSlice";
+import {useDispatch, useSelector} from 'react-redux';
+import {selectItemData} from '../../store/items/selectors';
+import {ReactComponent as LeftArrow} from '../../static/leftarrow.svg';
+import {ReactComponent as RightArrow} from '../../static/rightarrow.svg';
+import {calcTotalAmount} from '../../utils/functions';
+import {setCurrentPage} from '../../store/items/itemsSlice';
 
 const Pagination: FC = () => {
-  const { items, limit, currentPage } = useSelector(selectItemData);
-  const dispatch = useDispatch()
+  const {items, limit, currentPage} = useSelector(selectItemData);
+  const dispatch = useDispatch();
 
-  const count = Math.ceil(calcTotalAmount(items)/limit)
-  const pages = []
-  for (let i=0; i < (count>5 ? 5 : count); i++) pages.push(i+1)
+  const count = Math.ceil(calcTotalAmount(items) / limit);
+  const pages = [];
+  for (let i = 0; i < (count > 5 ? 5 : count); i++) pages.push(i + 1);
 
   const onChangePage = (page: number) => {
-    dispatch(setCurrentPage(page))
-  }
+    dispatch(setCurrentPage(page));
+  };
 
   return (
     <nav className={styles.pages}>
       <ul>
         <li>
           <button
-            disabled={currentPage<=1}
-            onClick={() => onChangePage(currentPage>1 ? currentPage-1 : currentPage)}
+            disabled={currentPage <= 1}
+            onClick={() =>
+              onChangePage(currentPage > 1 ? currentPage - 1 : currentPage)
+            }
           >
-            <LeftArrow/>
+            <LeftArrow />
           </button>
         </li>
 
-        {pages.map(p =>
+        {pages.map(p => (
           <li key={p}>
             <button
               onClick={() => onChangePage(p)}
@@ -40,15 +42,19 @@ const Pagination: FC = () => {
               {p}
             </button>
           </li>
-        )}
-          <li>
-            <button
-              disabled={currentPage>=count}
-              onClick={() => onChangePage(currentPage+1 <= count ? currentPage+1 : currentPage)}
-            >
-              <RightArrow/>
-            </button>
-          </li>
+        ))}
+        <li>
+          <button
+            disabled={currentPage >= count}
+            onClick={() =>
+              onChangePage(
+                currentPage + 1 <= count ? currentPage + 1 : currentPage
+              )
+            }
+          >
+            <RightArrow />
+          </button>
+        </li>
       </ul>
     </nav>
   );

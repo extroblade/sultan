@@ -130,17 +130,18 @@
     "brand": "BIO-SOAP",
     "desc": "description",
     "price": 12
-  },{
-  "url": "https://avatars.mds.yandex.net/get-mpic/4721581/img_id7739073593422149788.jpeg/orig",
-  "name": "средство для мытья посуды Crystal",
-  "type": "volume",
-  "size": 1002,
-  "code": "11",
-  "seller": "Нэфис",
-  "brand": "AOS",
-  "desc": "description",
-  "price": 13
-},
+  },
+  {
+    "url": "https://avatars.mds.yandex.net/get-mpic/4721581/img_id7739073593422149788.jpeg/orig",
+    "name": "средство для мытья посуды Crystal",
+    "type": "volume",
+    "size": 1002,
+    "code": "11",
+    "seller": "Нэфис",
+    "brand": "AOS",
+    "desc": "description",
+    "price": 13
+  },
   {
     "url": "https://cdn.100sp.ru/pictures/135643946",
     "name": "Автмат Гель СМС жидкое в растворимых капсулах Liquid Capsules Горный родник",

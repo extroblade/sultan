@@ -1,7 +1,7 @@
-@import url("https://fonts.cdnfonts.com/css/roboto");
-@import url("https://fonts.cdnfonts.com/css/inter");
+@import url('https://fonts.cdnfonts.com/css/roboto');
+@import url('https://fonts.cdnfonts.com/css/inter');
 * {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-style: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -21,24 +21,25 @@
 * a {
   color: inherit;
 }
-* input::-webkit-outer-spin-button, * input::-webkit-inner-spin-button {
+* input::-webkit-outer-spin-button,
+* input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-* input[type=search]::-ms-clear {
+* input[type='search']::-ms-clear {
   display: none;
   width: 0;
   height: 0;
 }
-* input[type=search]::-ms-reveal {
+* input[type='search']::-ms-reveal {
   display: none;
   width: 0;
   height: 0;
 }
-* input[type=search]::-webkit-search-decoration,
-* input[type=search]::-webkit-search-cancel-button,
-* input[type=search]::-webkit-search-results-button,
-* input[type=search]::-webkit-search-results-decoration {
+* input[type='search']::-webkit-search-decoration,
+* input[type='search']::-webkit-search-cancel-button,
+* input[type='search']::-webkit-search-results-button,
+* input[type='search']::-webkit-search-results-decoration {
   display: none;
 }
 
@@ -71,7 +72,11 @@ svg path {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 198, 80, 0.3) 0%,
+    rgba(254, 202, 110, 0.3) 97.25%
+  );
   border-radius: 10px;
   border: 0;
   width: 34px;
@@ -79,7 +84,7 @@ svg path {
   font-weight: 300;
   font-size: 12px;
   line-height: 15px;
-  color: #3F4E65;
+  color: #3f4e65;
 }
 .amount__value {
   display: flex;
@@ -97,7 +102,7 @@ svg path {
   padding: 9px 45px 9px 20px;
   border: 0;
   border-radius: 50px;
-  background-color: #E5E5E5;
+  background-color: #e5e5e5;
 }
 .input input::placeholder {
   color: #bbb;
@@ -117,7 +122,7 @@ img {
 }
 
 .btn__text {
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 0.8em;
   cursor: pointer;
   font-weight: 700;
@@ -131,7 +136,7 @@ img {
   align-items: center;
 }
 .btn__text span {
-  color: #FFFFFF;
+  color: #ffffff;
   margin: 10px;
 }
 .btn__text:hover {
@@ -172,7 +177,7 @@ img {
   cursor: pointer;
   display: flex;
   border: 0;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .btn__indicator {
@@ -182,7 +187,7 @@ img {
   align-items: center;
   justify-content: center;
   background-color: rgba(255, 200, 94, 0.96);
-  color: #FFFFFF;
+  color: #ffffff;
   position: relative;
   margin-top: -7px;
   margin-left: -12px;
@@ -196,7 +201,7 @@ select {
   background-color: rgba(255, 200, 94, 0.2);
 }
 select p {
-  color: #3F4E65;
+  color: #3f4e65;
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
@@ -253,7 +258,7 @@ select p {
   font-weight: 400;
   font-size: 1rem;
   line-height: 150%;
-  color: #3F4E65;
+  color: #3f4e65;
 }
 .catalog .items__grid {
   display: grid;

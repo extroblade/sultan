@@ -1,10 +1,9 @@
-
 export interface CartItem {
-  count: number
-  code: string
+  count: number;
+  code: string;
 }
 
 export interface CartSliceState {
-  totalPrice: number,
-  cartItems: CartItem[]
+  totalPrice: number;
+  cartItems: CartItem[];
 }

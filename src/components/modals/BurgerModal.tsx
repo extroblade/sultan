@@ -1,56 +1,58 @@
 import React, {FC} from 'react';
-import styles from "../Header/Header.module.css";
-import {ReactComponent as AddressIcon} from "../../static/address.svg";
-import {ReactComponent as EmailIcon} from "../../static/email.svg";
-import {Link} from "react-router-dom";
-import {ADMIN_ROUTE} from "../../utils/consts";
-import {ReactComponent as DownloadIcon} from "../../static/download.svg";
-import {ReactComponent as CallIcon} from "../../static/call.svg";
-
+import styles from '../Header/Header.module.css';
+import {ReactComponent as AddressIcon} from '../../static/address.svg';
+import {ReactComponent as EmailIcon} from '../../static/email.svg';
+import {Link} from 'react-router-dom';
+import {ADMIN_ROUTE} from '../../utils/consts';
+import {ReactComponent as DownloadIcon} from '../../static/download.svg';
+import {ReactComponent as CallIcon} from '../../static/call.svg';
 
 interface iModal {
-  show: boolean,
+  show: boolean;
 }
 
 const BurgerModal: FC<iModal> = ({show}) => {
   return show ? (
     <div className={styles.mobile}>
       <div className={styles.burger}>
-        <div/>
+        <div />
 
         <div className={styles.burger__row}>
-          <AddressIcon/>
+          <AddressIcon />
           <p>
-            <strong>г.Кокчетав, ул.Ж. Ташенова 129Б</strong><br/>
+            <strong>г.Кокчетав, ул.Ж. Ташенова 129Б</strong>
+            <br />
             (Рынок Восточный)
           </p>
         </div>
 
         <div className={styles.burger__row}>
-          <EmailIcon/>
+          <EmailIcon />
           <p>
-            <strong>opt.sultan@mail.ru</strong><br/>
+            <strong>opt.sultan@mail.ru</strong>
+            <br />
             На связи в любое время
           </p>
         </div>
 
         <div className={styles.burger__row}>
-          <CallIcon fill={"black!important"}/>
+          <CallIcon fill={'black!important'} />
           <p>
-            <strong className={styles.header__call__item}>Отдел продаж</strong><br/>
-            +7 (777) 490-00-91 <br/>
+            <strong className={styles.header__call__item}>Отдел продаж</strong>
+            <br />
+            +7 (777) 490-00-91 <br />
             время работы: 9:00-20:00
           </p>
         </div>
 
         <div className={styles.burger__row}>
           <button className={styles.btn__img}>
-            <CallIcon/>
+            <CallIcon />
           </button>
           <p className={styles.header__call__item}>Заказать звонок</p>
         </div>
 
-        <div className={styles.hl}/>
+        <div className={styles.hl} />
 
         <h2> Меню сайта: </h2>
 
@@ -60,32 +62,33 @@ const BurgerModal: FC<iModal> = ({show}) => {
           </li>
 
           <li className={styles.burger__nav}>
-            <Link to={"#"}>О компании</Link>
+            <Link to={'#'}>О компании</Link>
           </li>
 
           <li className={styles.burger__nav}>
-            <Link to={"#"}>Доставка и оплата</Link>
+            <Link to={'#'}>Доставка и оплата</Link>
           </li>
 
           <li className={styles.burger__nav}>
-            <Link to={"#"}>Возврат</Link>
+            <Link to={'#'}>Возврат</Link>
           </li>
 
           <li className={styles.burger__nav}>
-            <Link to={"#"}>Контакты</Link>
+            <Link to={'#'}>Контакты</Link>
           </li>
         </ul>
 
-        <div style={{display: "flex", flexDirection: "column"}}>
+        <div style={{display: 'flex', flexDirection: 'column'}}>
           <button className={styles.btn__text}>
             <span>Прайс-лист</span>
-            <DownloadIcon/>
+            <DownloadIcon />
           </button>
         </div>
       </div>
     </div>
-  ):
+  ) : (
     <></>
+  );
 };
 
 export default BurgerModal;

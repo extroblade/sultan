@@ -20,4 +20,3 @@ Builds the app in "build" folder
 ### `npm run test`
 
 Runs tests
-

@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from "./TopFilters.module.css";
-import {sort} from "../../store/items/itemsSlice";
-import {useDispatch} from "react-redux";
+import styles from './TopFilters.module.css';
+import {sort} from '../../store/items/itemsSlice';
+import {useDispatch} from 'react-redux';
 
 const SortBy = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   return (
     <span className={styles.filters}>
@@ -12,9 +12,18 @@ const SortBy = () => {
         <h2 className={styles.pc}>Косметика и гигиена</h2>
         <div className={styles.sortby}>
           <span className={styles.small}>Сортировка:</span>
-          <select onChange={event => dispatch(sort(event.target.value))} className={styles.sort}>
-            <option className={styles.value__list}> Цена (сначала недорогие) </option>
-            <option className={styles.value__list}> Цена (сначала дорогие) </option>
+          <select
+            onChange={event => dispatch(sort(event.target.value))}
+            className={styles.sort}
+          >
+            <option className={styles.value__list}>
+              {' '}
+              Цена (сначала недорогие){' '}
+            </option>
+            <option className={styles.value__list}>
+              {' '}
+              Цена (сначала дорогие){' '}
+            </option>
             <option className={styles.value__list}> Название А-Я </option>
             <option className={styles.value__list}> Название Я-А </option>
           </select>

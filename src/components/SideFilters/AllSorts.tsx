@@ -1,61 +1,76 @@
 import React, {useEffect, useState} from 'react';
-import styles from "./SideFilters.module.css";
-import FilterByPrice from "./FilterByPrice";
-import FilterByField from "./FilterByField";
-import {ReactComponent as TrashIcon} from "../../static/delete.svg";
-import {useDispatch, useSelector} from "react-redux";
-import {calcMaxPrice, resetInputs} from "../../utils/functions";
-import {getItemsFromAdmin} from "../../utils/functions";
-import {setCategories, setCurrentPage, setFilters, filterItems, updateItems} from "../../store/items/itemsSlice";
-import {iFilters} from "./SideFilters";
-import {selectItemData} from "../../store/items/selectors";
+import styles from './SideFilters.module.css';
+import FilterByPrice from './FilterByPrice';
+import FilterByField from './FilterByField';
+import {ReactComponent as TrashIcon} from '../../static/delete.svg';
+import {useDispatch, useSelector} from 'react-redux';
+import {calcMaxPrice, resetInputs} from '../../utils/functions';
+import {getItemsFromAdmin} from '../../utils/functions';
+import {
+  setCategories,
+  setCurrentPage,
+  setFilters,
+  filterItems,
+  updateItems,
+} from '../../store/items/itemsSlice';
+import {iFilters} from './SideFilters';
+import {selectItemData} from '../../store/items/selectors';
 
 const AllSorts = () => {
-  const dispatch = useDispatch()
-  const { items } = useSelector(selectItemData)
+  const dispatch = useDispatch();
+  const {items} = useSelector(selectItemData);
 
-  const [minValue, setMinValue] = useState(0)
-  const [maxValue, setMaxValue] = useState(calcMaxPrice(getItemsFromAdmin()))
-  const [filtersList, setFiltersList] = useState<iFilters[]>([])
+  const [minValue, setMinValue] = useState(0);
+  const [maxValue, setMaxValue] = useState(calcMaxPrice(getItemsFromAdmin()));
+  const [filtersList, setFiltersList] = useState<iFilters[]>([]);
 
   useEffect(() => {
-    filtersList.find(item => item.key==="price")
+    filtersList.find(item => item.key === 'price')
       ? setFiltersList([
-        {key: "price", value: [minValue, maxValue]},
-        ...filtersList.splice(1, filtersList.length)
-      ])
-      : setFiltersList([...filtersList, {key: "price", value: [minValue, maxValue]}])
-  },[minValue, maxValue])
+          {key: 'price', value: [minValue, maxValue]},
+          ...filtersList.splice(1, filtersList.length),
+        ])
+      : setFiltersList([
+          ...filtersList,
+          {key: 'price', value: [minValue, maxValue]},
+        ]);
+  }, [minValue, maxValue]);
 
   const getFilters = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
-      setFiltersList(() => [...filtersList, {key: event.target.id, value: event.target.name}])
+      setFiltersList(() => [
+        ...filtersList,
+        {key: event.target.id, value: event.target.name},
+      ]);
     } else if (filtersList.length) {
-      setFiltersList((f) => f.filter((i) => {
-        return i ? ((i.key !== event.target.id) || (i.value !== event.target.name)) : false
-      }))
+      setFiltersList(f =>
+        f.filter(i => {
+          return i
+            ? i.key !== event.target.id || i.value !== event.target.name
+            : false;
+        })
+      );
     }
-  }
+  };
 
   const show = () => {
-    dispatch(setFilters([...new Set([...filtersList])] ))
-    dispatch(filterItems())
-    dispatch(setCurrentPage(1))
-  }
+    dispatch(setFilters([...new Set([...filtersList])]));
+    dispatch(filterItems());
+    dispatch(setCurrentPage(1));
+  };
 
   const reset = () => {
-    resetInputs()
-    setMinValue(0)
-    setMaxValue(calcMaxPrice(getItemsFromAdmin()))
-    dispatch(setFilters([] ))
-    dispatch(setCategories(""))
-    dispatch(filterItems())
-  }
+    resetInputs();
+    setMinValue(0);
+    setMaxValue(calcMaxPrice(getItemsFromAdmin()));
+    dispatch(setFilters([]));
+    dispatch(setCategories(''));
+    dispatch(filterItems());
+  };
 
-  useEffect(()=>{
-    dispatch(updateItems)
-  },[items])
-
+  useEffect(() => {
+    dispatch(updateItems);
+  }, [items]);
 
   return (
     <>
@@ -66,22 +81,26 @@ const AllSorts = () => {
         setMaxValue={setMaxValue}
       />
 
-      <FilterByField
-        field={"seller"}
-        getFilters={getFilters}
-      > Производитель </FilterByField>
+      <FilterByField field={'seller'} getFilters={getFilters}>
+        {' '}
+        Производитель{' '}
+      </FilterByField>
 
-      <FilterByField
-        field={"brand"}
-        getFilters={getFilters}
-      > Бренд </FilterByField>
+      <FilterByField field={'brand'} getFilters={getFilters}>
+        {' '}
+        Бренд{' '}
+      </FilterByField>
 
       <div className={styles.btns}>
-        <button className={styles.btn__text} onClick={() => show()} data-testid={"show"}>
+        <button
+          className={styles.btn__text}
+          onClick={() => show()}
+          data-testid={'show'}
+        >
           <span>Показать</span>
         </button>
         <button className={styles.btn__img} onClick={() => reset()}>
-          <TrashIcon/>
+          <TrashIcon />
         </button>
       </div>
     </>

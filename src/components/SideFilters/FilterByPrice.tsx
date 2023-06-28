@@ -1,15 +1,19 @@
 import React, {FC} from 'react';
-import styles from "./SideFilters.module.css";
+import styles from './SideFilters.module.css';
 
 interface iPrice {
-  minValue: number
-  maxValue:number
-  setMinValue: (event: number) => void
-  setMaxValue: (event: number) => void
+  minValue: number;
+  maxValue: number;
+  setMinValue: (event: number) => void;
+  setMaxValue: (event: number) => void;
 }
 
-const FilterByPrice: FC<iPrice> = ({minValue, maxValue, setMinValue, setMaxValue}) => {
-
+const FilterByPrice: FC<iPrice> = ({
+  minValue,
+  maxValue,
+  setMinValue,
+  setMaxValue,
+}) => {
   return (
     <div>
       <p className={styles.params__small}>
@@ -20,20 +24,24 @@ const FilterByPrice: FC<iPrice> = ({minValue, maxValue, setMinValue, setMaxValue
           type="number"
           value={Math.abs(minValue)}
           className={styles.price__input}
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setMinValue(+event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            setMinValue(+event.target.value)
+          }
           min={0}
           max={maxValue}
-          data-testid={"min"}
+          data-testid={'min'}
         />
         <span className={`${styles.price} ${styles.line}`}>-</span>
         <input
           type="number"
           value={Math.abs(maxValue)}
           className={styles.price__input}
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setMaxValue(+event.target.value)}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            setMaxValue(+event.target.value)
+          }
           min={minValue}
           max={1000000}
-          data-testid={"max"}
+          data-testid={'max'}
         />
       </div>
     </div>
